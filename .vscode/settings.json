@@ -23,7 +23,7 @@
         "vue",
         "postcss"
     ],
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "eslint.options": {
         "extensions": [
             ".html",

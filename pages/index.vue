@@ -45,7 +45,7 @@
     
 };
 </script>
-<style>
+<style scoped>
 .rsvp {
   list-style-type:none; 
 }
