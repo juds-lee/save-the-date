@@ -1,35 +1,61 @@
 <template>
-  <div>
-    <h1>Dashboard</h1>
-    <div class="formkit-outer" data-family="text" data-type="text" data-empty="true"></div>
-    <h2>Edit request</h2>
-    <p>Edit your housing request below.</p>
-    <FormKit type="text" name="location" label="Location" help="Where would you like to stay?" validation="required" />
-    <FormKit
-      type="text"
-      name="duration"
-      label="Duration"
-      help="How long would you like to stay?"
-      validation="required"
-    />
-    <FormKit
-      type="radio"
-      name="price"
-      label="Pricing"
-      help="How much are you able to pay"
-      :options="{
-        low: 'Below average',
-        average: 'Average',
-        high: 'Super luxe',
-      }"
-    />
-    <!-- <form @submit.prevent="submitForm" class="flex flex-col items-center justify-center">
-      <label class="mb-1"> <input type="radio" v-model="rsvpOption" value="yes" /> Yes </label>
-      <label class="mb-1"> <input type="radio" v-model="rsvpOption" value="no" /> No </label>
-      <label>
-        <input type="text" />
-      </label>
-      <button type="submit" :class="rsvpOption !== null ? 'active' : 'disabled'">Submit</button>
-    </form> -->
+  <div class="pl-5">
+    <h1 class="py-5 font-bold">Dashboard</h1>
+    <div class="flex flex-row justify-between gap-5">
+      <div class="border w-full">
+        <FormKit type="form" @submit="sendGuestInfo">
+          <FormKit type="text" name="Guest Names" v-model="guestName" label="Name" validation="required" />
+          <FormKit type="text" name="Guest Names" v-model="guestEmail" label="Email Address" validation="required" />
+          <FormKit
+            type="radio"
+            v-model="guestNumber"
+            label="Number of guests"
+            name="Number of guests"
+            :options="{
+              one: '1',
+              two: '2',
+            }"
+          />
+        </FormKit>
+      </div>
+      <div class="w-full border">
+        <h1 class="pr-5">Guest Info</h1>
+      </div>
+    </div>
   </div>
 </template>
+<script setup lang="ts">
+import { ref } from "vue";
+import { db } from "../services/firebaseclient";
+import { collection, doc, setDoc, getDocs } from "firebase/firestore";
+
+const guestName = ref("");
+const guestEmail = ref("");
+const guestNumber = ref("");
+
+const sendGuestInfo = async () => {
+  const guestInfoSubmissionRef = doc(collection(db, "guestInfo"));
+  await setDoc(guestInfoSubmissionRef, {
+    name: guestName.value,
+    guestEmail: guestEmail.value,
+    guestNumber: guestNumber.value,
+  });
+};
+
+const readGuestInfo = async () => {
+  console.log("Reading guest info");
+  const guestInfoCollectionRef = collection(db, "guestInfo");
+
+  const querySnapshot = await getDocs(guestInfoCollectionRef);
+  console.log(querySnapshot);
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    console.log("Guest Info:", data);
+    // Access data properties like data.name, data.guestEmail, data.guestNumber
+  });
+};
+onMounted(() => {
+  // Call readAllGuestInfo when the component is mounted
+  readGuestInfo();
+});
+</script>
