@@ -20,6 +20,15 @@
       </div>
       <div class="w-full border">
         <h1 class="pr-5">Guest Info</h1>
+        <div>
+          <ul>
+            <li v-for="(guest, index) in guestInfo" :key="index">
+              <p>Name: {{ guest.name }}</p>
+              <p>Email: {{ guest.guestEmail }}</p>
+              <p>Number: {{ guest.guestNumber }}</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -28,10 +37,15 @@
 import { ref } from "vue";
 import { db } from "../services/firebaseclient";
 import { collection, doc, setDoc, getDocs } from "firebase/firestore";
-
+interface GuestInfo {
+  name: string;
+  guestEmail: string;
+  guestNumber: string;
+}
 const guestName = ref("");
 const guestEmail = ref("");
 const guestNumber = ref("");
+const guestInfo = ref<GuestInfo[]>([]);
 
 const sendGuestInfo = async () => {
   const guestInfoSubmissionRef = doc(collection(db, "guestInfo"));
@@ -40,19 +54,18 @@ const sendGuestInfo = async () => {
     guestEmail: guestEmail.value,
     guestNumber: guestNumber.value,
   });
+  readGuestInfo();
 };
 
 const readGuestInfo = async () => {
-  console.log("Reading guest info");
   const guestInfoCollectionRef = collection(db, "guestInfo");
-
   const querySnapshot = await getDocs(guestInfoCollectionRef);
-  console.log(querySnapshot);
+  const data: GuestInfo[] = [];
   querySnapshot.forEach((doc) => {
-    const data = doc.data();
-    console.log("Guest Info:", data);
-    // Access data properties like data.name, data.guestEmail, data.guestNumber
+    data.push(doc.data() as GuestInfo);
   });
+
+  guestInfo.value = data;
 };
 onMounted(() => {
   // Call readAllGuestInfo when the component is mounted

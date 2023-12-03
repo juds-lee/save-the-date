@@ -29,7 +29,7 @@ const guestNumber = ref(2);
 const name = ref("Jim and Bob");
 const submitForm = async () => {
   console.log(rsvpOption.value);
-  const rsvpSubmissionRef = doc(collection(db, "rsvps"));
+  const rsvpSubmissionRef = doc(collection(db, "guestInfo"));
   await setDoc(rsvpSubmissionRef, {
     name: name.value,
     rsvpOption: rsvpOption.value,
