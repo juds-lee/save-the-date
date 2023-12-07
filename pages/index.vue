@@ -26,15 +26,15 @@ import { collection, doc, setDoc } from "firebase/firestore";
 
 const rsvpOption = ref(null);
 const guestNumber = ref(2);
-const name = ref("Jim and Bob");
+const allergies = ref("");
+const name = ref("POST MALONE");
 const submitForm = async () => {
-  console.log(rsvpOption.value);
-  const rsvpSubmissionRef = doc(collection(db, "guestInfo"));
+  const rsvpSubmissionRef = doc(collection(db, "guestInfoTESTING"));
   await setDoc(rsvpSubmissionRef, {
     name: name.value,
     rsvpOption: rsvpOption.value,
     guestNumber: guestNumber.value,
-    // allergies: allergies.value
+    allergies: allergies.value,
   });
 };
 </script>

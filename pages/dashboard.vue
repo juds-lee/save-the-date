@@ -1,4 +1,5 @@
 <template>
+  <!-- CREATING THE GUEST LIST COLLECTION -->
   <div class="pl-5">
     <h1 class="py-5 font-bold">Dashboard</h1>
     <div class="flex flex-row justify-between gap-5">
@@ -6,6 +7,7 @@
         <FormKit type="form" @submit="sendGuestInfo">
           <FormKit type="text" name="Guest Names" v-model="guestName" label="Name" validation="required" />
           <FormKit type="text" name="Guest Names" v-model="guestEmail" label="Email Address" validation="required" />
+          <FormKit type="text" name="Guest Names" v-model="guestInviteId" label="Invitation Id" validation="required" />
           <FormKit
             type="radio"
             v-model="guestNumber"
@@ -18,14 +20,22 @@
           />
         </FormKit>
       </div>
+      <!-- READING THE RSVP COLLECTION -->
       <div class="w-full border">
-        <h1 class="pr-5">Guest Info</h1>
+        <h1 class="pr-5 font-bold">Guest Info</h1>
         <div>
           <ul>
             <li v-for="(guest, index) in guestInfo" :key="index">
-              <p>Name: {{ guest.name }}</p>
-              <p>Email: {{ guest.guestEmail }}</p>
-              <p>Number: {{ guest.guestNumber }}</p>
+              <div class="flex gap-1 border-y">
+                <p>Name: {{ guest.name }}</p>
+                <p>RSVP OPTION: {{ guest.rsvpOption }}</p>
+                <p>Email: {{ guest.email }}</p>
+              </div>
+              <div class="flex gap-1">
+                <p># of guests {{ guest.number }}</p>
+                <p>Invite ID: {{ guest.inviteId }}</p>
+                <p>Allergies: {{ guest.allergies }}</p>
+              </div>
             </li>
           </ul>
         </div>
@@ -39,26 +49,31 @@ import { db } from "../services/firebaseclient";
 import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 interface GuestInfo {
   name: string;
-  guestEmail: string;
-  guestNumber: string;
+  email: string;
+  number: string;
+  inviteId: string;
+  allergies: string;
+  rsvpOption: string;
 }
 const guestName = ref("");
 const guestEmail = ref("");
 const guestNumber = ref("");
+const guestInviteId = ref("");
 const guestInfo = ref<GuestInfo[]>([]);
 
 const sendGuestInfo = async () => {
-  const guestInfoSubmissionRef = doc(collection(db, "guestInfo"));
+  const guestInfoSubmissionRef = doc(collection(db, "guestInfoTESTING"));
   await setDoc(guestInfoSubmissionRef, {
     name: guestName.value,
     guestEmail: guestEmail.value,
     guestNumber: guestNumber.value,
+    guestInviteId: guestInviteId.value,
   });
   readGuestInfo();
 };
 
 const readGuestInfo = async () => {
-  const guestInfoCollectionRef = collection(db, "guestInfo");
+  const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
   const querySnapshot = await getDocs(guestInfoCollectionRef);
   const data: GuestInfo[] = [];
   querySnapshot.forEach((doc) => {
@@ -66,6 +81,7 @@ const readGuestInfo = async () => {
   });
 
   guestInfo.value = data;
+  console.log(guestInfo.value);
 };
 onMounted(() => {
   // Call readAllGuestInfo when the component is mounted
