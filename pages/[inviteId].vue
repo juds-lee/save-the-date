@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { db } from "../services/firebaseclient";
-import { doc, setDoc, getDocs, collection, query, where } from "firebase/firestore";
+import { doc, getDocs, collection, query, where, updateDoc } from "firebase/firestore";
 const route = useRoute();
 interface GuestInfo {
   name: string;
@@ -37,17 +37,29 @@ const rsvpOption = ref(null);
 // const guestNumber = ref(2);
 const allergies = ref("");
 const guestInfo = ref<GuestInfo[]>([]);
-const guestId = route.params.inviteId;
+const inviteId = route.params.inviteId;
 
-// Users will submit their rsvp info here
+//Users will submit their rsvp info here
 const submitForm = async () => {
-  const rsvpSubmissionRef = doc(collection(db, "guestInfoTESTING"));
-  await setDoc(rsvpSubmissionRef, {
-    inviteId: guestId,
-    rsvpOption: rsvpOption.value,
-    // guestNumber: guestNumber.value,
-    allergies: allergies.value,
-  });
+  try {
+    const guestRsvpRef = collection(db, "guestInfoTESTING");
+    const q = query(guestRsvpRef, where("inviteId", "==", inviteId));
+    const querySnapshot = await getDocs(q);
+    // Step 2: Check if a document with the inviteId exists
+    if (querySnapshot.size > 0) {
+      // Assuming there's only one document for a unique inviteId
+      const documentSnapshot = querySnapshot.docs[0];
+      // Step 3: Update the existing document with the new RSVP information
+      const rsvpSubmissionRef = doc(db, "guestInfoTESTING", documentSnapshot.id);
+      await updateDoc(rsvpSubmissionRef, {
+        rsvpOption: rsvpOption.value,
+        allergies: allergies.value,
+      });
+    }
+    console.log("RSVP submission updated successfully");
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //Same code as the dashboard page to read all guest info just submiting diff props
@@ -55,10 +67,9 @@ const readGuestInfo = async () => {
   try {
     const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
     // console.log(guestInfoCollectionRef, "guestInfoCollectionRef");
-    const q = query(guestInfoCollectionRef, where("guestInviteId", "==", guestId));
+    const q = query(guestInfoCollectionRef, where("guestInviteId", "==", inviteId));
     // console.log(q);
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot);
     const data: GuestInfo[] = [];
     querySnapshot.forEach((doc) => {
       data.push(doc.data() as GuestInfo);
