@@ -73,6 +73,11 @@ const readGuestInfo = async () => {
     const guestRsvpRef = collection(db, "guestInfoTESTING");
     const q = query(guestRsvpRef, where("inviteId", "==", inviteId));
     const querySnapshot = await getDocs(q);
+    // redirect to home page if there is no matching invite id (INTRUDER ALERT)
+    if (querySnapshot.size === 0) {
+      router.push({ path: "/" });
+      return;
+    }
     if (querySnapshot.size > 0) {
       // initialize data array to store guest info
       const data: GuestInfo[] = [];
@@ -94,13 +99,6 @@ const readGuestInfo = async () => {
 onMounted(() => {
   readGuestInfo();
 });
-
-//Check if a document with the inviteId exists
-// // if there is no matching invite id, redirect to home page (INTRUDER ALERT)
-// if (data.length === 0) {
-//   router.push({ path: "/" });
-//   return;
-// }
 </script>
 <style scoped>
 .rsvp {
