@@ -11,7 +11,7 @@
           <FormKit type="text" name="Allergies" v-model="allergies" label="Allergies" validation="required" />
           <FormKit
             type="radio"
-            v-model="number"
+            v-model="numberInvited"
             label="Number of guests"
             name="Number of guests"
             :options="{
@@ -44,11 +44,12 @@
               <div class="flex flex-col gap-1 details-container">
                 <p class="font-bold">Details</p>
                 <div>
-                  <!-- <p># of guests {{ guest.guestNumber }}</p> -->
                   <p>RSVP OPTION: {{ guest.rsvpOption }}</p>
                   <p>Allergies: {{ guest.allergies }}</p>
                   <p>Email: {{ guest.email }}</p>
                   <p>Invite ID: {{ guest.inviteId }}</p>
+                  <p>Number Attending: {{ guest.number }}</p>
+                  <p>Number Invited: {{ guest.numberInvited }}</p>
                 </div>
               </div>
               <div class="flex flex-col m-auto">
@@ -75,10 +76,11 @@ interface GuestInfo {
   inviteId: string;
   allergies: string;
   rsvpOption: string;
+  numberInvited: string;
 }
 const name = ref("");
 const email = ref("");
-const number = ref("");
+const numberInvited = ref("");
 const inviteId = ref("");
 const allergies = ref("tba");
 const rsvpOption = ref("");
@@ -89,7 +91,7 @@ const sendGuestInfo = async () => {
   await setDoc(guestInfoSubmissionRef, {
     name: name.value,
     email: email.value,
-    number: number.value,
+    numberInvited: numberInvited.value,
     allergies: allergies.value,
     inviteId: inviteId.value,
     rsvpOption: rsvpOption.value,
@@ -104,9 +106,8 @@ const readGuestInfo = async () => {
   querySnapshot.forEach((doc) => {
     data.push(doc.data() as GuestInfo);
   });
-
   info.value = data;
-  // console.log(info.value);
+  console.log(info.value);
 };
 
 //delete guess from Firestore
