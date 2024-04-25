@@ -1,6 +1,6 @@
 <template>
-  <!-- CREATING THE GUEST LIST COLLECTION -->
-  <div class="pl-5">
+  <!-- CREATING THE GUEST LIST  -->
+  <div class="px-5">
     <h1 class="py-5 font-bold">Dashboard</h1>
     <div class="flex flex-row justify-between gap-5">
       <div class="border w-full">
@@ -31,7 +31,7 @@
           />
         </FormKit>
       </div>
-      <!-- READING THE RSVP COLLECTION -->
+      <!-- READING THE RSVP  -->
       <div class="w-full border">
         <h1 class="pr-5 font-bold">Guest Info</h1>
         <div>
@@ -63,6 +63,7 @@
         </div>
       </div>
     </div>
+    <sendEmail />
   </div>
 </template>
 <script setup lang="ts">

@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-dotenv.config(); 
-import nodemailer from 'nodemailer';
+dotenv.config();
+import * as nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -20,7 +20,7 @@ const mailOptions = {
         address: process.env.EMAIL_USER,
     },
     to: "judy_96_@hotmail.com", // list of receivers
-    subject: "DUNCAN ITS ME! IM TESTING MY NODE MAILER APP", 
+    subject: "DUNCAN ITS ME! IM TESTING MY NODE MAILER APP",
     text: "Hello world?!",
     html: "<b>Hello world?</b>",
     // attachments: [ 
@@ -42,3 +42,4 @@ const sendMail = async (transporter, mailOptions) => {
     }
 };
 sendMail(transporter, mailOptions);
+
