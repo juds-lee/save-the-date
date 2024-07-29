@@ -50,6 +50,7 @@
                   <p>Invite ID: {{ guest.inviteId }}</p>
                   <p>Number Attending: {{ guest.number }}</p>
                   <p>Number Invited: {{ guest.numberInvited }}</p>
+                  <p>UUID: {{ guest.guestUuid }}</p>
                 </div>
               </div>
               <div class="flex flex-col m-auto">
@@ -69,7 +70,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { db } from "../services/firebaseclient";
-import { collection, doc, setDoc, getDocs, deleteDoc, query, where } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, deleteDoc, query, where, updateDoc } from "firebase/firestore";
 interface GuestInfo {
   name: string;
   email: string;
@@ -78,6 +79,7 @@ interface GuestInfo {
   allergies: string;
   rsvpOption: string;
   numberInvited: string;
+  guestUuid: string;
 }
 const name = ref("");
 const email = ref("");
@@ -86,6 +88,7 @@ const inviteId = ref("");
 const allergies = ref("tba");
 const rsvpOption = ref("");
 const info = ref<GuestInfo[]>([]);
+const guestUuid = ref("");
 
 const sendGuestInfo = async () => {
   const guestInfoSubmissionRef = doc(collection(db, "guestInfoTESTING"));
@@ -97,9 +100,12 @@ const sendGuestInfo = async () => {
     inviteId: inviteId.value,
     rsvpOption: rsvpOption.value,
   });
+  guestUuid.value = guestInfoSubmissionRef.id;
+  await updateDoc(guestInfoSubmissionRef, {
+    guestUuid: guestUuid.value,
+  });
   readGuestInfo();
 };
-
 const readGuestInfo = async () => {
   const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
   const querySnapshot = await getDocs(guestInfoCollectionRef);
@@ -115,7 +121,6 @@ const readGuestInfo = async () => {
 const removeGuest = async (guest: GuestInfo) => {
   if (guest && guest.inviteId) {
     const guestId = guest.inviteId;
-    console.log(guestId);
     try {
       const guestRef = collection(db, "guestInfoTESTING");
       const q = query(guestRef, where("inviteId", "==", guestId));
@@ -136,7 +141,6 @@ const removeGuest = async (guest: GuestInfo) => {
 };
 
 onMounted(() => {
-  // Call readAllGuestInfo when the component is mounted
   readGuestInfo();
 });
 </script>

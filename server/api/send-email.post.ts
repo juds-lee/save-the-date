@@ -14,14 +14,14 @@ const transporter = nodemailer.createTransport({
         pass: process.env.APP_PASS,
     },
 });
-    // const templatePath = path.resolve('emails', `emailTest.html`);
-    // console.log(templatePath)
-    // const templateContent = fs.readFileSync(templatePath, 'utf-8');
-    // const renderedTemplate = render(templateContent).then((res) => {console.log(res)})
-
+ const templatePath = path.resolve('src/layouts', `main.html`);
+    console.log(templatePath)
+    const templateContent = fs.readFileSync(templatePath, 'utf-8');
+    const renderedTemplate =  render(templateContent);
+    console.log(renderedTemplate)
 
 export default defineEventHandler(async (event) => {
-    const templatePath = path.resolve('emails', `emailTest.html`);
+    const templatePath = path.resolve('src/layouts', `main.html`);
     console.log(templatePath)
     const templateContent = fs.readFileSync(templatePath, 'utf-8');
     const renderedTemplate = await render(templateContent);

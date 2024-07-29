@@ -39,16 +39,17 @@ const rsvpOption = ref(null);
 const number = ref("");
 const allergies = ref("");
 const guestInfo = ref<GuestInfo[]>([]);
-const inviteId = route.params.inviteId;
+const guestUuid = route.params.guestUuid;
 let numberInvited = ref("");
 let guestName = ref("");
 const isLoading = ref(true); // New loading state
+console.log(route.params);
 
 //Users will submit their rsvp info here
 const submitForm = async () => {
   try {
     const guestRsvpRef = collection(db, "guestInfoTESTING");
-    const q = query(guestRsvpRef, where("inviteId", "==", inviteId));
+    const q = query(guestRsvpRef, where("inviteId", "==", guestUuid));
     const querySnapshot = await getDocs(q);
     //Check if a document with the inviteId exists
     if (querySnapshot.size > 0) {
@@ -71,7 +72,7 @@ const submitForm = async () => {
 const readGuestInfo = async () => {
   try {
     const guestRsvpRef = collection(db, "guestInfoTESTING");
-    const q = query(guestRsvpRef, where("inviteId", "==", inviteId));
+    const q = query(guestRsvpRef, where("guestUuid", "==", guestUuid));
     const querySnapshot = await getDocs(q);
     // redirect to home page if there is no matching invite id (INTRUDER ALERT)
     if (querySnapshot.size === 0) {
@@ -104,9 +105,11 @@ onMounted(() => {
 .rsvp {
   list-style-type: none;
 }
+
 .active {
   background-color: green;
 }
+
 .disabled {
   background-color: red;
 }
