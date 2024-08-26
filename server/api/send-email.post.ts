@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
   try {
     await transporter.sendMail({
       from: body.email,
-      to: "duncanheeney@gmail.com",
+      to: "judyjungmin.lee@gmail.com",
       subject: "You are Invited to a Wedding!",
       html: templateContent,
     });
