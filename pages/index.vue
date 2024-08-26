@@ -1,19 +1,24 @@
 <template>
 	<div class="flex justify-center items-center h-screen flex-col">
 		<h1>WELCOME TO THE PARTY</h1>
-		<FormKit type="text" label="Password" v-model="enteredPassword" />
-		<button @click="submitPassword">Enter</button>
-		<p v-if="setError">{{ errorMessage }}</p>
+		<div v-if="scroll && needsAuth">
+			<FormKit type="text" label="Password" v-model="enteredPassword" />
+			<button @click="submitPassword">Enter</button>
+			<p v-if="setError">{{ errorMessage }}</p>
+		</div>
 	</div>
 	<FaqInfo />
 </template>
 <script setup>
 
-const needsAuth = ref(false)
+const needsAuth = ref(true)
+const scroll = ref(0)
 const handlePageScroll = () => {
-	console.log("scrollin")
-
-}
+	console.log(window.scrollY)
+	if (window.scrollY > 6) {
+		scroll.value = true
+	}
+};
 const cookie = useCookie('isAuth');
 const enteredPassword = ref('');
 const setError = ref(false);
@@ -21,8 +26,10 @@ const errorMessage = ref('');
 const correctPassword = 'hello';
 const isAuthenticated = ref(false);
 const isGuestAuthenticated = () => {
+	console.log(cookie.value)
 	if (cookie.value === 1) {
 		isAuthenticated.value = true;
+		needsAuth.value = false;
 	}
 }
 
