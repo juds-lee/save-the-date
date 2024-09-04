@@ -9,26 +9,14 @@
           <FormKit type="text" name="Guest Email" v-model="email" label="Email Address" validation="required" />
           <FormKit type="text" name="Guest Invite Id" v-model="inviteId" label="Invitation Id" validation="required" />
           <FormKit type="text" name="Allergies" v-model="allergies" label="Allergies" validation="required" />
-          <FormKit
-            type="radio"
-            v-model="numberInvited"
-            label="Number of guests"
-            name="Number of guests"
-            :options="{
-              one: '1',
-              two: '2',
-            }"
-          />
-          <FormKit
-            type="radio"
-            v-model="rsvpOption"
-            label="rsvp"
-            name="rsvp"
-            :options="{
-              yes: 'yes',
-              no: 'no',
-            }"
-          />
+          <FormKit type="radio" v-model="numberInvited" label="Number of guests" name="Number of guests" :options="{
+            one: '1',
+            two: '2',
+          }" />
+          <FormKit type="radio" v-model="rsvpOption" label="rsvp" name="rsvp" :options="{
+            yes: 'yes',
+            no: 'no',
+          }" />
         </FormKit>
       </div>
       <!-- READING THE RSVP  -->
@@ -114,7 +102,6 @@ const readGuestInfo = async () => {
     data.push(doc.data() as GuestInfo);
   });
   info.value = data;
-  console.log(info.value);
 };
 
 //delete guess from Firestore
@@ -148,6 +135,7 @@ onMounted(() => {
 .name-container {
   width: 20%;
 }
+
 .details-container {
   width: 50%;
 }

@@ -40,6 +40,7 @@ const submitPassword = () => {
 	} else if (enteredPassword.value === correctPassword) {
 		cookie.value = 1;
 		errorMessage.value = "";
+		needsAuth.value = false;
 	} else {
 		setError.value = true;
 		errorMessage.value = "Intruder Alert :)";
