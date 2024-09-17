@@ -75,10 +75,10 @@ const readGuestInfo = async () => {
     const q = query(guestRsvpRef, where("guestUuid", "==", guestUuid));
     const querySnapshot = await getDocs(q);
     // redirect to home page if there is no matching invite id (INTRUDER ALERT)
-    // if (querySnapshot.size === 0) {
-    //   router.push({ path: "/" });
-    //   return;
-    // }
+    if (querySnapshot.size === 0) {
+      router.push({ path: "/" });
+      return;
+    }
     if (querySnapshot.size > 0) {
       // initialize data array to store guest info
       const data: GuestInfo[] = [];

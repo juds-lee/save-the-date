@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 import fs from "fs";
-import path from "path";
 import mjml2html from "mjml";
 import Handlebars from "handlebars";
 import { db } from "../../services/firebaseclient";
@@ -19,6 +18,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.APP_PASS,
   },
 });
+
 type guestData = {
   guestName: string;
   guestEmail: string;
@@ -35,14 +35,13 @@ export default defineEventHandler(async (event) => {
         guestName: guest.name,
         guestEmail: guest.email,
       };
-      console.log(data.guestName);
       const mjmlWithDynamicNames = template(data);
       const emailHtmlOutput = mjml2html(mjmlWithDynamicNames).html;
       const body = await readBody(event);
       const emailData = {
-        from: body.email,
+        from: '"Judy & Duncan" <judyandduncanwedding@gmail.com>',
         to: data.guestEmail,
-        subject: "You are Invited to a Wedding!",
+        subject: "Save the Date!",
         html: emailHtmlOutput,
       };
       try {
