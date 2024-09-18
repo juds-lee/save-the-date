@@ -1,6 +1,7 @@
 <mjml>
   <mj-head>
     <mj-title>Judy and Duncan Are Getting Married!</mj-title>
+    <mj-font name="Cormorant" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital@0;1&display=swap" />
     <mj-preview></mj-preview>
     <mj-attributes>
       <mj-all font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-all>
@@ -26,25 +27,28 @@
 
   </mj-head>
   <mj-body background-color="#ede8d0" width="600px">
-    <mj-section full-width="full-width" background-color="#040B4F" padding-bottom="0" padding-top="100px">
+    <mj-section full-width="full-width" background-color="#ede8d0" padding-bottom="0" padding-top="0">
       <mj-column width="100%">
-        <mj-image src="https://res.cloudinary.com/djatkco6m/image/upload/v1724639475/cld-sample-5.jpg" width="600px" alt="" padding="0" href="https://google.com" />
+        <mj-image src="https://res.cloudinary.com/djatkco6m/image/upload/v1726602470/DSC04403_ysitjd.jpg" width="600px" alt="" padding="0" />
       </mj-column>
     </mj-section>
     <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
       <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
         <mj-column width="100%">
-          <mj-text color="#212b35" font-weight="bold" font-size="26px" align="center">
-            Save the date
-          </mj-text>
-          <mj-text color="#212b35" font-weight="bold" font-size="20px" align="center">
+          <mj-text font-family="Libre Caslon, serif" color="#212b35" font-weight="bold" font-size="26px" font-style="italic" align="center">
             We're getting married!
+          </mj-text>
+          <mj-text font-family="Libre Caslon, serif" font-weight="bold" color="#212b35" font-size="20px" align="center">
+            Save the Date
           </mj-text>
           <mj-text color="#637381" font-size="16px">
             Dear {{guestName}},
           </mj-text>
           <mj-text color="#637381" font-size="16px">
-            We’re tying the knot on September 24, 2025, and we’d love for you to join us in celebrating our special day. A formal invitation will follow, but in the meantime, please save the date!
+            hey {{token}},
+          </mj-text>
+          <mj-text color="#637381" font-size="16px">
+            We’re tying the knot on September 20, 2025, and we’d love for you to join us in celebrating our special day. A formal invitation will follow, but in the meantime, please save the date!
           </mj-text>
           <mj-text color="#637381" font-size="16px">
             Sincerely, <br /> Judy & Duncan

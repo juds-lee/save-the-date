@@ -4,6 +4,7 @@ import mjml2html from "mjml";
 import Handlebars from "handlebars";
 import { db } from "../../services/firebaseclient";
 import { collection, getDocs } from "firebase/firestore";
+import jwt from "jsonwebtoken";
 
 const mjmlTemplate = fs.readFileSync("email/index.mjml", "utf8");
 const template = Handlebars.compile(mjmlTemplate);
@@ -29,15 +30,21 @@ export default defineEventHandler(async (event) => {
     const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
     const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
     for (const guest of guestList) {
+      //   const payload = {
+      //     name: guest.name,
+      //     uuid: guest.id,
+      //   };
+      //   const secretKey = process.env.JWT_SECRET_KEY;
+      //   const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+
       const data: guestData = {
         guestName: guest.name,
         guestEmail: guest.email,
+        token: token,
       };
       const mjmlWithDynamicNames = template(data);
       const emailHtmlOutput = mjml2html(mjmlWithDynamicNames).html;
-      const body = await readBody(event);
       const emailData = {
         from: '"Judy & Duncan" <judyandduncanwedding@gmail.com>',
         to: data.guestEmail,
