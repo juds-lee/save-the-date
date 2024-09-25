@@ -7,12 +7,12 @@
         <FormKit type="form" @submit="sendGuestInfo">
           <FormKit type="text" name="Guest Names" v-model="name" label="Name" validation="required" />
           <FormKit type="text" name="Guest Email" v-model="email" label="Email Address" validation="required" />
-          <FormKit type="text" name="Guest Invite Id" v-model="inviteId" label="Invitation Id" validation="required" />
-          <FormKit type="text" name="Allergies" v-model="allergies" label="Allergies" validation="required" />
-          <FormKit type="radio" v-model="numberInvited" label="Number of guests" name="Number of guests" :options="{
+          <!-- <FormKit type="text" name="Guest Invite Id" v-model="inviteId" label="Invitation Id" validation="required" /> -->
+          <FormKit type="text" name="Allergies" v-model="allergies" label="Allergies" />
+          <!-- <FormKit type="radio" v-model="numberInvited" label="Number of guests" name="Number of guests" :options="{
             one: '1',
             two: '2',
-          }" />
+          }" /> -->
           <FormKit type="radio" v-model="rsvpOption" label="rsvp" name="rsvp" :options="{
             yes: 'yes',
             no: 'no',
@@ -35,9 +35,6 @@
                   <p>RSVP OPTION: {{ guest.rsvpOption }}</p>
                   <p>Allergies: {{ guest.allergies }}</p>
                   <p>Email: {{ guest.email }}</p>
-                  <p>Invite ID: {{ guest.inviteId }}</p>
-                  <p>Number Attending: {{ guest.number }}</p>
-                  <p>Number Invited: {{ guest.numberInvited }}</p>
                   <p>UUID: {{ guest.guestUuid }}</p>
                 </div>
               </div>
@@ -63,7 +60,6 @@ interface GuestInfo {
   name: string;
   email: string;
   number: string;
-  inviteId: string;
   allergies: string;
   rsvpOption: string;
   numberInvited: string;
@@ -72,8 +68,7 @@ interface GuestInfo {
 const name = ref("");
 const email = ref("");
 const numberInvited = ref("");
-const inviteId = ref("");
-const allergies = ref("tba");
+const allergies = ref("");
 const rsvpOption = ref("");
 const info = ref<GuestInfo[]>([]);
 const guestUuid = ref("");
@@ -81,11 +76,10 @@ const guestUuid = ref("");
 const sendGuestInfo = async () => {
   const guestInfoSubmissionRef = doc(collection(db, "guestInfoTESTING"));
   await setDoc(guestInfoSubmissionRef, {
-    name: name.value,
+    name: name.value.toLocaleLowerCase(),
     email: email.value,
     numberInvited: numberInvited.value,
     allergies: allergies.value,
-    inviteId: inviteId.value,
     rsvpOption: rsvpOption.value,
   });
   guestUuid.value = guestInfoSubmissionRef.id;
@@ -106,13 +100,13 @@ const readGuestInfo = async () => {
 
 //delete guess from Firestore
 const removeGuest = async (guest: GuestInfo) => {
-  if (guest && guest.inviteId) {
-    const guestId = guest.inviteId;
+  if (guest) {
+    const guestId = guest.guestUuid;
     try {
       const guestRef = collection(db, "guestInfoTESTING");
-      const q = query(guestRef, where("inviteId", "==", guestId));
+      const q = query(guestRef, where("guestUuid", "==", guestId));
       const querySnapshot = await getDocs(q);
-      //Check if a document with the inviteId exists
+      //Check if a document with the uuid exists
       if (querySnapshot.size > 0) {
         // There should only be one document for a unique inviteId
         const documentSnapshot = querySnapshot.docs[0];

@@ -2,20 +2,21 @@
   <div class="flex justify-center items-center h-screen flex-col" v-if="!isLoading">
     <p>{{ guestName }}</p>
     <h3>Kindly reply before June 22 2024</h3>
-    <form @submit.prevent="submitForm" class="flex flex-col items-center justify-center">
-      <label class="mb-1"> <input type="radio" v-model="rsvpOption" value="yes" /> Yes </label>
-      <label class="mb-1"> <input type="radio" v-model="rsvpOption" value="no" /> No </label>
-      <div v-if="numberInvited === 'two'">
-        <label class="mb-1"> <input type="radio" v-model="number" value="one" /> One Guest </label>
-        <label class="mb-1"> <input type="radio" v-model="number" value="two" /> Two Guest </label>
-      </div>
-      <label class="mb-1">
-        Allergies?
-        <input type="text" class="border-2" v-model="allergies" />
-      </label>
-
+    <!-- <FormKit @submit.prevent="submitForm" class="flex flex-col items-center justify-center" v-model="rsvpOption"
+      type="radio" :options="{ true: 'I would love to', false: 'cannot make it' }">
+      <FormKit type="text" name="name" label="Your name" placeholder="Jane Doe" help="What do people call you?"
+        validation="required" />
+      <p>{{ rsvpOption }}</p>
       <button type="submit" :class="rsvpOption !== null ? 'active' : 'disabled'">Submit</button>
-    </form>
+    </FormKit> -->
+    <FormKit type="form" :value="{ allergies: '', rsvp: 'yes' }" submit-label="send" @submit="submitForm">
+      <FormKit type="radio" name="rsvp" label="RSVP" :options="{
+        true: 'YES',
+        false: 'unfortunately no',
+      }" />
+      <FormKit type="text" name="allergies" label="Allergies"
+        help="Please share any allergies or dietary restrictions" />
+    </FormKit>
   </div>
 </template>
 <script setup lang="ts">
@@ -30,20 +31,19 @@ interface GuestInfo {
   number: string;
   inviteId: string;
   allergies: string;
-  rsvpOption: string;
+  rsvpOption: boolean;
   numberInvited: string;
 }
 
 //data we submit
-const rsvpOption = ref(null);
+const rsvpOption = ref(false);
 const number = ref("");
 const allergies = ref("");
 const guestInfo = ref<GuestInfo[]>([]);
 const guestUuid = route.params.guestUuid;
 let numberInvited = ref("");
 let guestName = ref("");
-const isLoading = ref(true); // New loading state
-console.log(route.params);
+const isLoading = ref(true);
 
 //Users will submit their rsvp info here
 const submitForm = async () => {

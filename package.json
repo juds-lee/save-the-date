@@ -12,7 +12,9 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/image": "^1.8.0",
     "@nuxtjs/tailwindcss": "^6.9.4",
+    "@pinia/nuxt": "^0.5.4",
     "@types/mjml": "^4.7.4",
     "@types/nodemailer": "^6.4.14",
     "nuxt": "^3.8.1",

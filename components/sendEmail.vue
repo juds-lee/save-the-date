@@ -35,7 +35,7 @@ const sendEmail = async () => {
     });
     successMessage.value = "Email sent successfully!";
   } catch (error) {
-    console.log(error);
+    console.log(error, "error");
     errorMessage.value = `Error sending email: ${error.message}`;
   }
 };

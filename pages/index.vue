@@ -10,16 +10,21 @@
 	<FaqInfo />
 </template>
 <script setup>
-
+definePageMeta({
+	middleware: [
+		'verify-user',
+	],
+});
 const needsAuth = ref(true)
-const scroll = ref(0)
+const scroll = ref(false)
 const handlePageScroll = () => {
-	console.log(window.scrollY)
 	if (window.scrollY > 6) {
+		console.log('scrolling')
 		scroll.value = true
 	}
 };
 const cookie = useCookie('isAuth');
+console.log(cookie.value)
 const enteredPassword = ref('');
 const setError = ref(false);
 const errorMessage = ref('');

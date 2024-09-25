@@ -5,6 +5,7 @@ import Handlebars from "handlebars";
 import { db } from "../../services/firebaseclient";
 import { collection, getDocs } from "firebase/firestore";
 import jwt from "jsonwebtoken";
+
 const mjmlTemplate = fs.readFileSync("email/index.mjml", "utf8");
 const template = Handlebars.compile(mjmlTemplate);
 
@@ -12,7 +13,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.gmail.com",
   port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.APP_PASS,
@@ -34,8 +35,7 @@ export default defineEventHandler(async (event) => {
         name: guest.name,
         uuid: guest.id,
       };
-      const config = useRuntimeConfig();
-      const secretKey = config.jwtSecretKey;
+      const secretKey = process.env.JWT_SECRET_KEY;
       const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
 
       const data: guestData = {

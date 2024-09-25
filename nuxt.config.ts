@@ -1,13 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: { enabled: true },
   runtimeConfig: {
     public: {
       apiUrl: process.env.API_URL,
     },
+    jwtSecretKey: process.env.JWT_SECRET_KEY,
   },
   nitro: { preset: "firebase", firebase: { nodeVersion: "18", gen: 2 } },
-  devtools: { enabled: true },
-  modules: ["@formkit/nuxt", "@nuxtjs/cloudinary"],
+  modules: ["@formkit/nuxt", "@nuxtjs/cloudinary", "@nuxt/image", "@pinia/nuxt"],
+  pinia: {
+    storesDirs: ["./stores/**", "./custom-folder/stores/**"],
+  },
   formkit: {
     // Experimental support for auto loading (see note):
     autoImport: true,
