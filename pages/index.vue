@@ -1,6 +1,6 @@
 <template>
 	<div class="flex justify-center items-center h-screen flex-col">
-		<h1>WELCOME TO THE PARTY</h1>
+		<h1>WELCOME TO THE PARTY </h1>
 		<div v-if="scroll && needsAuth">
 			<FormKit type="text" label="Password" v-model="enteredPassword" />
 			<button @click="submitPassword">Enter</button>
@@ -10,6 +10,7 @@
 	<FaqInfo />
 </template>
 <script setup>
+const { name } = storeToRefs(useUserStore());
 definePageMeta({
 	middleware: [
 		'verify-user',
@@ -24,14 +25,14 @@ const handlePageScroll = () => {
 	}
 };
 const cookie = useCookie('isAuth');
-console.log(cookie.value)
+// conxssole.log(cookie.value)
 const enteredPassword = ref('');
 const setError = ref(false);
 const errorMessage = ref('');
 const correctPassword = 'hello';
 const isAuthenticated = ref(false);
 const isGuestAuthenticated = () => {
-	console.log(cookie.value)
+	// console.log(cookie.value)
 	if (cookie.value === 1) {
 		isAuthenticated.value = true;
 		needsAuth.value = false;

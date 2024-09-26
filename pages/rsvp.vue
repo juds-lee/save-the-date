@@ -52,8 +52,6 @@ const searchGuestName = async () => {
         isLoading.value = false;
     }
 }
-// const { name } = storeToRefs(useUserStore());
-const userStore = useUserStore();
-const name = userStore.name;
-console.log(name, "NAME");
+const { name } = storeToRefs(useUserStore());
+console.log(name.value, "rsvp page");
 </script>

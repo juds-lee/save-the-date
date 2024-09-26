@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
     const tokenData = jwt.verify(p, secretKey);
     return { statusCode: 200, data: tokenData };
   } catch (err) {
-    console.error(err.message);
+    // console.error(err.message, "error verifying token");
     return { statusCode: 401, message: "Invalid token" };
   }
 });

@@ -1,5 +1,3 @@
-import { useUserStore } from "../stores/useUserStore";
-
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const token = from.query.p;
   //if token
@@ -14,11 +12,13 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (from.query.p) {
     const response = await fetch(`http://localhost:3000/api/rsvp?p=${token}`);
     const guestData: apiResponse = await response.json();
-    const { setGuestUuid, setGuestName } = useUserStore();
-    if (guestData.statusCode === 200) {
-      setGuestUuid(guestData.data.uuid);
-      setGuestName(guestData.data.name);
-      // return navigateTo("/rsvp");
+    if (guestData.statusCode === 200 && import.meta.client) {
+      const { setGuestUuid, setGuestName } = useUserStore();
+      setGuestUuid(guestData?.data?.uuid);
+      setGuestName(guestData?.data?.name);
+      return navigateTo("/rsvp");
     }
+    // const { name } = storeToRefs(useUserStore());
+    // console.log(name.value, "middleware");
   }
 });

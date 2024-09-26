@@ -97,6 +97,7 @@ const readGuestInfo = async () => {
     isLoading.value = false;
   }
 };
+
 onMounted(() => {
   readGuestInfo();
 });

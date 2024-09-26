@@ -8,7 +8,18 @@ export default defineNuxtConfig({
     jwtSecretKey: process.env.JWT_SECRET_KEY,
   },
   nitro: { preset: "firebase", firebase: { nodeVersion: "18", gen: 2 } },
-  modules: ["@formkit/nuxt", "@nuxtjs/cloudinary", "@nuxt/image", "@pinia/nuxt"],
+  modules: [
+    "@formkit/nuxt",
+    "@nuxtjs/cloudinary",
+    "@vueuse/nuxt",
+    "@nuxt/image",
+    [
+      "@pinia/nuxt",
+      {
+        storesDirs: ["./stores/**", "./custom-folder/stores/**"],
+      },
+    ],
+  ],
   pinia: {
     storesDirs: ["./stores/**", "./custom-folder/stores/**"],
   },
