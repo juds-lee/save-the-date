@@ -1,11 +1,12 @@
 <template>
-	<div class="flex justify-center items-center h-screen flex-col">
-		<h1>WELCOME TO THE PARTY </h1>
+	<div class="home">
+		<NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727740815/JD_uxoyn3.png" />
+		<!-- <h1>WELCOME TO THE PARTY </h1>
 		<div v-if="scroll && needsAuth">
 			<FormKit type="text" label="Password" v-model="enteredPassword" />
 			<button @click="submitPassword">Enter</button>
 			<p v-if="setError">{{ errorMessage }}</p>
-		</div>
+		</div> -->
 	</div>
 	<FaqInfo />
 </template>
@@ -73,5 +74,19 @@ onUnmounted(() => {
 
 .disabled {
 	background-color: red;
+}
+
+.home {
+	@apply flex justify-center items-center h-screen flex-col;
+	position: relative;
+	/* background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/v1727457478/DSC04426_ujsqpi.jpg"); */
+	/* background-size: cover; */
+}
+
+.nuxt-img {
+	position: absolute;
+	/* Makes the image cover the entire div */
+	z-index: -1;
+	/* Push the image behind the content */
 }
 </style>
