@@ -22,13 +22,22 @@ const transporter = nodemailer.createTransport({
 type guestData = {
   guestName: string;
   guestEmail: string;
+  token: string;
+};
+
+type guestResponse = {
+  name: string;
+  email: string;
+  token: string;
+  family: string;
+  secondaryGuest: string;
 };
 
 export default defineEventHandler(async (event) => {
   try {
     const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
-    const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as guestResponse) }));
     for (const guest of guestList) {
       const payload = {
         name: guest.name,
@@ -37,11 +46,16 @@ export default defineEventHandler(async (event) => {
       const config = useRuntimeConfig();
       const secretKey = config.jwtSecretKey;
       const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
-
+      // const capitalize = (name: string) => {
+      //   return name
+      //     .split(" ")
+      //     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      //     .join(" ");
+      // };
       const data: guestData = {
-        guestName: guest.name,
         guestEmail: guest.email,
         token: token,
+        guestName: guest.family ? `${guest.name} and ${guest.secondaryGuest}` : guest.name,
       };
       const mjmlWithDynamicNames = template(data);
       const emailHtmlOutput = mjml2html(mjmlWithDynamicNames).html;

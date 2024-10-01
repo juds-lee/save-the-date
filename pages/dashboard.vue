@@ -7,16 +7,13 @@
         <FormKit type="form" @submit="sendGuestInfo">
           <FormKit type="text" name="Guest Names" v-model="name" label="Name" validation="required" />
           <FormKit type="text" name="Guest Email" v-model="email" label="Email Address" validation="required" />
-          <!-- <FormKit type="text" name="Guest Invite Id" v-model="inviteId" label="Invitation Id" validation="required" /> -->
+          <FormKit type="checkbox" label="Family" value="false" name="terms" v-model="family" />
           <FormKit type="text" name="Allergies" v-model="allergies" label="Allergies" />
-          <!-- <FormKit type="radio" v-model="numberInvited" label="Number of guests" name="Number of guests" :options="{
-            one: '1',
-            two: '2',
-          }" /> -->
           <FormKit type="radio" v-model="rsvpOption" label="rsvp" name="rsvp" :options="{
             yes: 'yes',
             no: 'no',
           }" />
+          <FormKit type="text" name="Partner" v-model="secondaryGuest" label="Partner Name" />
         </FormKit>
       </div>
       <!-- READING THE RSVP  -->
@@ -36,6 +33,9 @@
                   <p>Allergies: {{ guest.allergies }}</p>
                   <p>Email: {{ guest.email }}</p>
                   <p>UUID: {{ guest.guestUuid }}</p>
+                  <p>Family: {{ guest.family }}</p>
+                  <p>Partner Name: {{ guest.secondaryGuest }}
+                  </p>
                 </div>
               </div>
               <div class="flex flex-col m-auto">
@@ -64,6 +64,8 @@ interface GuestInfo {
   rsvpOption: string;
   numberInvited: string;
   guestUuid: string;
+  family: boolean;
+  secondaryGuest: string;
 }
 const name = ref("");
 const email = ref("");
@@ -72,6 +74,9 @@ const allergies = ref("");
 const rsvpOption = ref("");
 const info = ref<GuestInfo[]>([]);
 const guestUuid = ref("");
+const family = ref(false);
+const secondaryGuest = ref("");
+console.log(secondaryGuest.value);
 
 const sendGuestInfo = async () => {
   const guestInfoSubmissionRef = doc(collection(db, "guestInfoTESTING"));
@@ -81,6 +86,8 @@ const sendGuestInfo = async () => {
     numberInvited: numberInvited.value,
     allergies: allergies.value,
     rsvpOption: rsvpOption.value,
+    family: family.value,
+    secondaryGuest: secondaryGuest.value,
   });
   guestUuid.value = guestInfoSubmissionRef.id;
   await updateDoc(guestInfoSubmissionRef, {
