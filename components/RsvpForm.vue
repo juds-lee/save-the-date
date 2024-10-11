@@ -10,6 +10,9 @@
 <script setup lang="ts">
 const rsvpOption = ref(null);
 const allergies = ref("");
-const sendGuestInfo = () => {
+const { updateGuestRsvp } = useFirebase()
+const sendGuestInfo = async () => {
+    console.log(rsvpOption.value, allergies.value)
+    await updateGuestRsvp(rsvpOption.value, allergies.value,)
 }
 </script>
