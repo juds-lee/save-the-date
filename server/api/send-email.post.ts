@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
       };
       const config = useRuntimeConfig();
       const secretKey = config.jwtSecretKey;
-      const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+      const token = jwt.sign(payload, secretKey);
       // const capitalize = (name: string) => {
       //   return name
       //     .split(" ")
