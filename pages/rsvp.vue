@@ -4,7 +4,7 @@
             <h1>JUDY AND DUNCANS WEDDING</h1>
         </div>
         <!-- IF YOU ARE LOGGED IN BUT NO TOKEN -->
-        <div>
+        <!-- <div>
             <h1>Enter your name to RSVP</h1>
             <FormKit type="form" @submit="searchGuestName">
                 <FormKit type="text" name="First Name" v-model="searchWithFirstName" label="First Name"
@@ -12,7 +12,7 @@
                 <FormKit type="text" name="Last Name" label="Last Name" v-model="searchWithLastName"
                     validation="required" />
             </FormKit>
-        </div>
+        </div> -->
         <p>Dear {{ name }}, we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025
         </p>
         <RsvpForm />
@@ -40,7 +40,6 @@ const searchGuestName = async () => {
             console.log(doc.data());
             guestUuid.value = doc.data().guestUuid;
         });
-        console.log(guestUuid.value, "GUEST UUID");
         if (querySnapshot.size === 0) {
             console.log("guest could not be found")
         } else {
@@ -52,6 +51,7 @@ const searchGuestName = async () => {
         isLoading.value = false;
     }
 }
-const { name } = storeToRefs(useUserStore());
-console.log(name.value, "rsvp page");
+const { name, uuid } = storeToRefs(useUserStore());
+const credsCookie = useCookie('creds')
+credsCookie.value = uuid.value;
 </script>

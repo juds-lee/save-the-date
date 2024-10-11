@@ -5,9 +5,6 @@ export const useUserStore = defineStore("user", () => {
   const name = skipHydrate(useLocalStorage<boolean>("name", ""));
   const uuid = skipHydrate(useLocalStorage<boolean>("uuid", ""));
 
-  //   const name = ref("");
-  //   const uuid = ref("");
-
   const setGuestName = (guestName: string) => {
     console.log("trying to setGuestName", guestName);
     name.value = guestName;
