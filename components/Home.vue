@@ -9,9 +9,6 @@
                     <li class="text-white">
                         FAQ
                     </li>
-                    <li class="text-white">
-                        CONTACT
-                    </li>
                 </span>
                 <button class="text-white px-7 py-2 border">RSVP</button>
             </ul>
@@ -19,7 +16,7 @@
         </nav>
         <div class="flex-1 flex justify-center items-center flex-col">
             <!-- <h1 class="text-white ">THE WEDDING OF <br />JUDY <br />& <br />DUNCAN</h1> -->
-            <div v-if="scroll && needsAuth && !hasCreds">
+            <div v-if="scroll && !guestCanAccess">
                 <FormKit type="text" label="Password" v-model="enteredPassword" />
                 <button @click="submitPassword">Enter</button>
                 <p v-if="setError">{{ errorMessage }}</p>
@@ -27,12 +24,12 @@
         </div>
 
     </div>
-    <FaqInfo v-if="!needsAuth || hasCreds" />
+    <FaqInfo v-if="guestCanAccess" />
 </template>
 <script setup>
-import { computed } from 'vue';
 
 const { name } = storeToRefs(useUserStore());
+const { setAuth, guestCanAccess } = useVerificationCheck();
 definePageMeta({
     middleware: [
         'verify-user',
@@ -46,31 +43,31 @@ const handlePageScroll = () => {
         scroll.value = true
     }
 };
-const cookie = useCookie('isAuth');
+// const cookie = useCookie('isAuth');
 const enteredPassword = ref('');
 const setError = ref(false);
 const errorMessage = ref('');
 const correctPassword = 'hello';
-const isAuthenticated = ref(false);
+// const isAuthenticated = ref(false);
 
-const isGuestAuthenticated = () => {
-    if (cookie.value === 1) {
-        isAuthenticated.value = true;
-        needsAuth.value = false;
-    }
-}
+// const isGuestAuthenticated = () => {
+//     if (cookie.value === 1) {
+//         isAuthenticated.value = true;
+//         needsAuth.value = false;
+//     }
+// }
 
-const hasCreds = computed(() => {
-    return !!name.value
-})
+// const hasCreds = computed(() => {
+//     return !!name.value
+// })
 const submitPassword = () => {
     if (enteredPassword.value === "") {
         setError.value = true;
         errorMessage.value = "Please enter a valid password";
     } else if (enteredPassword.value === correctPassword) {
-        cookie.value = 1;
+        setAuth(1)
         errorMessage.value = "";
-        needsAuth.value = false;
+        // needsAuth.value = false;
     } else {
         setError.value = true;
         errorMessage.value = "Intruder Alert :)";
@@ -78,7 +75,6 @@ const submitPassword = () => {
 };
 
 onMounted(() => {
-    isGuestAuthenticated()
     window.addEventListener('scroll', handlePageScroll)
 })
 onUnmounted(() => {
