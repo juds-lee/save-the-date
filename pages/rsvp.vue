@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <Nav />
+    <div class="rsvp" v-if="guestCanAccess">
         <div>
             <h1>JUDY AND DUNCANS WEDDING</h1>
         </div>
@@ -16,6 +17,12 @@
         <p>Dear {{ name }}, we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025
         </p>
         <RsvpForm />
+    </div>
+    <div class="rsvp" v-else>
+        <div>
+            <h1>Please log in using the secret passcode or by clicking the link in your email invitation to access this
+                page</h1>
+        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -52,6 +59,13 @@ const searchGuestName = async () => {
     }
 }
 const { name, uuid } = storeToRefs(useUserStore());
-const credsCookie = useCookie('creds')
-credsCookie.value = uuid.value;
+// const credsCookie = useCookie('creds')
+// credsCookie.value = uuid.value;
+const { guestCanAccess } = useVerificationCheck();
+
 </script>
+<style lang="postcss">
+.rsvp {
+    background-color: palegoldenrod;
+}
+</style>
