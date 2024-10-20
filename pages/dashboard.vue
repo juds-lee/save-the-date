@@ -15,6 +15,8 @@
           <FormKit type="checkbox" label="Plus 1" value="false" name="hasPlusOne" v-model="guest.hasPlusOne" />
           <FormKit type="text" v-if="guest.hasPlusOne" name="partner" v-model="guest.secondaryGuest.name"
             label="Partner Name" />
+          <FormKit type="text" v-if="guest.hasPlusOne" name="partnerAllergies" v-model="guest.secondaryGuest.allergies"
+            label="allergies" />
         </FormKit>
       </div>
       <!-- READING THE RSVP  -->
@@ -36,6 +38,8 @@
                   <p>UUID: {{ guest.guestUuid }}</p>
                   <p>Plus One: {{ guest.hasPlusOne }}</p>
                   <p v-if="guest.hasPlusOne">Partner Name: {{ guest.secondaryGuest.name }}
+                  </p>
+                  <p v-if="guest.hasPlusOne">Partner Allergies: {{ guest.secondaryGuest.allergies }}
                   </p>
                 </div>
               </div>
@@ -100,6 +104,7 @@ const readGuestInfo = async () => {
   querySnapshot.forEach((doc) => {
     data.push(doc.data() as GuestInfo);
   });
+  data.sort((a, b) => a.name.localeCompare(b.name));
   fbGuestInfo.value = data;
 };
 

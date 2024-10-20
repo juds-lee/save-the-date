@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.gmail.com",
   port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.APP_PASS,
@@ -25,19 +25,11 @@ type guestData = {
   token: string;
 };
 
-type guestResponse = {
-  name: string;
-  email: string;
-  token: string;
-  family: string;
-  secondaryGuest: string;
-};
-
 export default defineEventHandler(async (event) => {
   try {
     const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
-    const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as guestResponse) }));
+    const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as GuestInfo) }));
     for (const guest of guestList) {
       const payload = {
         name: guest.name,
@@ -55,14 +47,15 @@ export default defineEventHandler(async (event) => {
       const data: guestData = {
         guestEmail: guest.email,
         token: token,
-        guestName: guest.family ? `${guest.name} and ${guest.secondaryGuest}` : guest.name,
+        guestName: guest.hasPlusOne ? `${guest.name} and ${guest.secondaryGuest.name}` : guest.name,
       };
+      console.log("data: ", data);
       const mjmlWithDynamicNames = template(data);
       const emailHtmlOutput = mjml2html(mjmlWithDynamicNames).html;
       const emailData = {
         from: '"Judy & Duncan" <judyandduncanwedding@gmail.com>',
         to: data.guestEmail,
-        subject: "Save the Date!",
+        subject: "!!TEST RUN!! Save the Date!",
         html: emailHtmlOutput,
       };
       try {
