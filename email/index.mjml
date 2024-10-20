@@ -29,7 +29,7 @@
   <mj-body background-color="#ede8d0" width="600px">
     <mj-section full-width="full-width" background-color="#ede8d0" padding-bottom="0" padding-top="0">
       <mj-column width="100%">
-        <mj-image src="https://res.cloudinary.com/djatkco6m/image/upload/v1729279729/save-the-date_u7moqb.png.png" width="600px" alt="" padding="0" />
+        <mj-image src="https://res.cloudinary.com/djatkco6m/image/upload/v1729279729/save-the-date_u7moqb.png" width="600px" alt="" padding="0" />
       </mj-column>
     </mj-section>
     <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
@@ -38,9 +38,9 @@
           <mj-text color="#637381" font-size="16px">
             Dear {{guestName}},
           </mj-text>
-          <mj-text color="#637381" font-size="16px">
+          <!-- <mj-text color="#637381" font-size="16px">
             hey {{token}},
-          </mj-text>
+          </mj-text> -->
           <mj-text color="#637381" font-size="16px">
             We’re tying the knot on September 20, 2025, and we’d love for you to join us in celebrating our special day. A formal invitation will follow, but in the meantime, please save the date!
           </mj-text>
@@ -49,12 +49,13 @@
           </mj-text>
           <mj-text align="right" font-size="11px" padding-bottom="0px" padding-top="0">
             <span style="color: #637381">Add to your</span>
-            <span style="font-size: 12px color: #637381">
-              <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=N21qbWY2MGZqZzQ2YTVnNnRyZDAwamY1NTUganVkeWp1bmdtaW4ubGVlQG0&amp;tmsrc=judyjungmin.lee%40gmail.com" style="text-decoration: underline; color: #637381">
+            <span style="font-size: 12px color: #637381;">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Judy+and+Duncan+are+getting+married!&dates=20250920T130000Z/20250920T220000" style="text-decoration: underline; color: #637381">
                 Google</a>
+
             </span>
             <span> or </span>
-            <span style="font-size: 12px color: #637381">
+            <span style="font-size: 12px color: #637381;">
               <a href="https://save-the-date-64214.web.app/JudyandDuncan.ics" style="text-decoration: underline; color: #637381">
                 Apple</a>
             </span>
