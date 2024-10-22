@@ -1,5 +1,5 @@
 <template>
-    <FormKit type="form" @submit="sendGuestInfo">
+    <FormKit type="form" @submit="submitGuestInfo">
         <FormKit type="radio" name="rsvp" label="RSVP" :options="{
             true: 'YES', false: 'Unfortunately No'
         }" v-model="rsvpOption" :value="rsvpOption" />
@@ -12,7 +12,7 @@ const rsvpOption = ref(null);
 const allergies = ref("");
 const { updateGuestRsvp } = useFirebase();
 const rsvpError = ref(false);
-const sendGuestInfo = () => {
+const submitGuestInfo = () => {
     try {
         updateGuestRsvp(rsvpOption.value, allergies.value,)
     } catch (error) {

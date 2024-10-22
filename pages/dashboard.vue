@@ -4,7 +4,7 @@
     <h1 class="py-5 font-bold">Dashboard</h1>
     <div class="flex flex-row justify-between gap-5">
       <div class="border w-full">
-        <FormKit type="form" @submit="sendGuestInfo" v-model="guest">
+        <FormKit type="form" @submit="submitGuest" v-model="guest">
           <FormKit type="text" name="name" v-model="guest.name" label="Name" validation="required" />
           <FormKit type="text" name="email" v-model="guest.email" label="Email Address" validation="required" />
           <FormKit type="text" name="allergies" v-model="guest.allergies" label="Allergies" />
@@ -77,26 +77,15 @@ const guest = ref<GuestInfo>({
   },
 });
 const fbGuestInfo = ref<GuestInfo[]>([]);
-
-const sendGuestInfo = async () => {
-  const guestInfoSubmissionRef = doc(collection(db, "guestInfoTESTING"));
-  console.log(guest.value);
-  await setDoc(guestInfoSubmissionRef, {
-    name: guest.value.name,
-    email: guest.value.email,
-    allergies: guest.value.allergies,
-    rsvpOption: guest.value.rsvpOption,
-    hasPlusOne: guest.value.hasPlusOne,
-    secondaryGuest: guest.value.secondaryGuest,
-  });
-  guest.value.guestUuid = guestInfoSubmissionRef.id;
-  await updateDoc(guestInfoSubmissionRef, {
-    guestUuid: guest.value.guestUuid,
-  });
+const { sendGuestInfo } = useFirebase();
+const submitGuest = async () => {
+  await sendGuestInfo(guest.value);
   readGuestInfo();
+
 };
+
 const readGuestInfo = async () => {
-  const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
+  const guestInfoCollectionRef = collection(db, "guestInfoSaveTheDate");
   const querySnapshot = await getDocs(guestInfoCollectionRef);
   const data: GuestInfo[] = [];
   querySnapshot.forEach((doc) => {
@@ -110,7 +99,7 @@ const removeGuest = async (guest: GuestInfo) => {
   if (guest) {
     const guestId = guest.guestUuid;
     try {
-      const guestRef = collection(db, "guestInfoTESTING");
+      const guestRef = collection(db, "guestInfoSaveTheDate");
       const q = query(guestRef, where("guestUuid", "==", guestId));
       const querySnapshot = await getDocs(q);
       //Check if a document with the uuid exists
@@ -118,7 +107,7 @@ const removeGuest = async (guest: GuestInfo) => {
         // There should only be one document for a unique inviteId
         const documentSnapshot = querySnapshot.docs[0];
         // Remove the guest document with that unique id
-        const removeGuestRef = doc(db, "guestInfoTESTING", documentSnapshot.id);
+        const removeGuestRef = doc(db, "guestInfoSaveTheDate", documentSnapshot.id);
         await deleteDoc(removeGuestRef);
       }
       readGuestInfo();
