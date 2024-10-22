@@ -8,15 +8,14 @@
           <FormKit type="text" name="name" v-model="guest.name" label="Name" validation="required" />
           <FormKit type="text" name="email" v-model="guest.email" label="Email Address" validation="required" />
           <FormKit type="text" name="allergies" v-model="guest.allergies" label="Allergies" />
-          <FormKit type="radio" v-model="guest.rsvpOption" label="rsvp" name="rsvp" :options="{
-            yes: 'yes',
-            no: 'no',
-          }" />
+          <FormKit type="radio" name="rsvpOption" label="RSVP" :options="{
+            true: 'YES', false: 'Unfortunately No'
+          }" v-model="guest.rsvpOption" :value="guest.rsvpOption" />
           <FormKit type="checkbox" label="Plus 1" value="false" name="hasPlusOne" v-model="guest.hasPlusOne" />
-          <FormKit type="text" v-if="guest.hasPlusOne" name="partner" v-model="guest.secondaryGuest.name"
+          <FormKit type="text" v-if="guest.hasPlusOne" name="partner" v-model="guest.secondaryGuest.secondaryName"
             label="Partner Name" />
-          <FormKit type="text" v-if="guest.hasPlusOne" name="partnerAllergies" v-model="guest.secondaryGuest.allergies"
-            label="allergies" />
+          <FormKit type="text" v-if="guest.hasPlusOne" name="partnerAllergies"
+            v-model="guest.secondaryGuest.secondaryAllergies" label="allergies" />
         </FormKit>
       </div>
       <!-- READING THE RSVP  -->
@@ -28,6 +27,7 @@
               <div class="name-container flex flex-col gap-1">
                 <p class="font-bold">Name</p>
                 <p>{{ guest.name }}</p>
+                <p>{{ index + 1 }}</p>
               </div>
               <div class="flex flex-col gap-1 details-container">
                 <p class="font-bold">Details</p>
@@ -37,9 +37,11 @@
                   <p>Email: {{ guest.email }}</p>
                   <p>UUID: {{ guest.guestUuid }}</p>
                   <p>Plus One: {{ guest.hasPlusOne }}</p>
-                  <p v-if="guest.hasPlusOne">Partner Name: {{ guest.secondaryGuest.name }}
+                  <p v-if="guest.hasPlusOne">Partner Name: {{ guest.secondaryGuest.secondaryName }}
                   </p>
-                  <p v-if="guest.hasPlusOne">Partner Allergies: {{ guest.secondaryGuest.allergies }}
+                  <p v-if="guest.hasPlusOne">Partner Allergies: {{ guest.secondaryGuest.secondaryAllergies }}
+                  </p>
+                  <p v-if="guest.hasPlusOne">Partner Attendance: {{ guest.secondaryGuest.secondaryRsvpOption }}
                   </p>
                 </div>
               </div>
@@ -54,7 +56,6 @@
         </div>
       </div>
     </div>
-    <sendEmail />
   </div>
 </template>
 <script setup lang="ts">
@@ -65,16 +66,14 @@ import { collection, doc, setDoc, getDocs, deleteDoc, query, where, updateDoc } 
 const guest = ref<GuestInfo>({
   name: "",
   email: "",
-  number: "",
   allergies: "",
   rsvpOption: "",
-  numberInvited: "",
   guestUuid: "",
   hasPlusOne: false,
   secondaryGuest: {
-    name: "",
-    email: "",
-    allergies: "",
+    secondaryName: "",
+    secondaryAllergies: "",
+    secondaryRsvpOption: "",
   },
 });
 const fbGuestInfo = ref<GuestInfo[]>([]);
@@ -85,7 +84,6 @@ const sendGuestInfo = async () => {
   await setDoc(guestInfoSubmissionRef, {
     name: guest.value.name,
     email: guest.value.email,
-    numberInvited: guest.value.numberInvited,
     allergies: guest.value.allergies,
     rsvpOption: guest.value.rsvpOption,
     hasPlusOne: guest.value.hasPlusOne,
@@ -108,7 +106,6 @@ const readGuestInfo = async () => {
   fbGuestInfo.value = data;
 };
 
-//delete guess from Firestore
 const removeGuest = async (guest: GuestInfo) => {
   if (guest) {
     const guestId = guest.guestUuid;

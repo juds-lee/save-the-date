@@ -36,31 +36,31 @@ const isLoading = ref(false);
 let searchName = "";
 const guestUuid = ref("");
 const names = ref("judy");
-const searchGuestName = async () => {
-    searchName = searchWithFirstName.value.toLocaleLowerCase() + " " + searchWithLastName.value.toLocaleLowerCase();
-    try {
-        isLoading.value = true;
-        const guestRsvpRef = collection(db, "guestInfoTESTING");
-        const q = query(guestRsvpRef, where("name", "==", searchName));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-            console.log(doc.data());
-            guestUuid.value = doc.data().guestUuid;
-        });
-        if (querySnapshot.size === 0) {
-            console.log("guest could not be found")
-        } else {
-            router.push({ path: guestUuid.value, hash: 'judy' });
-        }
-    } catch (error) {
-        console.log(error);
-    } finally {
-        isLoading.value = false;
-    }
-}
+// const searchGuestName = async () => {
+//     searchName = searchWithFirstName.value.toLocaleLowerCase() + " " + searchWithLastName.value.toLocaleLowerCase();
+//     try {
+//         isLoading.value = true;
+//         const guestRsvpRef = collection(db, "guestInfoTESTING");
+//         const q = query(guestRsvpRef, where("name", "==", searchName));
+//         const querySnapshot = await getDocs(q);
+//         querySnapshot.forEach((doc) => {
+//             console.log(doc.data());
+//             guestUuid.value = doc.data().guestUuid;
+//         });
+//         if (querySnapshot.size === 0) {
+//             console.log("guest could not be found")
+//         } else {
+//             router.push({ path: guestUuid.value, hash: 'judy' });
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     } finally {
+//         isLoading.value = false;
+//     }
+// }
 const { name, uuid } = storeToRefs(useUserStore());
-// const credsCookie = useCookie('creds')
-// credsCookie.value = uuid.value;
+const credsCookie = useCookie('creds')
+credsCookie.value = uuid.value;
 const { guestCanAccess } = useVerificationCheck();
 
 </script>

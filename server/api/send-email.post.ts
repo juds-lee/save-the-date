@@ -30,6 +30,8 @@ export default defineEventHandler(async (event) => {
     const guestInfoCollectionRef = collection(db, "guestInfoTESTING");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
     const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as GuestInfo) }));
+    // loop thru the first 50 of guestList and send email
+    // .slice(51, 105
     for (const guest of guestList) {
       const payload = {
         name: guest.name,
@@ -47,7 +49,7 @@ export default defineEventHandler(async (event) => {
       const data: guestData = {
         guestEmail: guest.email,
         token: token,
-        guestName: guest.hasPlusOne ? `${guest.name} and ${guest.secondaryGuest.name}` : guest.name,
+        guestName: guest.hasPlusOne ? `${guest.name} and ${guest.secondaryGuest.secondaryName}` : guest.name,
       };
       console.log("data: ", data);
       const mjmlWithDynamicNames = template(data);
@@ -55,7 +57,7 @@ export default defineEventHandler(async (event) => {
       const emailData = {
         from: '"Judy & Duncan" <judyandduncanwedding@gmail.com>',
         to: data.guestEmail,
-        subject: "!!TEST RUN!! Save the Date!",
+        subject: "Save the Date!",
         html: emailHtmlOutput,
       };
       try {
