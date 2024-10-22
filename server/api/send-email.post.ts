@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
     const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as GuestInfo) }));
     // loop thru the first 50 of guestList and send email
     // .slice(51, 105
-    for (const guest of guestList) {
+    for (const guest of guestList.slice(0, 35)) {
       const payload = {
         name: guest.name,
         uuid: guest.id,

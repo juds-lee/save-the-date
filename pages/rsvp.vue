@@ -40,7 +40,7 @@ const names = ref("judy");
 //     searchName = searchWithFirstName.value.toLocaleLowerCase() + " " + searchWithLastName.value.toLocaleLowerCase();
 //     try {
 //         isLoading.value = true;
-//         const guestRsvpRef = collection(db, "guestInfoTESTING");
+//         const guestRsvpRef = collection(db, "guestInfoSaveTheDate");
 //         const q = query(guestRsvpRef, where("name", "==", searchName));
 //         const querySnapshot = await getDocs(q);
 //         querySnapshot.forEach((doc) => {
