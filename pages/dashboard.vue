@@ -85,7 +85,7 @@ const submitGuest = async () => {
 };
 
 const readGuestInfo = async () => {
-  const guestInfoCollectionRef = collection(db, "guestInfoSaveTheDate");
+  const guestInfoCollectionRef = collection(db, "guestInfoTesting");
   const querySnapshot = await getDocs(guestInfoCollectionRef);
   const data: GuestInfo[] = [];
   querySnapshot.forEach((doc) => {
@@ -99,7 +99,7 @@ const removeGuest = async (guest: GuestInfo) => {
   if (guest) {
     const guestId = guest.guestUuid;
     try {
-      const guestRef = collection(db, "guestInfoSaveTheDate");
+      const guestRef = collection(db, "guestInfoTesting");
       const q = query(guestRef, where("guestUuid", "==", guestId));
       const querySnapshot = await getDocs(q);
       //Check if a document with the uuid exists
@@ -107,7 +107,7 @@ const removeGuest = async (guest: GuestInfo) => {
         // There should only be one document for a unique inviteId
         const documentSnapshot = querySnapshot.docs[0];
         // Remove the guest document with that unique id
-        const removeGuestRef = doc(db, "guestInfoSaveTheDate", documentSnapshot.id);
+        const removeGuestRef = doc(db, "guestInfoTesting", documentSnapshot.id);
         await deleteDoc(removeGuestRef);
       }
       readGuestInfo();
