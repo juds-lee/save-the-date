@@ -27,12 +27,12 @@ type guestData = {
 
 export default defineEventHandler(async (event) => {
   try {
-    const guestInfoCollectionRef = collection(db, "guestInfoSaveTheDate");
+    const guestInfoCollectionRef = collection(db, "guestInfoTesting");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
     const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as GuestInfo) }));
     // loop thru the first 50 of guestList and send email
     // .slice(51, 105
-    for (const guest of guestList.slice(0, 35)) {
+    for (const guest of guestList) {
       const payload = {
         name: guest.name,
         uuid: guest.id,

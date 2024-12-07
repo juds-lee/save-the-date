@@ -11,7 +11,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   // if cookies redirect to /rsvp and grab data
   if (from.query.p) {
     const router = useRouter();
-
     const response = await fetch(`http://localhost:3000/api/rsvp?p=${token}`);
     const guestData: apiResponse = await response.json();
     if (guestData.statusCode === 200 && import.meta.client) {
