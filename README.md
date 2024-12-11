@@ -11,9 +11,9 @@ Features:
 - Send emails to all guests directly from the application
   
 Tech Stack:
-Frontend: Vue, Nuxt, Tailwind CSS
-Backend: Node.js, Nuxt
-Database: Firebase
-Email Service: Nodemailer
-Security: JSON Web Tokens for authentication and session management
-Deployment: Firebase
+- Frontend: Vue, Nuxt, Tailwind CSS
+- Backend: Node.js, Nuxt
+- Database: Firebase
+- Email Service: Nodemailer
+- Security: JSON Web Tokens for authentication and session management
+- Deployment: Firebase
