@@ -1,85 +1,19 @@
 <template>
-    <div class="home">
-        <nav class="w-full">
-            <ul class="w-full flex flex-row justify-between">
-                <span class="flex flex-row justify-center space-x-6 p-4">
-                    <li class="text-white">
-                        {{ name }}
-                    </li>
-                    <li class="text-white">
-                        FAQ
-                    </li>
-                </span>
-                <button class="text-white px-7 py-2 border">RSVP</button>
-            </ul>
-
-        </nav>
+    <div class="home px-4">
         <div class="flex-1 flex justify-center items-center flex-col">
-            <!-- <h1 class="text-white ">THE WEDDING OF <br />JUDY <br />& <br />DUNCAN</h1> -->
-            <div v-if="scroll && !guestCanAccess">
-                <FormKit type="text" label="Password" v-model="enteredPassword" />
-                <button @click="submitPassword">Enter</button>
-                <p v-if="setError">{{ errorMessage }}</p>
-            </div>
+            <HomepageAuth />
         </div>
 
     </div>
-    <FaqInfo v-if="guestCanAccess" />
 </template>
 <script setup>
 
 const { name } = storeToRefs(useUserStore());
-const { setAuth, guestCanAccess } = useVerificationCheck();
 definePageMeta({
     middleware: [
         'verify-user',
     ],
 });
-const needsAuth = ref(true)
-const scroll = ref(false)
-const handlePageScroll = () => {
-    if (window.scrollY > 6) {
-        console.log('scrolling')
-        scroll.value = true
-    }
-};
-// const cookie = useCookie('isAuth');
-const enteredPassword = ref('');
-const setError = ref(false);
-const errorMessage = ref('');
-const correctPassword = 'hello';
-// const isAuthenticated = ref(false);
-
-// const isGuestAuthenticated = () => {
-//     if (cookie.value === 1) {
-//         isAuthenticated.value = true;
-//         needsAuth.value = false;
-//     }
-// }
-
-// const hasCreds = computed(() => {
-//     return !!name.value
-// })
-const submitPassword = () => {
-    if (enteredPassword.value === "") {
-        setError.value = true;
-        errorMessage.value = "Please enter a valid password";
-    } else if (enteredPassword.value === correctPassword) {
-        setAuth(1)
-        errorMessage.value = "";
-        // needsAuth.value = false;
-    } else {
-        setError.value = true;
-        errorMessage.value = "Intruder Alert :)";
-    }
-};
-
-onMounted(() => {
-    window.addEventListener('scroll', handlePageScroll)
-})
-onUnmounted(() => {
-    window.removeEventListener('scroll', handlePageScroll)
-})
 
 </script>
 <style lang="postcss">
@@ -113,16 +47,16 @@ button {
     @apply flex flex-col justify-center items-center p-6;
     position: relative;
     height: 110vh;
-    background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/v1727983174/DSC04446_2_i7vqny.jpg");
+    /* background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/v1727983174/DSC04446_2_i7vqny.jpg"); */
     background-size: cover;
     background-position: center;
 
-    @media screen and (min-width: 1000px) {
+    /* @media screen and (min-width: 1000px) {
         background-image: none;
         background-color: grey;
         background-size: cover;
         background-position: center;
-    }
+    } */
 }
 
 h1 {

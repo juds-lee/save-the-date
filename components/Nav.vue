@@ -1,23 +1,28 @@
 <template>
-    <nav class="w-full">
-        <ul class="w-full flex flex-row justify-between">
-            <span class="flex flex-row justify-center space-x-6 p-4">
-                <li class="text-white">
-                    HOME
-                </li>
-                <li class="text-white">
+    <nav class="w-full bg-black mt-4 px-6">
+        <ul class="w-full flex flex-row justify-between items-center">
+            <NuxtLink to="/" class="text-white">LOGO HERE</NuxtLink>
+            <span class="flex flex-row justify-center space-x-6">
+                <NuxtLink class="text-white" to="/" :class="{ 'underline underline-offset-4': route.path === '/' }">
+                    Schedule
+                </NuxtLink>
+                <NuxtLink class="text-white" to="/faq"
+                    :class="{ 'underline underline-offset-4': route.path === '/faq' }">
                     FAQ
-                </li>
-                <li class="text-white">
-                    CONTACT
-                </li>
+                </NuxtLink>
             </span>
-            <button class="text-white px-7 py-2 border">RSVP</button>
+            <NuxtLink class=" text-white px-7 border rounded" to="/rsvp">RSVP</NuxtLink>
         </ul>
 
     </nav>
 </template>
-<script setup>
-const { name, uuid } = storeToRefs(useUserStore());
-
+<script setup lang="ts">
+const route = useRoute()
+console.log(route)
 </script>
+<style lang="css" scoped>
+.underline-offset-4 {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+</style>
