@@ -1,5 +1,4 @@
 <template>
-    <Nav />
     <div class="rsvp" v-if="guestCanAccess">
         <div>
             <h1>JUDY AND DUNCANS WEDDING</h1>
