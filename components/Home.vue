@@ -1,24 +1,36 @@
 <template>
-    <HomepageAuth class="home px-4 flex justify-center items-center flex-col" v-if="scroll && !guestCanAccess" />
-    <div v-else
-        class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-6">
-        <h1 class="flex items-center text-[50px] text-white">JUDY & DUNCAN</h1>
-        <div class="hero-container h-full">
-            <div class="hero-image">
+    <div :class="{ 'no-scroll': modalOverlay }">
+        <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50"
+            v-if="scroll && !guestCanAccess" />
+        <div
+            class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-6">
+            <h1 class="flex items-center text-[50px] text-white">JUDY & DUNCAN</h1>
+            <div class="hero-container h-[70vh]">
+                <div class="hero-image">
+                </div>
             </div>
         </div>
-
+        <ScheduleInfo />
     </div>
 </template>
 <script setup>
 const { guestCanAccess } = useVerificationCheck();
 const scroll = ref(false)
+const modalOverlay = ref(false)
 const handlePageScroll = () => {
     if (window.scrollY > 6) {
         console.log('scrolling')
         scroll.value = true
+        if (!guestCanAccess.value) {
+            modalOverlay.value = true
+        }
     }
 };
+watch(guestCanAccess, (value) => {
+    if (value) {
+        modalOverlay.value = false
+    }
+})
 onMounted(() => {
     window.addEventListener('scroll', handlePageScroll)
 })
@@ -35,6 +47,11 @@ definePageMeta({
 </script>
 <style lang="postcss">
 @import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
 
 h1 {
     font-family: "Jacques Francois", serif;

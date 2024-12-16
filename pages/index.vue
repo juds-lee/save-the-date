@@ -1,9 +1,5 @@
 <template>
-	<div>
-		<Home class="max-w-[1500px] border-sky-100" />
-		<FaqInfo v-if="guestCanAccess" />
-	</div>
-
+	<Home class="max-w-[1500px] border-sky-100" />
 </template>
 <script setup>
 definePageMeta({
