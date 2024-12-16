@@ -1,13 +1,30 @@
 <template>
-    <div class="home px-4">
-        <div class="flex-1 flex justify-center items-center flex-col">
-            <HomepageAuth />
+    <HomepageAuth class="home px-4 flex justify-center items-center flex-col" v-if="scroll && !guestCanAccess" />
+    <div v-else
+        class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-6">
+        <h1 class="flex items-center text-[50px] text-white">JUDY & DUNCAN</h1>
+        <div class="hero-container h-full">
+            <div class="hero-image">
+            </div>
         </div>
 
     </div>
 </template>
 <script setup>
-
+const { guestCanAccess } = useVerificationCheck();
+const scroll = ref(false)
+const handlePageScroll = () => {
+    if (window.scrollY > 6) {
+        console.log('scrolling')
+        scroll.value = true
+    }
+};
+onMounted(() => {
+    window.addEventListener('scroll', handlePageScroll)
+})
+onUnmounted(() => {
+    window.removeEventListener('scroll', handlePageScroll)
+})
 const { name } = storeToRefs(useUserStore());
 definePageMeta({
     middleware: [
@@ -43,24 +60,23 @@ button {
     background-color: red;
 }
 
-.home {
-    @apply flex flex-col justify-center items-center p-6;
-    position: relative;
-    height: 110vh;
-    /* background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/v1727983174/DSC04446_2_i7vqny.jpg"); */
+.hero-image {
+    background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-2/v1727984209/DSC04460_2_fqkuyj.jpg");
     background-size: cover;
-    background-position: center;
-
-    /* @media screen and (min-width: 1000px) {
-        background-image: none;
-        background-color: grey;
-        background-size: cover;
-        background-position: center;
-    } */
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
 }
 
-h1 {
-    /* center this h1 vertically */
-    @apply flex justify-center items-center;
+.hero-container {
+    width: 700px;
+
+    @media screen and (max-width: 737px) {
+        width: 100%;
+    }
+
 }
+
+@media screen and (max-width: 737px) {}
 </style>

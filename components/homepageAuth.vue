@@ -1,5 +1,5 @@
 <template>
-    <div v-if="scroll && !guestCanAccess" class="flex flex-col">
+    <div class="flex flex-col">
         <label for="passwordInput">Please Enter the Password</label>
         <span>
             <input id="passwordInput" type="text" v-model="enteredPassword" placeholder="Enter password" />
@@ -10,14 +10,8 @@
     </div>
 </template>
 <script setup lang="ts">
-const { setAuth, guestCanAccess } = useVerificationCheck();
-const scroll = ref(false)
-const handlePageScroll = () => {
-    if (window.scrollY > 6) {
-        console.log('scrolling')
-        scroll.value = true
-    }
-};
+const { setAuth } = useVerificationCheck();
+
 const enteredPassword = ref('');
 const setError = ref(false);
 const errorMessage = ref('');
@@ -36,12 +30,6 @@ const submitPassword = () => {
     }
 };
 
-onMounted(() => {
-    window.addEventListener('scroll', handlePageScroll)
-})
-onUnmounted(() => {
-    window.removeEventListener('scroll', handlePageScroll)
-})
 </script>
 
 <style lang="postcss">

@@ -1,5 +1,5 @@
 <template>
-    <nav class="w-full bg-black mt-4 px-6">
+    <nav class="w-full bg-grey py-6 px-6">
         <ul class="w-full flex flex-row justify-between items-center">
             <NuxtLink to="/" class="text-white">LOGO HERE</NuxtLink>
             <span class="flex flex-row justify-center space-x-6">
@@ -18,7 +18,6 @@
 </template>
 <script setup lang="ts">
 const route = useRoute()
-console.log(route)
 </script>
 <style lang="css" scoped>
 .underline-offset-4 {

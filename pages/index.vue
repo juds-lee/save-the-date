@@ -1,6 +1,9 @@
 <template>
-	<Home />
-	<FaqInfo v-if="guestCanAccess" />
+	<div>
+		<Home class="max-w-[1500px] border-sky-100" />
+		<FaqInfo v-if="guestCanAccess" />
+	</div>
+
 </template>
 <script setup>
 definePageMeta({
@@ -13,6 +16,6 @@ const { guestCanAccess } = useVerificationCheck();
 </script>
 <style>
 body {
-	background-color: black;
+	background-color: grey;
 }
 </style>
