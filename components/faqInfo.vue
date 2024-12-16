@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-slate-800">
-        <h1 class=" text-white">Things to Know</h1>
+    <div class="bg-grey mt-[800px]">
+        <h1 class="text-white">Things to Know</h1>
         <div>
             <p>Address</p>
             <p>Map</p>
