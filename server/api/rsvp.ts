@@ -1,4 +1,4 @@
-import { defineEventHandler, getQuery } from "h3"; // Nuxt 3 helpers
+import { defineEventHandler, getQuery } from "h3";
 import jwt from "jsonwebtoken";
 
 const config = useRuntimeConfig();

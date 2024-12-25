@@ -1,16 +1,18 @@
 <template>
     <div class="overlay">
         <div class="flex flex-col modal">
+            <button @click="handleClose">
+                X
+                <Icon name="close" />
+            </button>
             <label for="passwordInput">Please Enter the Password</label>
             <span>
                 <input id="passwordInput" type="text" v-model="enteredPassword" placeholder="Enter password" />
                 <button @click="submitPassword">Enter</button>
             </span>
-
             <p v-if="setError">{{ errorMessage }}</p>
         </div>
     </div>
-
 </template>
 <script setup lang="ts">
 const { setAuth } = useVerificationCheck();
@@ -26,13 +28,16 @@ const submitPassword = () => {
     } else if (enteredPassword.value === correctPassword) {
         setAuth(1)
         errorMessage.value = "";
-        // needsAuth.value = false;
     } else {
         setError.value = true;
         errorMessage.value = "Intruder Alert :)";
     }
 };
-
+const emit = defineEmits(['close']);
+const handleClose = () => {
+    console.log('close')
+    emit('close')
+}
 </script>
 
 <style lang="postcss">
