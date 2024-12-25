@@ -1,5 +1,5 @@
 <template>
-	<Home class="max-w-[1500px] border-sky-100" />
+	<Home class="max-w-[1500px] mx-auto border-sky-100" />
 </template>
 <script setup>
 definePageMeta({

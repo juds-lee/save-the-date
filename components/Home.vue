@@ -1,13 +1,12 @@
 <template>
     <div :class="{ 'no-scroll': modalOverlay }">
-        <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50"
-            v-if="scroll && !guestCanAccess" />
+        <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
+            @close="closeModal" />
         <div
             class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-6">
             <h1 class="flex items-center text-[50px] text-white">JUDY & DUNCAN</h1>
             <div class="hero-container h-[70vh]">
-                <div class="hero-image">
-                </div>
+                <div class="hero-image" />
             </div>
         </div>
         <ScheduleInfo />
@@ -15,33 +14,39 @@
 </template>
 <script setup>
 const { guestCanAccess } = useVerificationCheck();
-const scroll = ref(false)
-const modalOverlay = ref(false)
+const scroll = ref(false);
+const modalOverlay = ref(false);
+
 const handlePageScroll = () => {
     if (window.scrollY > 6) {
-        console.log('scrolling')
-        scroll.value = true
+        scroll.value = true;
         if (!guestCanAccess.value) {
-            modalOverlay.value = true
+            modalOverlay.value = true;
         }
     }
 };
+
+const closeModal = () => {
+    modalOverlay.value = false;
+    console.log("Modal closed:", modalOverlay.value);
+};
+
 watch(guestCanAccess, (value) => {
     if (value) {
-        modalOverlay.value = false
+        modalOverlay.value = false;
     }
-})
+});
+
 onMounted(() => {
-    window.addEventListener('scroll', handlePageScroll)
-})
+    window.addEventListener('scroll', handlePageScroll);
+});
 onUnmounted(() => {
-    window.removeEventListener('scroll', handlePageScroll)
-})
+    window.removeEventListener('scroll', handlePageScroll);
+});
+
 const { name } = storeToRefs(useUserStore());
 definePageMeta({
-    middleware: [
-        'verify-user',
-    ],
+    middleware: ['verify-user'],
 });
 
 </script>
@@ -94,6 +99,4 @@ button {
     }
 
 }
-
-@media screen and (max-width: 737px) {}
 </style>
