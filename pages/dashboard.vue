@@ -1,24 +1,50 @@
 <template>
-  <!-- CREATING THE GUEST LIST  -->
-  <div class="px-5">
+  <div class="px-5 bg-white">
     <h1 class="py-5 font-bold">Dashboard</h1>
     <div class="flex flex-row justify-between gap-5">
       <div class="border w-full">
-        <FormKit type="form" @submit="submitGuest" v-model="guest">
-          <FormKit type="text" name="name" v-model="guest.name" label="Name" validation="required" />
-          <FormKit type="text" name="email" v-model="guest.email" label="Email Address" validation="required" />
-          <FormKit type="text" name="allergies" v-model="guest.allergies" label="Allergies" />
-          <FormKit type="radio" name="rsvpOption" label="RSVP" :options="{
-            true: 'YES', false: 'Unfortunately No'
-          }" v-model="guest.rsvpOption" :value="guest.rsvpOption" />
-          <FormKit type="checkbox" label="Plus 1" value="false" name="hasPlusOne" v-model="guest.hasPlusOne" />
-          <FormKit type="text" v-if="guest.hasPlusOne" name="partner" v-model="guest.secondaryGuest.secondaryName"
-            label="Partner Name" />
-          <FormKit type="text" v-if="guest.hasPlusOne" name="partnerAllergies"
-            v-model="guest.secondaryGuest.secondaryAllergies" label="allergies" />
-        </FormKit>
+        <form @submit.prevent="submitGuest">
+          <div class="h-10">
+            <label for="name" class="mr-3">Name</label>
+            <input type="text" id="name" v-model="guest.name" required class="border-green-300  border-2" />
+          </div>
+          <div class="h-10">
+            <label for="email">Email Address</label>
+            <input class="border-green-300  border-2" type="email" id="email" v-model="guest.email" required />
+          </div>
+          <div class="h-10">
+            <label for="allergies">Allergies</label>
+            <input class="border-green-300  border-2" type="text" id="allergies" v-model="guest.allergies" />
+          </div>
+          <div class="h-10">
+            <p>RSVP</p>
+            <label>
+              <input class="border-green-300  border-2" type="radio" name="rsvpOption" value="true"
+                v-model="guest.rsvpOption" /> YES
+            </label>
+            <label>
+              <input class="border-green-300  border-2" type="radio" name="rsvpOption" value="false"
+                v-model="guest.rsvpOption" /> Unfortunately No
+            </label>
+          </div>
+          <div class="h-10">
+            <label>
+              <input class="border-green-300  border-2" type="checkbox" v-model="guest.hasPlusOne" /> Plus 1
+            </label>
+          </div>
+          <div v-if="guest.hasPlusOne" class="h-10">
+            <label for="partner">Partner Name</label>
+            <input class="border-green-300  border-2" type="text" id="partner"
+              v-model="guest.secondaryGuest.secondaryName" />
+          </div>
+          <div v-if="guest.hasPlusOne" class="h-10">
+            <label for="partnerAllergies">Partner Allergies</label>
+            <input class="border-green-300  border-2" type="text" id="partnerAllergies"
+              v-model="guest.secondaryGuest.secondaryAllergies" />
+          </div>
+          <button type="submit" class="border-green-300  border-2">Submit</button>
+        </form>
       </div>
-      <!-- READING THE RSVP  -->
       <div class="w-full border">
         <h1 class="pr-5 font-bold">Guest Info</h1>
         <div>
@@ -37,17 +63,14 @@
                   <p>Email: {{ guest.email }}</p>
                   <p>UUID: {{ guest.guestUuid }}</p>
                   <p>Plus One: {{ guest.hasPlusOne }}</p>
-                  <p v-if="guest.hasPlusOne">Partner Name: {{ guest.secondaryGuest.secondaryName }}
-                  </p>
-                  <p v-if="guest.hasPlusOne">Partner Allergies: {{ guest.secondaryGuest.secondaryAllergies }}
-                  </p>
-                  <p v-if="guest.hasPlusOne">Partner Attendance: {{ guest.secondaryGuest.secondaryRsvpOption }}
-                  </p>
+                  <p v-if="guest.hasPlusOne">Partner Name: {{ guest.secondaryGuest.secondaryName }}</p>
+                  <p v-if="guest.hasPlusOne">Partner Allergies: {{ guest.secondaryGuest.secondaryAllergies }}</p>
+                  <p v-if="guest.hasPlusOne">Partner Attendance: {{ guest.secondaryGuest.secondaryRsvpOption }}</p>
                 </div>
               </div>
               <div class="flex flex-col m-auto">
                 <button class="bg-green-300 p-1 rounded-md mb-2">edit guest</button>
-                <button type="submit" @click="removeGuest(guest)" class="bg-pink-300 p-1 rounded-md">
+                <button type="button" @click="removeGuest(guest)" class="bg-pink-300 p-1 rounded-md">
                   remove guest
                 </button>
               </div>
@@ -58,12 +81,13 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from "vue";
-import { db } from "../services/firebaseclient";
-import { collection, doc, setDoc, getDocs, deleteDoc, query, where, updateDoc } from "firebase/firestore";
 
-const guest = ref<GuestInfo>({
+<script setup>
+import { ref, onMounted } from "vue";
+import { db } from "../services/firebaseclient";
+import { collection, doc, setDoc, getDocs, deleteDoc, query, where } from "firebase/firestore";
+
+const guest = ref({
   name: "",
   email: "",
   allergies: "",
@@ -76,51 +100,61 @@ const guest = ref<GuestInfo>({
     secondaryRsvpOption: "",
   },
 });
-const fbGuestInfo = ref<GuestInfo[]>([]);
-const { sendGuestInfo } = useFirebase();
+
+const fbGuestInfo = ref([]);
+
 const submitGuest = async () => {
-  await sendGuestInfo(guest.value);
-  readGuestInfo();
-
-};
-
-const readGuestInfo = async () => {
-  const guestInfoCollectionRef = collection(db, "guestInfoTesting");
-  const querySnapshot = await getDocs(guestInfoCollectionRef);
-  const data: GuestInfo[] = [];
-  querySnapshot.forEach((doc) => {
-    data.push(doc.data() as GuestInfo);
-  });
-  data.sort((a, b) => a.name.localeCompare(b.name));
-  fbGuestInfo.value = data;
-};
-
-const removeGuest = async (guest: GuestInfo) => {
-  if (guest) {
-    const guestId = guest.guestUuid;
-    try {
-      const guestRef = collection(db, "guestInfoTesting");
-      const q = query(guestRef, where("guestUuid", "==", guestId));
-      const querySnapshot = await getDocs(q);
-      //Check if a document with the uuid exists
-      if (querySnapshot.size > 0) {
-        // There should only be one document for a unique inviteId
-        const documentSnapshot = querySnapshot.docs[0];
-        // Remove the guest document with that unique id
-        const removeGuestRef = doc(db, "guestInfoTesting", documentSnapshot.id);
-        await deleteDoc(removeGuestRef);
-      }
-      readGuestInfo();
-    } catch (error) {
-      console.log(error);
-    }
+  try {
+    const docRef = doc(collection(db, "guestInfoTesting"));
+    guest.value.guestUuid = docRef.id;
+    await setDoc(docRef, guest.value);
+    readGuestInfo();
+    guest.value = {
+      name: "",
+      email: "",
+      allergies: "",
+      rsvpOption: "",
+      guestUuid: "",
+      hasPlusOne: false,
+      secondaryGuest: {
+        secondaryName: "",
+        secondaryAllergies: "",
+        secondaryRsvpOption: "",
+      },
+    };
+  } catch (error) {
+    console.error("Error adding document: ", error);
   }
 };
 
-onMounted(() => {
-  readGuestInfo();
-});
+const readGuestInfo = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "guestInfoTesting"));
+    const data = querySnapshot.docs.map(doc => doc.data());
+    data.sort((a, b) => a.name.localeCompare(b.name));
+    fbGuestInfo.value = data;
+  } catch (error) {
+    console.error("Error reading guest info: ", error);
+  }
+};
+
+const removeGuest = async (guest) => {
+  try {
+    const guestRef = query(collection(db, "guestInfoTesting"), where("guestUuid", "==", guest.guestUuid));
+    const querySnapshot = await getDocs(guestRef);
+    if (!querySnapshot.empty) {
+      const docId = querySnapshot.docs[0].id;
+      await deleteDoc(doc(db, "guestInfoTesting", docId));
+      readGuestInfo();
+    }
+  } catch (error) {
+    console.error("Error removing guest: ", error);
+  }
+};
+
+onMounted(readGuestInfo);
 </script>
+
 <style>
 .name-container {
   width: 20%;

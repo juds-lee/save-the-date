@@ -38,9 +38,9 @@
           <mj-text color="#637381" font-size="16px">
             Dear {{guestName}},
           </mj-text>
-          <!-- <mj-text color="#637381" font-size="16px">
+          <mj-text color="#637381" font-size="16px">
             hey {{token}},
-          </mj-text> -->
+          </mj-text>
           <mj-text color="#637381" font-size="16px">
             We’re tying the knot on September 20, 2025, and we’d love for you to join us in celebrating our special day. A formal invitation will follow, but in the meantime, please save the date!
           </mj-text>
