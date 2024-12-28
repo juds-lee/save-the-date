@@ -6,8 +6,15 @@
         <FormKit type="text" name="allergies" v-model="allergies" label="Allergies"
             help="Please share any allergies or dietary restrictions" />
     </FormKit>
+    <div v-if="guestInfo.hasPlusOne">
+        {{ guestInfo }}
+    </div>
 </template>
 <script setup lang="ts">
+const props = defineProps<{
+    guestInfo: GuestInfo;
+}>()
+
 const rsvpOption = ref(null);
 const allergies = ref("");
 const { updateGuestRsvp } = useFirebase();
