@@ -1,21 +1,12 @@
-import { ref } from "vue";
 import { db } from "../services/firebaseclient";
-import { collection, setDoc, getDocs, doc, query, where, updateDoc } from "firebase/firestore";
+import { collection, setDoc, doc, updateDoc } from "firebase/firestore";
 
 export default function useFirebase() {
   const { uuid } = storeToRefs(useUserStore());
-  const updateGuestRsvp = async (rsvp, alleriges) => {
+  const updateGuestRsvp = async (guestInfo: GuestInfo) => {
     if (!uuid.value) return;
-    const guestRef = collection(db, "guestInfoTesting");
-    const q = query(guestRef, where("guestUuid", "==", uuid.value));
-    const querySnapshot = await getDocs(q);
-    if (querySnapshot.size > 0) {
-      const documentSnapshot = querySnapshot.docs[0];
-      await updateDoc(doc(guestRef, documentSnapshot.id), {
-        rsvp: rsvp,
-        allergies: alleriges,
-      });
-    }
+    const guestDocRef = doc(db, "guestInfoTesting", uuid.value);
+    await updateDoc(guestDocRef, { ...guestInfo });
   };
   const sendGuestInfo = async (guestInfo: GuestInfo) => {
     const guestInfoSubmissionRef = doc(collection(db, "guestInfoTesting"));
