@@ -1,9 +1,9 @@
 <template>
     <div class="rsvp px-6" v-if="guestCanAccess && name">
-        <div>
-            <h1>JUDY AND DUNCANS WEDDING</h1>
-        </div>
-        <p>Dear {{ name }}, we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025
+        <p>Dear {{ guestInfo.hasPlusOne ? `${guestInfo.name} and ${guestInfo.secondaryGuest.secondaryName}` :
+            guestInfo.name
+            }}, we would love for you to join us in our celebrations.
+            Please rsvp no later than May 20 2025
         </p>
         <RsvpForm :guestInfo="guestInfo" />
     </div>
