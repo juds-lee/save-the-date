@@ -44,6 +44,9 @@ importers:
       nodemailer:
         specifier: ^6.9.12
         version: 6.9.14
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
     devDependencies:
       '@nuxt/devtools':
         specifier: latest
@@ -5950,8 +5953,8 @@ packages:
     resolution: {integrity: sha512-UfZ0oa0C8LI58wJ+moL46BDIMgCQbnsb+2PoiJYtonhBsMh2bq1eRBVkvjfVsqbEHd9/EgKPUuL9saSSsec8OA==}
     engines: {node: '>= 12.0.0'}
 
-  zod@3.23.8:
-    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+  zod@3.24.1:
+    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
 snapshots:
 
@@ -6319,7 +6322,7 @@ snapshots:
       '@cloudinary-util/types': 1.4.0
       '@cloudinary-util/util': 3.2.0
       '@cloudinary/url-gen': 1.15.0
-      zod: 3.23.8
+      zod: 3.24.1
 
   '@cloudinary-util/util@3.2.0': {}
 
@@ -13489,4 +13492,4 @@ snapshots:
       compress-commons: 5.0.1
       readable-stream: 3.6.2
 
-  zod@3.23.8: {}
+  zod@3.24.1: {}
