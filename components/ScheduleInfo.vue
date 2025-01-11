@@ -1,23 +1,22 @@
 <template>
     <div class="bg-grey px-6 flex flex-col lg:flex-row items-center lg:items-end justify-around">
-        <img src="https://res.cloudinary.com/djatkco6m/image/upload/v1734718678/image-asset_pokmct.png" alt="heart"
-            class="flower-asset" />
+        <img src="../assets/svg/flower-2.svg" alt="heart" class="flower-asset" />
         <div
             class="flex flex-col items-center lg:items-start justify-center w-full max-w-[550px] lg:max-w-[700px] pb-[70px]">
-            <h2 class="text-white sub-title text-center lg:text-left text-balance">
+            <h2 class="text-[50px] text-center lg:text-left text-balance font-greatvibes">
                 We’re getting married! Join us for a weekend of celebration and love
             </h2>
-            <h2 class="date-title">
+            <span class="date-title font-greatvibes text-accent">
                 9.20.2024
-            </h2>
+            </span>
         </div>
     </div>
     <div class="mt-12 px-6">
-        <div class="grid grid-cols-2 pb-8 text-white">
+        <div class="grid grid-cols-2 text-white">
             <div class="flex items-end">
-                <h3 class="text-[40px]">Schedule</h3>
+                <h3 class="text-[60px] font-greatvibes">Schedule</h3>
             </div>
-            <div class="flex items-end">
+            <div class="flex items-end mb-5">
                 All events will take place at The Toronto Golf Club
             </div>
         </div>
@@ -28,15 +27,16 @@
         </div>
     </div>
     <div class=" bg-grey px-6 flex flex-col lg:flex-row items-center justify-around">
-        <img src="https://res.cloudinary.com/djatkco6m/image/upload/v1735160398/flower-asset_gv0b6m.png"
-            alt="flower image" class="flower-rsvp-asset" />
+        <img src="../assets/svg/flower-3.svg" alt="flower image" class="flower-rsvp-asset" />
         <div class="flex flex-col-reverse lg:flex-col">
             <div>
-                <p class="mt-12 text-[30px] lg:text-[40px] pb-12 text-center lg:text-left text-balance">Let the
+                <p
+                    class="mt-12 text-[50px] text-main lg:text-[60px] text-center lg:text-left text-balance font-greatvibes">
+                    Let the
                     countdown
                     begin</p>
                 <p
-                    class="max-w-[750px] text-[20px] lg:text-[30px] text-white text-center lg:text-left text-balance pb-12">
+                    class="max-w-[750px] text-[20px] lg:text-[30px] text-main text-center lg:text-left text-balance pb-12">
                     We hope you
                     can make it, it would be a delight to see you there</p>
             </div>

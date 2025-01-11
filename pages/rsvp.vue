@@ -1,8 +1,7 @@
 <template>
     <div class="px-4 mx-auto max-w-[1200px]" v-if="guestCanAccess && name">
         <div class="flex flex-row items-center">
-            <img src="https://res.cloudinary.com/djatkco6m/image/upload/v1736099261/flower-2_etcjed.png" alt=""
-                class="w-[500px]" />
+            <img src="../assets/svg/flower-1.svg" class="w-[500px]" />
             <p>Dear {{ guestInfo.hasPlusOne ? `${guestInfo.name} and ${guestInfo.secondaryGuest.secondaryName}` :
                 guestInfo.name
                 }}, we would love for you to join us in our celebrations.

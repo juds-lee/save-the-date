@@ -13,13 +13,20 @@ module.exports = {
      screens: {
       'sm': '450px',
       // => @media (min-width: 640px) { ... }
-
       'md': '700px',
       // => @media (min-width: 768px) { ... }
 
       'lg': '1024px',
       // => @media (min-width: 1024px) { ... }
-    }
+    },
+     colors: {
+      'bg':"#FDF6ED",
+      'main': "#D69B43",
+      'accent': "#362917"
+     },
+     fontFamily: {
+      'greatvibes': ['greatvibes' ]
+   }
   },
   plugins: [],
 }

@@ -4,7 +4,11 @@
             @close="closeModal" />
         <div
             class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-10">
-            <h1 class="flex items-center text-[50px] text-white">JUDY & DUNCAN</h1>
+            <h1 class="flex items-center text-[70px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
+                <br />are
+                tying
+                the knot!
+            </h1>
             <div class="hero-container h-[70vh]">
                 <div class="hero-image" />
             </div>
@@ -51,15 +55,12 @@ definePageMeta({
 
 </script>
 <style lang="postcss">
-@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
-
 .no-scroll {
     overflow: hidden;
     height: 100vh;
 }
 
 h1 {
-    font-family: "Jacques Francois", serif;
     font-size: 15px;
     text-align: center;
 }

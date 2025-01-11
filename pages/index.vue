@@ -12,6 +12,6 @@ const { guestCanAccess } = useVerificationCheck();
 </script>
 <style>
 body {
-	background-color: grey;
+	background-color: #FDF6ED
 }
 </style>
