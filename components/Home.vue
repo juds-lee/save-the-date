@@ -3,7 +3,7 @@
         <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
             @close="closeModal" />
         <div
-            class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-6">
+            class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-10">
             <h1 class="flex items-center text-[50px] text-white">JUDY & DUNCAN</h1>
             <div class="hero-container h-[70vh]">
                 <div class="hero-image" />

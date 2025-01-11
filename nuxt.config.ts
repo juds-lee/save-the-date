@@ -1,6 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap",
+        },
+      ],
+    },
+  },
   runtimeConfig: {
     public: {
       apiUrl: process.env.API_URL,
@@ -12,6 +22,7 @@ export default defineNuxtConfig({
     "@formkit/nuxt",
     "@nuxtjs/cloudinary",
     "@vueuse/nuxt",
+    "@nuxtjs/tailwindcss",
     "@nuxt/image",
     [
       "@pinia/nuxt",
@@ -20,6 +31,17 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  tailwindcss: {
+    config: {
+      theme: {
+        extend: {
+          fontFamily: {
+            handwritten: ["Homemade Apple", "cursive"],
+          },
+        },
+      },
+    },
+  },
   pinia: {
     storesDirs: ["./stores/**", "./custom-folder/stores/**"],
   },

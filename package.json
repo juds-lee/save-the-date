@@ -36,6 +36,7 @@
     "handlebars": "^4.7.8",
     "jsonwebtoken": "^9.0.2",
     "mjml": "^4.15.3",
-    "nodemailer": "^6.9.12"
+    "nodemailer": "^6.9.12",
+    "zod": "^3.24.1"
   }
 }

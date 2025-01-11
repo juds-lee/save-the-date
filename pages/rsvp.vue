@@ -1,17 +1,26 @@
 <template>
-    <div class="rsvp px-6" v-if="guestCanAccess && name">
-        <p>Dear {{ guestInfo.hasPlusOne ? `${guestInfo.name} and ${guestInfo.secondaryGuest.secondaryName}` :
-            guestInfo.name
-            }}, we would love for you to join us in our celebrations.
-            Please rsvp no later than May 20 2025
-        </p>
-        <RsvpForm :guestInfo="guestInfo" />
-    </div>
-    <div class="rsvp max-w-[700px] mx-auto" v-else>
-        <div>
-            <h1>Please log in using the secret passcode or by clicking the link in your email invitation to access this
-                page</h1>
+    <div class="px-4 mx-auto max-w-[1200px]" v-if="guestCanAccess && name">
+        <div class="flex flex-row items-center">
+            <img src="https://res.cloudinary.com/djatkco6m/image/upload/v1736099261/flower-2_etcjed.png" alt=""
+                class="w-[500px]" />
+            <p>Dear {{ guestInfo.hasPlusOne ? `${guestInfo.name} and ${guestInfo.secondaryGuest.secondaryName}` :
+                guestInfo.name
+                }}, we would love for you to join us in our celebrations.
+                Please rsvp no later than May 20 2025
+            </p>
         </div>
+
+        <div class="form-container">
+            <RsvpForm :guestInfo="guestInfo" />
+            <NuxtImg
+                src="https://res.cloudinary.com/djatkco6m/image/upload/v1736097763/EE072B49-3841-4F3E-91BD-5D18EF2131EA_fgvydh.jpg"
+                class="elevator-image" />
+        </div>
+    </div>
+    <div v-else>
+        <h1 class="max-w-[700px]">Please log in using the secret passcode or by clicking the link in your email
+            invitation to access this
+            page</h1>
     </div>
 </template>
 <script setup lang="ts">
@@ -48,4 +57,30 @@ onMounted(() => {
     searchGuestWithName();
 })
 </script>
-<style lang="postcss"></style>
+<style lang="postcss">
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (min-width: 1200px) {
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+}
+
+.elevator-image {
+    width: 100%;
+    margin-top: 24px;
+    max-width: 600px;
+
+    @media screen and (min-width: 1200px) {
+        margin-top: 24px;
+    }
+}
+</style>

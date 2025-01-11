@@ -1,5 +1,5 @@
 <template>
-    <nav class="w-full bg-grey py-6 px-6">
+    <nav class="w-full bg-grey py-6 px-10">
         <ul class="w-full flex flex-row justify-between items-center">
             <NuxtLink to="/" class="text-white">LOGO HERE</NuxtLink>
             <span class="flex flex-row justify-center space-x-6">

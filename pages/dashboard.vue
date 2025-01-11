@@ -19,11 +19,11 @@
           <div class="h-10">
             <p>RSVP</p>
             <label>
-              <input class="border-green-300  border-2" type="radio" name="rsvpOption" value="true"
+              <input class="border-green-300  border-2" type="radio" name="rsvpOption" value="accept"
                 v-model="guest.rsvpOption" /> YES
             </label>
             <label>
-              <input class="border-green-300  border-2" type="radio" name="rsvpOption" value="false"
+              <input class="border-green-300  border-2" type="radio" name="rsvpOption" value="decline"
                 v-model="guest.rsvpOption" /> Unfortunately No
             </label>
           </div>
