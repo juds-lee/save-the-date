@@ -1,6 +1,13 @@
+@import "./fonts";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 div {
     margin-bottom: 0;
+}
+h1,
+h2,
+h3 {
+	color: #D69B43 !important;
 }
