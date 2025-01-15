@@ -1,12 +1,17 @@
 <template>
-    <div class="px-4 mx-auto max-w-[1200px]" v-if="guestCanAccess && name">
-        <div class="flex flex-row items-center">
+    <div class="px-10 max-w-[1200px] mx-auto" v-if="guestCanAccess && name">
+        <div class="flex flex-col lg:flex-row items-center">
             <img src="../assets/svg/flower-1.svg" class="w-[500px]" />
-            <p>Dear {{ guestInfo.hasPlusOne ? `${guestInfo.name} and ${guestInfo.secondaryGuest.secondaryName}` :
-                guestInfo.name
-                }}, we would love for you to join us in our celebrations.
-                Please rsvp no later than May 20 2025
-            </p>
+            <div>
+                <p class="font-greatvibes text-[40px] text-main max-w-[700px]">Dear {{ guestInfo.hasPlusOne ?
+                    `${guestInfo.name} and
+                    ${guestInfo.secondaryGuest.secondaryName}` :
+                    guestInfo.name
+                    }}, we would love for you to join us in our celebrations.
+                </p>
+                <p> Please rsvp no later than May 20 2025</p>
+            </div>
+
         </div>
 
         <div class="form-container">

@@ -4,7 +4,7 @@
             @close="closeModal" />
         <div
             class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-10">
-            <h1 class="flex items-center text-[70px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
+            <h1 class="flex items-center text-[65px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
                 <br />are
                 tying
                 the knot!
@@ -84,7 +84,7 @@ button {
 }
 
 .hero-image {
-    background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-2/v1727984209/DSC04460_2_fqkuyj.jpg");
+    background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-1/v1727984209/DSC04460_2_fqkuyj.jpg");
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
