@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white h-full p-10 rounded-lg shadow-lg">
         <form @submit.prevent="submitGuestInfo">
-            <p class="font-handwritten text-2xl">{{ guestInfo.name }}</p>
+            <p class="font-greatvibes text-[30px]">{{ guestInfo.name }}</p>
             <div class="flex flex-col items-start space-y-2">
                 <!-- Main Guest RSVP -->
                 <div v-for="(option, index) in rsvpOptions" :key="index"
@@ -27,8 +27,8 @@
                 </div>
             </div>
             <!-- Secondary Guest RSVP -->
-            <div v-if="guestInfo.hasPlusOne" class="mt-5">
-                <p>{{ guestInfo.secondaryGuest.secondaryName }}</p>
+            <div v-if="guestInfo.hasPlusOne" class="mt-10">
+                <p class="font-greatvibes text-[30px]"> {{ guestInfo.secondaryGuest.secondaryName }}</p>
 
                 <div v-for="(option, index) in rsvpOptions" :key="'secondary' + index"
                     class="flex justify-between w-full items-center">
@@ -53,9 +53,10 @@
                     <input type="text" id="allergies" v-model="guestInfo.secondaryGuest.secondaryAllergies" />
                 </div>
             </div>
-            <button class="mt-4" type="submit">Submit</button>
+            <button class="mt-10 font-greatvibes text-[30px]" type="submit">Submit</button>
         </form>
-        <span v-if="rsvpError" class="text-[#333]">Please let us know if you can make the event</span>
+        <div v-if="rsvpError" class="text-[#333]">Please let us know if you can make the event</div>
+        <div v-else-if="submitSuccess" class="text-[#333]">Thank you for your response.</div>
     </div>
 </template>
 
@@ -70,15 +71,17 @@ const props = defineProps<{
 const handleChange = () => {
     console.log('Radio button clicked! Current selection:', props.guestInfo.rsvpOption)
 }
+const submitSuccess = ref(false);
 const { updateGuestRsvp } = useFirebase();
 const rsvpError = ref(false);
 const submitGuestInfo = async () => {
     try {
-        if (props.guestInfo.rsvpOption) {
+        if (!props.guestInfo.rsvpOption) {
             rsvpError.value = true;
             return;
         }
         await updateGuestRsvp(props.guestInfo);
+        submitSuccess.value = true;
     } catch (error) {
         rsvpError.value = true;
         console.error(error);
@@ -91,8 +94,6 @@ label {
 }
 
 .custom-label {
-    font-family: "Homemade Apple", cursive;
-    font-size: 1.25rem;
     color: #333;
     cursor: pointer;
 }
@@ -132,7 +133,6 @@ label {
 .styled-input input:focus+span {
     background-color: transparent;
     display: none;
-    /* Hide the placeholder span when the user focuses on the input */
 }
 
 .styled-input span {
@@ -141,9 +141,7 @@ label {
     left: 0;
     white-space: nowrap;
     pointer-events: none;
-    /* Prevent interaction */
     color: #aaa;
-    /* Faded color for placeholder effect */
     z-index: 1;
 }
 
@@ -153,7 +151,6 @@ label {
     width: 100%;
     background: transparent;
     outline: none;
-    font-family: inherit;
     font-size: inherit;
     color: #333;
     z-index: 2;
@@ -162,12 +159,10 @@ label {
 
 .styled-input input::placeholder {
     color: transparent;
-    /* Hide placeholder to create a clean line appearance */
 }
 
 .styled-input input:focus+span {
     display: none;
-    /* Hide the placeholder span when the user focuses on the input */
 }
 
 @keyframes offset {

@@ -1,7 +1,7 @@
 <template>
     <nav class="w-full bg-grey py-6 px-10">
         <ul class="w-full flex flex-row justify-between items-center">
-            <NuxtLink to="/" class="text-accent font-greatvibes text-[50px]">J&D</NuxtLink>
+            <NuxtLink to="/" class="text-accent font-greatvibes text-[30px]">J&D</NuxtLink>
             <span class="flex flex-row justify-center space-x-6">
                 <NuxtLink class="text-accent" to="/" :class="{ 'underline underline-offset-4': route.path === '/' }">
                     Schedule
