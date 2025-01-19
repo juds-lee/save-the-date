@@ -35,7 +35,7 @@ async function sendEmail(data, node): Promise<void> {
     </div>
   </div>
 </template>
-<style lang="css">
+<style lang="css" scoped>
 .formkit-wrapper {
   max-width: 100% !important;
   width: 100%;

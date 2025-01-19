@@ -40,7 +40,7 @@ const handleClose = () => {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
 
 .overlay {

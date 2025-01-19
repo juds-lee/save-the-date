@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white h-full p-10 rounded-lg shadow-lg">
+    <div class="h-full p-10 rounded-lg shadow-lg">
         <form @submit.prevent="submitGuestInfo">
             <p class="font-greatvibes text-[30px]">{{ guestInfo.name }}</p>
             <div class="flex flex-col items-start space-y-2">

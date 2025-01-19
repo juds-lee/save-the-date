@@ -3,7 +3,7 @@
         <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
             @close="closeModal" />
         <div
-            class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-10">
+            class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-20">
             <h1 class="flex items-center text-[65px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
                 <br />are
                 tying

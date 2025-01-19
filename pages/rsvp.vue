@@ -1,5 +1,5 @@
 <template>
-    <div class="px-10 max-w-[1200px] mx-auto" v-if="guestCanAccess && name">
+    <div class="px-20 max-w-[1200px] mx-auto" v-show="guestCanAccess && name">
         <div class="flex flex-col lg:flex-row items-center">
             <img src="../assets/svg/flower-1.svg" class="w-[500px]" />
             <div>
@@ -11,7 +11,6 @@
                 </p>
                 <p> Please rsvp no later than May 20 2025</p>
             </div>
-
         </div>
 
         <div class="form-container">
@@ -21,8 +20,8 @@
                 class="elevator-image" />
         </div>
     </div>
-    <div v-else>
-        <h1 class="max-w-[700px]">Please log in using the secret passcode or by clicking the link in your email
+    <div v-show="!(guestCanAccess && name)">
+        <h1 class="max-w-[700px] mx-auto">Please log in using the secret passcode or by clicking the link in your email
             invitation to access this
             page</h1>
     </div>
@@ -57,11 +56,12 @@ const { name, uuid } = storeToRefs(useUserStore());
 const credsCookie = useCookie('creds')
 credsCookie.value = uuid.value;
 const { guestCanAccess } = useVerificationCheck();
+console.log(guestCanAccess.value, name.value)
 onMounted(() => {
     searchGuestWithName();
 })
 </script>
-<style lang="postcss">
+<style lang="postcss" scoped>
 .form-container {
     display: flex;
     flex-direction: column;

@@ -1,17 +1,17 @@
 <template>
-    <div class="bg-grey px-6 flex flex-col lg:flex-row items-center lg:items-end justify-around">
+    <div class="bg-grey px-20 flex flex-col lg:flex-row items-center lg:items-end justify-around">
         <img src="../assets/svg/flower-2.svg" alt="heart" class="flower-asset" />
         <div
             class="flex flex-col items-center lg:items-start justify-center w-full max-w-[550px] lg:max-w-[700px] pb-[70px]">
             <h2 class="text-[50px] text-center lg:text-left text-balance font-greatvibes">
-                We’re getting married! Join us for a weekend of celebration and love
+                We’re getting married! We welcome you to join us for a celebration
             </h2>
             <span class="date-title font-greatvibes text-accent">
                 9.20.2024
             </span>
         </div>
     </div>
-    <div class="mt-12 px-6">
+    <div class="mt-12 px-20">
         <div class="grid grid-cols-2 text-white">
             <div class="flex items-end">
                 <h3 class="text-[60px] font-greatvibes">Schedule</h3>
@@ -69,7 +69,7 @@ const eventItem = ref([
     }
 ]);
 </script>
-<style>
+<style lang="postcss" scoped>
 .sub-title {
     font-size: 24px;
     word-wrap: break-word;
