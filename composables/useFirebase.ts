@@ -1,5 +1,5 @@
 import { db } from "../services/firebaseclient";
-import { collection, setDoc, doc, updateDoc } from "firebase/firestore";
+import { collection, setDoc, doc, updateDoc, getDoc } from "firebase/firestore";
 
 export default function useFirebase() {
   const { uuid } = storeToRefs(useUserStore());
@@ -8,6 +8,7 @@ export default function useFirebase() {
     const guestDocRef = doc(db, "guestInfoTesting", uuid.value);
     await updateDoc(guestDocRef, { ...guestInfo });
   };
+
   const sendGuestInfo = async (guestInfo: GuestInfo) => {
     const guestInfoSubmissionRef = doc(collection(db, "guestInfoTesting"));
     await setDoc(guestInfoSubmissionRef, guestInfo);
@@ -16,5 +17,18 @@ export default function useFirebase() {
       guestUuid: guestInfo.guestUuid,
     });
   };
-  return { updateGuestRsvp, sendGuestInfo };
+  const userHasSubmitted = ref(false);
+  const checkUserSubmission = async () => {
+    if (!uuid.value) return;
+    const guestDocRef = doc(db, "guestInfoTesting", uuid.value);
+    const docSnap = await getDoc(guestDocRef);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      if (docSnap.data().rsvpOption !== "") {
+        return (userHasSubmitted.value = true);
+      }
+    }
+    return (userHasSubmitted.value = true);
+  };
+  return { updateGuestRsvp, sendGuestInfo, checkUserSubmission, userHasSubmitted };
 }

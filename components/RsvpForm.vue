@@ -1,100 +1,149 @@
 <template>
-    <div class="h-full p-10 rounded-lg shadow-lg">
-        <form @submit.prevent="submitGuestInfo">
-            <p class="font-greatvibes text-[30px]">{{ guestInfo.name }}</p>
-            <div class="flex flex-col items-start space-y-2">
-                <!-- Main Guest RSVP -->
-                <div v-for="(option, index) in rsvpOptions" :key="index"
-                    class="flex justify-between w-full items-center">
-                    <label :for="'rsvp' + index" class="custom-label">{{ option.label }}</label>
-                    <div class="relative">
-                        <input type="radio" :id="'rsvp' + index" :name="'mainRsvp'" :value="option.value"
-                            v-model="guestInfo.rsvpOption" @change="handleChange" class="custom-radio" />
-                        <svg v-if="guestInfo.rsvpOption === option.value"
-                            class="nought absolute top-[-17px] left-[-18px]" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32.02 40.6">
-                            <g>
-                                <path class="nought-line"
-                                    d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
-                            </g>
-                        </svg>
+    <div class="container">
+        <div class="rounded-lg shadow-lg text-accent card" id="card"
+            :class="guestInfo.hasPlusOne ? 'w-[250px] h-[340px]' : 'w-[450px] h-[340px]'">
+            <div class=" front">
+                <form @submit.prevent="submitGuestInfo">
+                    <p class="font-greatvibes text-[30px]">{{ guestInfo.name }}</p>
+                    <div class="flex flex-col items-start space-y-2">
+                        <div v-for="(option, index) in rsvpOptions" :key="index"
+                            class="flex justify-between w-full items-center">
+                            <label :for="'rsvp' + index" class="custom-label">{{ option.label }}</label>
+                            <div class="relative">
+                                <input type="radio" :id="'rsvp' + index" :name="'mainRsvp'" :value="option.value"
+                                    v-model="guestInfo.rsvpOption" @change="handleChange" class="custom-radio" />
+                                <svg v-if="guestInfo.rsvpOption === option.value"
+                                    class="nought absolute top-[-17px] left-[-18px]" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 32.02 40.6">
+                                    <g>
+                                        <path class="nought-line"
+                                            d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="custom-label styled-input">
+                            Dietary Restrictions:
+                            <input type="text" id="allergies" v-model="guestInfo.allergies" />
+                        </div>
                     </div>
-                </div>
+                    <div v-if="guestInfo.hasPlusOne" class="mt-10">
+                        <p class="font-greatvibes text-[30px]"> {{ guestInfo.secondaryGuest.secondaryName }}</p>
 
-                <div class="custom-label styled-input">
-                    Dietary Restrictions:
-                    <input type="text" id="allergies" v-model="guestInfo.allergies" />
-                </div>
-            </div>
-            <!-- Secondary Guest RSVP -->
-            <div v-if="guestInfo.hasPlusOne" class="mt-10">
-                <p class="font-greatvibes text-[30px]"> {{ guestInfo.secondaryGuest.secondaryName }}</p>
+                        <div v-for="(option, index) in rsvpOptions" :key="'secondary' + index"
+                            class="flex justify-between w-full items-center">
+                            <label :for="'secondaryRsvp' + index" class="custom-label">{{ option.label }}</label>
+                            <div class="relative">
+                                <input type="radio" :id="'secondaryRsvp' + index" :name="'secondaryRsvp'"
+                                    :value="option.value" v-model="guestInfo.secondaryGuest.secondaryRsvpOption"
+                                    @change="handleChange" class="custom-radio" />
+                                <svg v-if="guestInfo.secondaryGuest.secondaryRsvpOption === option.value"
+                                    class="nought absolute top-[-17px] left-[-18px]" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 32.02 40.6">
+                                    <g>
+                                        <path class="nought-line"
+                                            d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
 
-                <div v-for="(option, index) in rsvpOptions" :key="'secondary' + index"
-                    class="flex justify-between w-full items-center">
-                    <label :for="'secondaryRsvp' + index" class="custom-label">{{ option.label }}</label>
-                    <div class="relative">
-                        <input type="radio" :id="'secondaryRsvp' + index" :name="'secondaryRsvp'" :value="option.value"
-                            v-model="guestInfo.secondaryGuest.secondaryRsvpOption" @change="handleChange"
-                            class="custom-radio" />
-                        <svg v-if="guestInfo.secondaryGuest.secondaryRsvpOption === option.value"
-                            class="nought absolute top-[-17px] left-[-18px]" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32.02 40.6">
-                            <g>
-                                <path class="nought-line"
-                                    d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
-                            </g>
-                        </svg>
+                        <div class="custom-label styled-input">
+                            Dietary Restrictions:
+                            <input type="text" id="allergies" v-model="guestInfo.secondaryGuest.secondaryAllergies" />
+                        </div>
                     </div>
-                </div>
-
-                <div class="custom-label styled-input">
-                    Dietary Restrictions:
-                    <input type="text" id="allergies" v-model="guestInfo.secondaryGuest.secondaryAllergies" />
-                </div>
+                    <button class="mt-10 font-greatvibes text-[30px]" type="submit">Submit</button>
+                    <div v-if="rsvpError" class="text-accent">Please let us know if you can make the event</div>
+                </form>
             </div>
-            <button class="mt-10 font-greatvibes text-[30px]" type="submit">Submit</button>
-        </form>
-        <div v-if="rsvpError" class="text-[#333]">Please let us know if you can make the event</div>
-        <div v-else-if="submitSuccess" class="text-[#333]">Thank you for your response.</div>
+            <div class="back font-greatvibes text-[30px] text-center">Your response has been noted. <br /> Thank you.
+            </div>
+
+        </div>
     </div>
+
 </template>
 
 <script setup lang="ts">
 const rsvpOptions = [
-    { label: 'Accept', value: 'true' },
-    { label: 'Regretfully Decline', value: 'false' }
+    { label: 'Accept', value: true },
+    { label: 'Regretfully Decline', value: false }
 ];
 const props = defineProps<{
     guestInfo: GuestInfo;
 }>()
-const handleChange = () => {
-    console.log('Radio button clicked! Current selection:', props.guestInfo.rsvpOption)
-}
-const submitSuccess = ref(false);
-const { updateGuestRsvp } = useFirebase();
+const { updateGuestRsvp, checkUserSubmission, userHasSubmitted } = useFirebase();
 const rsvpError = ref(false);
 const submitGuestInfo = async () => {
     try {
         if (!props.guestInfo.rsvpOption) {
+            console.log("rsvp error", rsvpError)
             rsvpError.value = true;
             return;
         }
-        await updateGuestRsvp(props.guestInfo);
-        submitSuccess.value = true;
+        // await updateGuestRsvp(props.guestInfo);
+        document.getElementById("card")?.classList.add("rotate");
     } catch (error) {
         rsvpError.value = true;
         console.error(error);
     }
 }
+onMounted(() => {
+    checkUserSubmission()
+})
 </script>
 <style scoped>
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+}
+
+.card {
+    position: relative;
+    transition: all 1s linear;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.front {
+    background: #FDF6ED;
+    z-index: 2;
+    backface-visibility: hidden;
+}
+
+.back {
+    background: #FDF6ED;
+    z-index: 1;
+    transform: rotateY(180deg);
+}
+
+.rotate {
+    transform: rotateY(180deg);
+}
+
+.container {
+    perspective: 1000px;
+}
+
 label {
     margin-bottom: 0.5rem;
 }
 
 .custom-label {
-    color: #333;
     cursor: pointer;
 }
 

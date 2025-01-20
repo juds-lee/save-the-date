@@ -2,7 +2,7 @@ interface GuestInfo {
   name: string;
   email: string;
   allergies: string;
-  rsvpOption: string;
+  rsvpOption: boolean;
   guestUuid: string;
   hasPlusOne: boolean;
   secondaryGuest: secondaryGuest;
@@ -10,5 +10,5 @@ interface GuestInfo {
 interface secondaryGuest {
   secondaryName: string;
   secondaryAllergies: string;
-  secondaryRsvpOption: string;
+  secondaryRsvpOption: boolean;
 }
