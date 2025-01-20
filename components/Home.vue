@@ -4,10 +4,8 @@
             @close="closeModal" />
         <div
             class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between mt-[100px] px-20">
-            <h1 class="flex items-center text-[65px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
-                <br />are
-                tying
-                the knot!
+            <h1 class="flex items-center text-[75px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
+
             </h1>
             <div class="hero-container h-[70vh]">
                 <div class="hero-image" />

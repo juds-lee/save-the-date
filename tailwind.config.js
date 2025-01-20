@@ -22,7 +22,7 @@ module.exports = {
      colors: {
       'bg':"#FDF6ED",
       'main': "#D69B43",
-      'accent': "#362917"
+      'accent': "#411900"
      },
      fontFamily: {
       'greatvibes': ['greatvibes' ]

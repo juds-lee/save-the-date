@@ -11,7 +11,7 @@
                     FAQ
                 </NuxtLink>
             </span>
-            <NuxtLink class="text-main px-7 border rounded" to="/rsvp">RSVP</NuxtLink>
+            <NuxtLink class="nav-rsvp-button" to="/rsvp">RSVP</NuxtLink>
         </ul>
 
     </nav>

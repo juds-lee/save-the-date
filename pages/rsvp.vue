@@ -1,5 +1,5 @@
 <template>
-    <div class="px-20 max-w-[1200px] mx-auto" v-show="guestCanAccess && name">
+    <div class="px-20 lg:max-w-[1500px] mx-auto" v-show="guestCanAccess && name">
         <div class="flex flex-col lg:flex-row items-center">
             <img src="../assets/svg/flower-1.svg" class="w-[500px]" />
             <div>
@@ -7,14 +7,16 @@
                     `${guestInfo.name} and
                     ${guestInfo.secondaryGuest.secondaryName}` :
                     guestInfo.name
-                    }}, we would love for you to join us in our celebrations.
+                    }},
                 </p>
-                <p> Please rsvp no later than May 20 2025</p>
+                <p> we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
             </div>
         </div>
-
         <div class="form-container">
-            <RsvpForm :guestInfo="guestInfo" />
+            <div v-if="userHasSubmitted">
+                <p class="font-greatvibes text-main">Your response has been submitted.</p>
+            </div>
+            <RsvpForm v-else :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
             <NuxtImg
                 src="https://res.cloudinary.com/djatkco6m/image/upload/v1736097763/EE072B49-3841-4F3E-91BD-5D18EF2131EA_fgvydh.jpg"
                 class="elevator-image" />
@@ -52,13 +54,18 @@ const searchGuestWithName = async () => {
         isLoading.value = false;
     }
 }
+const userHasSubmitted = useState(() => false);
+const isNowSubmitted = ref(false);
+const handleSubmissionTransition = () => {
+    isNowSubmitted.value = true
+}
 const { name, uuid } = storeToRefs(useUserStore());
 const credsCookie = useCookie('creds')
 credsCookie.value = uuid.value;
 const { guestCanAccess } = useVerificationCheck();
-console.log(guestCanAccess.value, name.value)
 onMounted(() => {
     searchGuestWithName();
+    console.log(userHasSubmitted.value)
 })
 </script>
 <style lang="postcss" scoped>
