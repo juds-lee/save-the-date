@@ -7,8 +7,11 @@
             <h1 class="flex items-center text-[75px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
 
             </h1>
-            <div class="hero-container h-[70vh]">
-                <div class="hero-image" />
+            <div class="hero-container h-[75vh]">
+                <!-- <div class="hero-image" /> -->
+                <NuxtImg
+                    src="https://res.cloudinary.com/djatkco6m/image/upload/v1736097763/EE072B49-3841-4F3E-91BD-5D18EF2131EA_fgvydh.jpg"
+                    class="elevator-image" />
             </div>
         </div>
         <ScheduleInfo />
@@ -82,7 +85,7 @@ button {
 }
 
 .hero-image {
-    background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-1/v1727984209/DSC04460_2_fqkuyj.jpg");
+    /* background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-1/v1727984209/DSC04460_2_fqkuyj.jpg"); */
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -96,6 +99,15 @@ button {
     @media screen and (max-width: 737px) {
         width: 100%;
     }
+}
 
+.elevator-image {
+    width: 100%;
+    margin-top: 24px;
+    max-width: 600px;
+
+    @media screen and (min-width: 1200px) {
+        margin-top: 24px;
+    }
 }
 </style>

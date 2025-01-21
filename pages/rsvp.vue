@@ -1,5 +1,5 @@
 <template>
-    <div class="px-20 lg:max-w-[1500px] mx-auto" v-show="guestCanAccess && name">
+    <div class="px-20 lg:max-w-[1500px] mx-auto pb-10" v-show="guestCanAccess && name">
         <div class="flex flex-col lg:flex-row items-center">
             <img src="../assets/svg/flower-1.svg" class="w-[500px]" />
             <div>
@@ -17,9 +17,10 @@
                 <p class="font-greatvibes text-main">Your response has been submitted.</p>
             </div>
             <RsvpForm v-else :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
-            <NuxtImg
+            <div class="hero-image" />
+            <!-- <NuxtImg
                 src="https://res.cloudinary.com/djatkco6m/image/upload/v1736097763/EE072B49-3841-4F3E-91BD-5D18EF2131EA_fgvydh.jpg"
-                class="elevator-image" />
+                class="elevator-image" /> -->
         </div>
     </div>
     <div v-show="!(guestCanAccess && name)">
@@ -93,5 +94,24 @@ onMounted(() => {
     @media screen and (min-width: 1200px) {
         margin-top: 24px;
     }
+}
+
+.hero-image {
+    background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-1/v1727984209/DSC04460_2_fqkuyj.jpg");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 500px;
+
+    @media screen and (min-width: 700px) {
+        height: 700px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        height: 700px;
+    }
+
+    ;
 }
 </style>

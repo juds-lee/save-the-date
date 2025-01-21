@@ -28,7 +28,7 @@ export default function useFirebase() {
         return (userHasSubmitted.value = true);
       }
     }
-    return (userHasSubmitted.value = true);
+    return (userHasSubmitted.value = false);
   };
   return { updateGuestRsvp, sendGuestInfo, checkUserSubmission, userHasSubmitted };
 }
