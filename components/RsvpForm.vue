@@ -1,7 +1,9 @@
 <template>
-    <div class="container">
-        <div class="rounded-lg shadow-lg text-accent card" id="card"
-            :class="guestInfo.hasPlusOne ? 'w-[250px] h-[340px]' : 'w-[450px] h-[340px]'">
+    <div class="card-container lg:container">
+        <div class="rounded-lg shadow-lg text-accent card" id="card" :class="[
+            { rotate: userHasSubmitted.value },
+            guestInfo.hasPlusOne ? 'w-[250px] h-[340px]' : 'w-[450px] h-[340px]'
+        ]">
             <div class=" front">
                 <form @submit.prevent="submitGuestInfo">
                     <p class="font-greatvibes text-[30px]">{{ guestInfo.name }}</p>
@@ -58,7 +60,9 @@
                     <div v-if="rsvpError" class="text-accent">Please let us know if you can make the event</div>
                 </form>
             </div>
-            <div class="back font-greatvibes text-[30px] text-center">Your response has been noted. <br /> Thank you.
+            <div class="back font-greatvibes text-[30px] text-center">Your response
+                has been
+                noted. <br /> Thank you.
             </div>
 
         </div>
@@ -78,13 +82,15 @@ const { updateGuestRsvp, checkUserSubmission, userHasSubmitted } = useFirebase()
 const rsvpError = ref(false);
 const submitGuestInfo = async () => {
     try {
-        if (!props.guestInfo.rsvpOption) {
-            console.log("rsvp error", rsvpError)
-            rsvpError.value = true;
-            return;
-        }
+        // if (!props.guestInfo.rsvpOption) {
+        //     console.log("rsvp error", rsvpError)
+        //     rsvpError.value = true;
+        //     return;
+        // }
         // await updateGuestRsvp(props.guestInfo);
-        document.getElementById("card")?.classList.add("rotate");
+        setTimeout(() => {
+            document.getElementById("card")?.classList.add("rotate");
+        }, 500);
     } catch (error) {
         rsvpError.value = true;
         console.error(error);
@@ -92,17 +98,10 @@ const submitGuestInfo = async () => {
 }
 onMounted(() => {
     checkUserSubmission()
+    console.log("userHasSubmitted", userHasSubmitted.value)
 })
 </script>
 <style scoped>
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #222;
-}
-
 .card {
     position: relative;
     transition: all 1s linear;
