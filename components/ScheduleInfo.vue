@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-grey px-20 flex flex-col lg:flex-row items-center lg:items-end justify-between">
+    <div class="px-10 rsvp-sm:px-20 flex flex-col lg:flex-row items-center lg:items-end justify-between">
         <img src="../assets/svg/flower-2.svg" alt="heart" class="flower-asset" />
         <div
             class="flex flex-col items-center lg:items-start justify-center w-full max-w-[550px] lg:max-w-[700px] pb-[70px]">
@@ -11,12 +11,12 @@
             </span>
         </div>
     </div>
-    <div class="mt-12 px-20 text-accent">
+    <div class="mt-12 px-10 rsvp-sm:px-20 text-accent">
         <div class="grid lg:grid-cols-2 text-white">
             <div class="flex items-end">
                 <h3 class="text-[60px] font-greatvibes">Schedule</h3>
             </div>
-            <div class="block lg:flex items-end mb-5">
+            <div class="block lg:flex items-end mb-5 font-semibold">
                 All events will take place at
                 <span>
                     <NuxtLink to="faq" class="ml-[3px]">The Toronto Golf Club.
@@ -25,12 +25,12 @@
             </div>
         </div>
         <hr class="pb-10">
-        <div class="grid grid-cols-2 pb-8 text-white " v-for="(event, i) in eventItem">
+        <div class="grid grid-cols-2 pb-8 text-white font-semibold" v-for="(event, i) in eventItem">
             <div>{{ event.time }}</div>
             <div> {{ event.title }}</div>
         </div>
     </div>
-    <div class=" bg-grey px-6 flex flex-col lg:flex-row items-center justify-around">
+    <div class="px-6 flex flex-col lg:flex-row items-center justify-around">
         <img src="../assets/svg/flower-3.svg" alt="flower image" class="flower-rsvp-asset" />
         <div class="flex flex-col-reverse lg:flex-col">
             <div>
@@ -40,7 +40,7 @@
                     countdown
                     begin</p>
                 <p
-                    class="max-w-[750px] text-[20px] lg:text-[25px] text-accent text-center lg:text-left text-balance pb-12">
+                    class="max-w-[750px] text-[20px] lg:text-[20px] text-accent text-center lg:text-left text-balance pb-12">
                     We hope you
                     can make it, it would be a delight to have you there.</p>
             </div>
@@ -105,21 +105,19 @@ const eventItem = ref([
     height: 500px;
 
     @media screen and (min-width: 450px) {
-        max-height: 800px;
-        height: 700px;
+        max-height: 600px;
+        height: 600px;
     }
 }
 
 .flower-asset {
     width: 100%;
-    max-width: 300px;
+    width: 500px;
 
     @media screen and (min-width: 450px) {
-        max-width: 500px;
-    }
-
-    @media screen and (min-width: 1024px) {
+        width: 600px;
         max-width: 600px;
     }
+
 }
 </style>

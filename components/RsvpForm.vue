@@ -1,8 +1,8 @@
 <template>
-    <div class="card-container lg:container">
+    <div class="card-container xl:container">
         <div class="rounded-lg shadow-lg text-accent card" id="card" :class="[
             { rotate: userHasSubmitted.value },
-            guestInfo.hasPlusOne ? 'w-[250px] h-[340px]' : 'w-[450px] h-[340px]'
+            getDimensions
         ]">
             <div class=" front">
                 <form @submit.prevent="submitGuestInfo">
@@ -96,6 +96,15 @@ const submitGuestInfo = async () => {
         console.error(error);
     }
 }
+const getDimensions = computed(() => {
+    if (!props.guestInfo.hasPlusOne) {
+        return 'w-[350px] h-[340px] md:w-[450px] md:h-[340px]'
+    }
+    return {
+        'w-[450px] h-[340px]': !props.guestInfo.hasPlusOne,
+        'w-[350px] h-[340px]': props.guestInfo.hasPlusOne,
+    }
+})
 onMounted(() => {
     checkUserSubmission()
     console.log("userHasSubmitted", userHasSubmitted.value)

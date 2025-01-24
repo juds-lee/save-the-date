@@ -1,5 +1,5 @@
 <template>
-    <div class="px-20 lg:max-w-[1500px] mx-auto pb-10" v-show="guestCanAccess && name">
+    <div class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto pb-10 bg-bg" v-show="guestCanAccess && name">
         <div class="flex flex-col lg:flex-row items-center">
             <img src="../assets/svg/flower-1.svg" class="w-[500px]" />
             <div>
@@ -24,14 +24,13 @@
         </div>
     </div>
     <div v-show="!(guestCanAccess && name)">
-        <h1 class="max-w-[700px] mx-auto">Please log in using the secret passcode or by clicking the link in your email
-            invitation to access this
-            page</h1>
+        <h1 class="max-w-[700px] mx-auto font-semibold">Please RSVP by clicking the link in your email
+            invitation</h1>
     </div>
 </template>
 <script setup lang="ts">
 import { db } from "../services/firebaseclient";
-import { doc, getDocs, collection, query, where, updateDoc } from "firebase/firestore";
+import { getDocs, collection, query, where, } from "firebase/firestore";
 const isLoading = ref(false);
 let searchUuid = "";
 let guestName = ref("")
@@ -86,16 +85,6 @@ onMounted(() => {
     }
 }
 
-.elevator-image {
-    width: 100%;
-    margin-top: 24px;
-    max-width: 600px;
-
-    @media screen and (min-width: 1200px) {
-        margin-top: 24px;
-    }
-}
-
 .hero-image {
     background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-1/v1727984209/DSC04460_2_fqkuyj.jpg");
     background-size: cover;
@@ -103,6 +92,11 @@ onMounted(() => {
     background-repeat: no-repeat;
     width: 100%;
     height: 500px;
+    margin-top: 20px;
+
+    @media screen and (min-width: 415px) {
+        height: 400px;
+    }
 
     @media screen and (min-width: 700px) {
         height: 700px;
