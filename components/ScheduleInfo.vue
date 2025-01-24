@@ -16,7 +16,7 @@
             <div class="flex items-end">
                 <h3 class="text-[60px] font-greatvibes">Schedule</h3>
             </div>
-            <div class="block lg:flex items-end mb-5">
+            <div class="block lg:flex items-end mb-5 font-semibold">
                 All events will take place at
                 <span>
                     <NuxtLink to="faq" class="ml-[3px]">The Toronto Golf Club.
@@ -25,7 +25,7 @@
             </div>
         </div>
         <hr class="pb-10">
-        <div class="grid grid-cols-2 pb-8 text-white " v-for="(event, i) in eventItem">
+        <div class="grid grid-cols-2 pb-8 text-white font-semibold" v-for="(event, i) in eventItem">
             <div>{{ event.time }}</div>
             <div> {{ event.title }}</div>
         </div>
@@ -105,21 +105,19 @@ const eventItem = ref([
     height: 500px;
 
     @media screen and (min-width: 450px) {
-        max-height: 800px;
-        height: 700px;
+        max-height: 600px;
+        height: 600px;
     }
 }
 
 .flower-asset {
     width: 100%;
-    max-width: 300px;
+    width: 500px;
 
     @media screen and (min-width: 450px) {
-        max-width: 500px;
-    }
-
-    @media screen and (min-width: 1024px) {
+        width: 600px;
         max-width: 600px;
     }
+
 }
 </style>
