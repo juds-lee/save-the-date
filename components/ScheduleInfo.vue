@@ -1,18 +1,18 @@
 <template>
     <div
-        class="px-10 rsvp-sm:px-20 flex flex-col lg:flex-row items-center lg:items-end justify-between mt-[50px] mb-[50px]">
+        class="px-10 rsvp-sm:px-20 flex flex-col lg:flex-row items-center lg:items-end justify-center mt-[150px] mb-[50px]">
         <img src="../assets/svg/flower-2.svg" alt="heart" class="flower-asset" />
         <div
-            class="flex flex-col items-center lg:items-start justify-center w-full max-w-[550px] lg:max-w-[700px] pb-[70px]">
-            <h2 class="text-[50px] text-center lg:text-left text-balance font-greatvibes">
+            class="flex flex-col items-center lg:items-start justify-center w-full max-w-[500px] lg:max-w-[500px] pb-[70px]">
+            <h2 class="text-[40px] text-center lg:text-left text-balance font-greatvibes">
                 We’re getting married! We welcome you to join us for a celebration
             </h2>
-            <span class="date-title font-greatvibes text-accent">
+            <span class="date-title font-greatvibes text-accent text-[80px] ">
                 9.20.2025
             </span>
         </div>
     </div>
-    <div class="mt-12 px-10 rsvp-sm:px-20 text-accent">
+    <!-- <div class="mt-12 px-10 rsvp-sm:px-20 text-accent">
         <div class="grid lg:grid-cols-2 text-white">
             <div class="flex items-end">
                 <h3 class="text-[60px] font-greatvibes">Schedule</h3>
@@ -26,14 +26,18 @@
             </div>
         </div>
         <hr class="pb-10">
-        <div class="grid grid-cols-2 pb-8 text-white font-semibold" v-for="(event, i) in eventItem">
+        <div v-for="(event, i) in eventItem" class="grid  grid-cols-2 font-semibold">
             <div>{{ event.time }}</div>
-            <div> {{ event.title }}</div>
+            <div>{{ event.title }}</div>
         </div>
-    </div>
-    <div class="px-6 flex flex-col lg:flex-row items-center justify-around">
-        <img src="../assets/svg/flower-3.svg" alt="flower image" class="flower-rsvp-asset" />
-        <div class="flex flex-col-reverse lg:flex-col">
+        <div class="grid grid-cols-2 pb-8 text-white font-semibold" v-for="(event, i) in eventItem">
+            <div class="max-w-[550px]">{{ event.time }}</div>
+            <div class="max-w-[550px]"> {{ event.title }}</div>
+        </div>
+    </div> -->
+    <div class=" flex flex-col lg:flex-row items-center justify-center">
+        <img src="../assets/svg/flower-3.svg" alt="flower image" class="flower-rsvp-asset  max-w-[550px]" />
+        <div class="flex flex-col-reverse lg:flex-col max-w-[550px] w-[550px]">
             <div>
                 <p
                     class="mt-12 text-[50px] text-main lg:text-[60px] text-center lg:text-left text-balance font-greatvibes">
@@ -89,7 +93,7 @@ const eventItem = ref([
     }
 }
 
-.date-title {
+/* .date-title {
     font-size: 35px;
 
     @media screen and (min-width: 700px) {
@@ -99,25 +103,27 @@ const eventItem = ref([
     @media screen and (min-width: 1024px) {
         font-size: 50px
     }
-}
+} */
 
 .flower-rsvp-asset {
-    max-height: 600px;
     height: 500px;
+    max-width: 500px;
+    width: 500px;
 
     @media screen and (min-width: 450px) {
-        max-height: 600px;
-        height: 600px;
+        max-width: 400px;
+        width: 400px;
     }
 }
 
 .flower-asset {
-    width: 100%;
+    height: auto;
+    max-width: 500px;
     width: 500px;
 
     @media screen and (min-width: 450px) {
-        width: 600px;
-        max-width: 600px;
+        max-width: 400px;
+        width: 550px;
     }
 
 }

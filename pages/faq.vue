@@ -1,5 +1,5 @@
 <template>
-    <div class="px-10 rsvp-sm:px-20 max-w-[1500px] flex flex-col mx-auto text-center">
+    <div class="px-10 rsvp-sm:px-20 max-w-[1500px] flex flex-col mx-auto text-center mt-[93px]">
         <h1 class="font-greatvibes text-[50px] lg:text-[100px]">Important Information</h1>
         <div class=" flex justify-center items-center">
             <NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727983013/DSC04426_2_io6dfc.jpg"

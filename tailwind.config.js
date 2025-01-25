@@ -12,7 +12,7 @@ module.exports = {
     extend: {},
      screens: {
       'sm': '450px',
-      'rsvp-sm': '615px',
+      'rsvp-sm': '675px',
       // => @media (min-width: 640px) { ... }
       'md': '700px',
       // => @media (min-width: 768px) { ... }

@@ -1,12 +1,21 @@
 <template>
-    <div class="card-container xl:container">
-        <div class="rounded-lg shadow-lg text-accent card" id="card" :class="[
+    <div class="container flex justify-center items-center gap-4">
+        <div class="text-accent card" id="card" :class="[
             { rotate: userHasSubmitted.value },
             getDimensions
         ]">
-            <div class=" front">
+            <div class="front flex flex-col px-5 py-4 rounded-lg shadow-lg">
+                <div class="mb-5">
+                    <p class="font-greatvibes text-[40px] text-main max-w-[700px]">Dear {{ guestInfo.hasPlusOne ?
+                        `${guestInfo.name} and
+                        ${guestInfo.secondaryGuest.secondaryName}` :
+                        guestInfo.name
+                        }},
+                    </p>
+                    <p> we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
+                </div>
                 <form @submit.prevent="submitGuestInfo">
-                    <p class="font-greatvibes text-[30px]">{{ guestInfo.name }}</p>
+                    <p class="font-greatvibes text-[30px]" v-if="guestInfo.hasPlusOne">{{ guestInfo.name }}</p>
                     <div class="flex flex-col items-start space-y-2">
                         <div v-for="(option, index) in rsvpOptions" :key="index"
                             class="flex justify-between w-full items-center">
@@ -24,7 +33,6 @@
                                 </svg>
                             </div>
                         </div>
-
                         <div class="custom-label styled-input">
                             Dietary Restrictions:
                             <input type="text" id="allergies" v-model="guestInfo.allergies" />
@@ -32,14 +40,13 @@
                     </div>
                     <div v-if="guestInfo.hasPlusOne" class="mt-10">
                         <p class="font-greatvibes text-[30px]"> {{ guestInfo.secondaryGuest.secondaryName }}</p>
-
                         <div v-for="(option, index) in rsvpOptions" :key="'secondary' + index"
                             class="flex justify-between w-full items-center">
                             <label :for="'secondaryRsvp' + index" class="custom-label">{{ option.label }}</label>
                             <div class="relative">
                                 <input type="radio" :id="'secondaryRsvp' + index" :name="'secondaryRsvp'"
                                     :value="option.value" v-model="guestInfo.secondaryGuest.secondaryRsvpOption"
-                                    @change="handleChange" class="custom-radio" />
+                                    class="custom-radio" />
                                 <svg v-if="guestInfo.secondaryGuest.secondaryRsvpOption === option.value"
                                     class="nought absolute top-[-17px] left-[-18px]" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 32.02 40.6">
@@ -60,7 +67,8 @@
                     <div v-if="rsvpError" class="text-accent">Please let us know if you can make the event</div>
                 </form>
             </div>
-            <div class="back font-greatvibes text-[30px] text-center">Your response
+            <div class="back font-greatvibes text-[30px] text-center items-center justify-center rounded-lg shadow-lg">
+                Your response
                 has been
                 noted. <br /> Thank you.
             </div>
@@ -98,10 +106,9 @@ const submitGuestInfo = async () => {
 }
 const getDimensions = computed(() => {
     if (!props.guestInfo.hasPlusOne) {
-        return 'w-[350px] h-[340px] md:w-[450px] md:h-[340px]'
+        return 'w-[400px] h-[400px] rsvp-sm:w-[500px] mb-[20px]'
     }
     return {
-        'w-[450px] h-[340px]': !props.guestInfo.hasPlusOne,
         'w-[350px] h-[340px]': props.guestInfo.hasPlusOne,
     }
 })
@@ -120,10 +127,7 @@ onMounted(() => {
 .front,
 .back {
     height: 100%;
-    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
 }
 
