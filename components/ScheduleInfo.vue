@@ -1,5 +1,6 @@
 <template>
-    <div class="px-10 rsvp-sm:px-20 flex flex-col lg:flex-row items-center lg:items-end justify-between">
+    <div
+        class="px-10 rsvp-sm:px-20 flex flex-col lg:flex-row items-center lg:items-end justify-between mt-[50px] mb-[50px]">
         <img src="../assets/svg/flower-2.svg" alt="heart" class="flower-asset" />
         <div
             class="flex flex-col items-center lg:items-start justify-center w-full max-w-[550px] lg:max-w-[700px] pb-[70px]">
