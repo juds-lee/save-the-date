@@ -9,10 +9,10 @@
             <div class="hero-image shadow-lg" />
         </div>
     </div>
-    <div v-show="!(guestCanAccess && name)">
-        <h1 class="max-w-[700px] mx-auto font-semibold">Please RSVP by clicking the link in your email
+    <!-- <div v-show="!(guestCanAccess && name)">
+        <h1 class="max-w-[700px] mx-auto mt-[3px] font-semibold">Please RSVP by clicking the link in your email
             invitation</h1>
-    </div>
+    </div> -->
 </template>
 <script setup lang="ts">
 import { db } from "../services/firebaseclient";

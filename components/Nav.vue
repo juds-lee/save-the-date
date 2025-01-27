@@ -1,46 +1,40 @@
 <template>
-    <nav class="fixed top-0 left-0 w-full py-6 px-10 bg-bg">
-        <ul class="w-full flex flex-row justify-between items-center">
-            <NuxtLink to="/" class="text-accent font-greatvibes text-[30px]">J&D</NuxtLink>
-            <span class="flex flex-row justify-center space-x-6">
-                <NuxtLink class="text-accent sides-4 page" to="/" :class="{ 'active-page': route.path === '/' }">
-                    Schedule
+    <nav class="sticky top-0 w-full z-50 bg-rsvp-cream px-10 text-main">
+        <div class="flex justify-between items-center p-4 max-w-[1200px] mx-auto border-b border-[#E2DED7]">
+            <NuxtLink to="/" class="flex font-plantagenet-cherokee text-[28px]">J&D</NuxtLink>
+            <span class="flex flex-row justify-center items-center space-x-8">
+                <NuxtLink class="font-dm-sans sides-4 page text-[16px]" to="/"
+                    :class="{ 'active-page': route.path === '/' }">
+                    When and Where
                 </NuxtLink>
-                <NuxtLink class="text-accent sides-4 page" to="/faq" :class="{ 'active-page': route.path === '/faq' }">
-                    FAQ
+                <NuxtLink class="font-dm-sans text-accent sides-4 page" to="/faq"
+                    :class="{ 'active-page': route.path === '/faq' }">
+                    Details
                 </NuxtLink>
+                <NuxtLink class="nav-rsvp-button" to="/rsvp">RSVP</NuxtLink>
             </span>
-            <NuxtLink class="nav-rsvp-button" to="/rsvp">RSVP</NuxtLink>
-        </ul>
-
+        </div>
     </nav>
 </template>
 <script setup lang="ts">
 const route = useRoute()
 </script>
 <style lang="css" scoped>
-/* .underline-offset-4 {
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-} */
-
 .page {
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.15em;
-    display: inline-block;
-    position: relative;
+    color: #2B2B2B;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
 }
 
 .page::after {
     content: "";
-    position: absolute;
     bottom: 0;
     display: block;
     background: none repeat scroll 0 0 transparent;
     height: 2px;
     width: 0;
-    background: #411900;
+    background: #2B2B2B;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 

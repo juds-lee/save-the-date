@@ -1,21 +1,30 @@
 <template>
-    <div :class="{ 'no-scroll': modalOverlay }">
+    <div :class="{ 'no-scroll': modalOverlay }" class="">
         <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
             @close="closeModal" />
-        <div
-            class="h-[70vh] w-full flex flex-col lg:flex-row mx-auto items-center justify-around lg:justify-between px-10 rsvp-sm:px-20 gap-2 mt-[150px]">
-            <h1 class="flex items-center text-[75px] text-white max-w-[500px] font-greatvibes">Judy & Duncan
-            </h1>
-
-            <NuxtImg
-                src="https://res.cloudinary.com/djatkco6m/image/upload/v1736097763/EE072B49-3841-4F3E-91BD-5D18EF2131EA_fgvydh.jpg"
-                class="elevator-image" />
-
+        <div class=" mx-auto px-10 mt-10 max-w-[1500px] mb-[160px]">
+            <p class="font-plantagenet-cherokee text-[#717171] text-center text-[24px]">September 20, 2025 • The Toronto
+                Golf Club
+            </p>
+            <p class="font-plantagenet-cherokee text-main text-[100px] text-center">Judy & Duncan</p>
+            <div class="relative">
+                <NuxtImg
+                    src="https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
+                    class="hero-left-image" />
+                <NuxtImg
+                    src="https://res.cloudinary.com/djatkco6m/image/upload/c_crop,w_4093,h_5894,x_0,y_244/v1738010139/IMG_8478_zfvh65.jpg"
+                    class="hero-main-image" />
+                <NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727983013/DSC04426_2_io6dfc.jpg"
+                    class="hero-right-image" />
+                <img src="../assets/svg/save-the-date.svg" class="save-the-date-label" />
+            </div>
         </div>
+
         <ScheduleInfo />
     </div>
 </template>
 <script setup>
+
 const { guestCanAccess } = useVerificationCheck();
 const scroll = ref(false);
 const modalOverlay = ref(false);
@@ -59,53 +68,34 @@ definePageMeta({
     height: 100vh;
 }
 
-h1 {
-    font-size: 15px;
-    text-align: center;
-}
-
-li,
-button {
-    cursor: pointer;
-    font-family: "Jacques Francois", serif;
-}
-
-.rsvp {
-    list-style-type: none;
-}
-
-.active {
-    background-color: green;
-}
-
-.disabled {
-    background-color: red;
-}
-
-.hero-image {
-    /* background-image: url("https://res.cloudinary.com/djatkco6m/image/upload/t_jd-1/v1727984209/DSC04460_2_fqkuyj.jpg"); */
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
+.hero-main-image {
     width: 100%;
-    height: 100%;
-}
-
-.hero-container {
-    width: 700px;
-
-    @media screen and (max-width: 737px) {
-        width: 100%;
-    }
-}
-
-.elevator-image {
-    width: 100%;
-    margin-top: 24px;
-    max-width: 600px;
+    margin: auto;
+    max-width: 450px;
 
     @media screen and (min-width: 1200px) {
-        margin-top: 24px;
+        max-width: 450px;
     }
+}
+
+.hero-left-image {
+    width: 310px;
+    position: absolute;
+    left: 85px;
+    bottom: -30px;
+}
+
+.hero-right-image {
+    width: 405px;
+    position: absolute;
+    right: -10px;
+    top: 100px
+}
+
+.save-the-date-label {
+    position: absolute;
+    right: 260px;
+    top: 10px;
+
 }
 </style>
