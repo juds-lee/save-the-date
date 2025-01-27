@@ -13,20 +13,18 @@ module.exports = {
      screens: {
       'sm': '450px',
       'rsvp-sm': '675px',
-      // => @media (min-width: 640px) { ... }
       'md': '700px',
-      // => @media (min-width: 768px) { ... }
       'lg': '1024px',
       'xl': '1200px',
-      // => @media (min-width: 1024px) { ... }
     },
      colors: {
-      'bg':"#FDF6ED",
-      'main': "#D69B43",
-      'accent': "#411900"
+      'rsvp-cream':"#F6F0E7",
+      'rsvp-green': "#768777",
+      'main': "#2B2B2B",
      },
      fontFamily: {
-      'greatvibes': ['greatvibes' ]
+      'plantagenet-cherokee': ['plantagenet-cherokee' ],
+      'dm-sans': ['DMSans-Regular'],
    }
   },
   plugins: [],

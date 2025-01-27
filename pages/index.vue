@@ -1,5 +1,5 @@
 <template>
-	<Home class="max-w-[1500px] mx-auto border-sky-100" />
+	<Home class="" />
 </template>
 <script setup>
 definePageMeta({
@@ -12,6 +12,6 @@ const { guestCanAccess } = useVerificationCheck();
 </script>
 <style>
 body {
-	background-color: #FDF6ED
+	background-color: #F6F0E7
 }
 </style>

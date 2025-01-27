@@ -1,4 +1,9 @@
 @font-face {
-  font-family: "greatvibes";
-  src: url("../fonts/GreatVibes-Regular.ttf") format("truetype");
+  font-family: "plantagenet-cherokee";
+  src: url("../fonts/plantagenet-cherokee.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DMSans-Regular";
+  src: url("../fonts/DMSans-Regular.ttf") format("truetype");
 }

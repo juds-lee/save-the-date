@@ -1,5 +1,5 @@
 <template>
-  <div class="px-5 bg-white">
+  <div class="px-5 bg-white mt-[93px]">
     <h1 class="py-5 font-bold">Dashboard</h1>
     <div class="flex flex-row justify-between gap-5">
       <div class="border w-full">

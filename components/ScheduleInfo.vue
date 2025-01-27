@@ -1,64 +1,34 @@
 <template>
-    <div
-        class="px-10 rsvp-sm:px-20 flex flex-col lg:flex-row items-center lg:items-end justify-center mt-[150px] mb-[50px]">
-        <img src="../assets/svg/flower-2.svg" alt="heart" class="flower-asset" />
-        <div
-            class="flex flex-col items-center lg:items-start justify-center w-full max-w-[500px] lg:max-w-[500px] pb-[70px]">
-            <h2 class="text-[40px] text-center lg:text-left text-balance font-greatvibes">
-                We’re getting married! We welcome you to join us for a celebration
-            </h2>
-            <span class="date-title font-greatvibes text-accent text-[80px] ">
-                9.20.2025
-            </span>
-        </div>
-    </div>
-    <!-- <div class="mt-12 px-10 rsvp-sm:px-20 text-accent">
-        <div class="grid lg:grid-cols-2 text-white">
-            <div class="flex items-end">
-                <h3 class="text-[60px] font-greatvibes">Schedule</h3>
+    <div class="bg-rsvp-green py-[160px]">
+        <div class="max-w-[800px] mx-auto">
+            <p class="font-plantagenet-cherokee text-rsvp-cream text-center text-[58px]">Our Wedding Day</p>
+            <div class="flex flex-row text-rsvp-cream justify-center items-center mt-[56px] pb-[68px]">
+                <div class="text-center gap-4 w-[384px]">
+                    <p class="uppercase text-[20px]">When</p>
+                    <p class="text-[32px] font-plantagenet-cherokee">September 20, 2025</p>
+                </div>
+                <div class="vertical-line" />
+                <div class="w-[384px] text-center gap-4">
+                    <p class="uppercase text-[20px] ">Where</p>
+                    <a href="https://maps.app.goo.gl/HZjthrFKdfAryhi79" target="_blank" rel="noopener noreferrer"
+                        class="text-[32px] font-plantagenet-cherokee link">Toronto Golf Club</a>
+                </div>
             </div>
-            <div class="block lg:flex items-end mb-5 font-semibold">
-                All events will take place at
-                <span>
-                    <NuxtLink to="faq" class="ml-[3px]">The Toronto Golf Club.
-                    </NuxtLink>
-                </span>
+            <div v-for="(item, index) in eventItem" :key="index"
+                class="flex flex-col text-rsvp-cream font-plantagenet-cherokee text-[32px]">
+                <div class="flex flex-row justify-between w-full py-[48px]">
+                    <p>{{ item.time }}</p>
+                    <p>{{ item.title }}</p>
+                </div>
+                <div class="w-full h-[1px] text-[#768777] horizontal-line" />
             </div>
-        </div>
-        <hr class="pb-10">
-        <div v-for="(event, i) in eventItem" class="grid  grid-cols-2 font-semibold">
-            <div>{{ event.time }}</div>
-            <div>{{ event.title }}</div>
-        </div>
-        <div class="grid grid-cols-2 pb-8 text-white font-semibold" v-for="(event, i) in eventItem">
-            <div class="max-w-[550px]">{{ event.time }}</div>
-            <div class="max-w-[550px]"> {{ event.title }}</div>
-        </div>
-    </div> -->
-    <div class=" flex flex-col lg:flex-row items-center justify-center">
-        <img src="../assets/svg/flower-3.svg" alt="flower image" class="flower-rsvp-asset  max-w-[550px]" />
-        <div class="flex flex-col-reverse lg:flex-col max-w-[550px] w-[550px]">
-            <div>
-                <p
-                    class="mt-12 text-[50px] text-main lg:text-[60px] text-center lg:text-left text-balance font-greatvibes">
-                    Let the
-                    countdown
-                    begin</p>
-                <p
-                    class="max-w-[750px] text-[20px] lg:text-[20px] text-accent text-center lg:text-left text-balance pb-12">
-                    We hope you
-                    can make it, it would be a delight to have you there.</p>
-            </div>
-            <NuxtLink class="main-rsvp-button text-white mx-auto lg:ml-0 rounded text-[25px]" to="/rsvp">
-                RSVP
-            </NuxtLink>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
 const eventItem = ref([
     {
-        title: "Door Open & Welcome Drinks",
+        title: "Doors Open & Welcome Drinks",
         time: "3:15 PM",
     },
     {
@@ -80,51 +50,18 @@ const eventItem = ref([
 ]);
 </script>
 <style lang="postcss" scoped>
-.sub-title {
-    font-size: 24px;
-    word-wrap: break-word;
-
-    @media screen and (min-width: 700px) {
-        font-size: 30px
-    }
-
-    @media screen and (min-width: 1024px) {
-        font-size: 40px
-    }
+.vertical-line {
+    width: 2px;
+    height: 100px;
+    background-color: #97A898;
 }
 
-/* .date-title {
-    font-size: 35px;
-
-    @media screen and (min-width: 700px) {
-        font-size: 40px
-    }
-
-    @media screen and (min-width: 1024px) {
-        font-size: 50px
-    }
-} */
-
-.flower-rsvp-asset {
-    height: 500px;
-    max-width: 500px;
-    width: 500px;
-
-    @media screen and (min-width: 450px) {
-        max-width: 400px;
-        width: 400px;
-    }
+.horizontal-line {
+    background-color: #97A898;
 }
 
-.flower-asset {
-    height: auto;
-    max-width: 500px;
-    width: 500px;
-
-    @media screen and (min-width: 450px) {
-        max-width: 400px;
-        width: 550px;
-    }
-
+.link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
 }
 </style>

@@ -67,7 +67,8 @@
                     <div v-if="rsvpError" class="text-accent">Please let us know if you can make the event</div>
                 </form>
             </div>
-            <div class="back font-greatvibes text-[30px] text-center items-center justify-center rounded-lg shadow-lg">
+            <div
+                class="back font-greatvibes text-[30px] w-[500px] text-center items-center justify-center rounded-lg shadow-lg">
                 Your response
                 has been
                 noted. <br /> Thank you.
@@ -109,7 +110,7 @@ const getDimensions = computed(() => {
         return 'w-[400px] h-[400px] rsvp-sm:w-[500px] mb-[20px]'
     }
     return {
-        'w-[350px] h-[340px]': props.guestInfo.hasPlusOne,
+        'w-[550px] h-[740px]': props.guestInfo.hasPlusOne,
     }
 })
 onMounted(() => {
@@ -132,13 +133,13 @@ onMounted(() => {
 }
 
 .front {
-    background: #FDF6ED;
+    background: #F6F0E7;
     z-index: 2;
     backface-visibility: hidden;
 }
 
 .back {
-    background: #FDF6ED;
+    background: #F6F0E7;
     z-index: 1;
     transform: rotateY(180deg);
 }
