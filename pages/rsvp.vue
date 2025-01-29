@@ -1,5 +1,5 @@
 <template>
-    <div class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto pb-10 bg-bg flex items-center justify-center min-h-screen mt-[93px]"
+    <!-- <div class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto pb-10 bg-bg flex items-center justify-center min-h-screen mt-[93px]"
         v-show="guestCanAccess && name">
         <div class="form-container">
             <div v-if="userHasSubmitted">
@@ -8,7 +8,7 @@
             <RsvpForm v-else :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
             <div class="hero-image shadow-lg" />
         </div>
-    </div>
+    </div> -->
     <!-- <div v-show="!(guestCanAccess && name)">
         <h1 class="max-w-[700px] mx-auto mt-[3px] font-semibold">Please RSVP by clicking the link in your email
             invitation</h1>

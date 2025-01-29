@@ -21,6 +21,8 @@
         </div>
 
         <ScheduleInfo />
+        <Details />
+        <Countdown />
     </div>
 </template>
 <script setup>

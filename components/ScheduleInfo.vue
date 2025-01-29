@@ -1,6 +1,6 @@
 <template>
     <div class="bg-rsvp-green py-[160px]">
-        <div class="max-w-[800px] mx-auto">
+        <div class="max-w-[792px] mx-auto px-10">
             <p class="font-plantagenet-cherokee text-rsvp-cream text-center text-[58px]">Our Wedding Day</p>
             <div class="flex flex-row text-rsvp-cream justify-center items-center mt-[56px] pb-[68px]">
                 <div class="text-center gap-4 w-[384px]">
