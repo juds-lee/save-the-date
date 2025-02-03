@@ -1,49 +1,51 @@
 .nav-rsvp-button {
   color: #F6F0E7;
-font-family: "DMSans-Regular";
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-display: flex;
-width: 96px;
-padding: 12px 16px;
-justify-content: center;
-align-items: center;
-gap: 8px;
-border-radius: 60px;
-background: #6B876D;
+  font-family: "DMSans-Regular";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: flex;
+  width: 96px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 60px;
+  background: #6B876D;
   transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  cursor: pointer;
+  border: none;
 }
 
 .nav-rsvp-button:hover {
-background: #6B876D;
-  color: #F6F0E7;
+  background: #5a705b;
+  transform: scale(0.95);
 }
 
 .nav-rsvp-button:active {
-background: #6B876D;
-  color: #F6F0E7;
-  transform: scale(0.98);
+  background: #4a5d4c;
+  transform: scale(0.9);
 }
+
 .main-rsvp-button {
-margin: auto;
-  border-radius: 4px; 
-  border: 1px solid rgb(214, 155, 67);
-  color: rgb(214, 155, 67);
-  padding: 8px 36px; 
-  background-color: transparent;
-  font-size: 16px;
-  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  background-color: #768777;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  color: #F6F0E7;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .main-rsvp-button:hover {
-  background-color: rgb(214, 155, 67);
-  color: rgb(54, 41, 23);
+  background-color: #5f6e60;
+  transform: scale(0.95);
 }
 
 .main-rsvp-button:active {
-  background-color: rgb(193, 140, 60);
-  color: rgb(54, 41, 23);
-  transform: scale(0.98);
+  background-color: #4e5c50;
+  transform: scale(0.9);
 }
