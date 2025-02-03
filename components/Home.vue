@@ -20,8 +20,8 @@
             </div>
         </div>
 
-        <ScheduleInfo />
-        <Details />
+        <ScheduleInfo id="when-and-where" />
+        <Details id="details" />
         <Countdown />
     </div>
 </template>

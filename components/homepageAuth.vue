@@ -1,16 +1,16 @@
 <template>
     <div class="overlay">
-        <div class="flex flex-col modal">
-            <button @click="handleClose">
+        <div class="flex flex-col modal relative">
+            <button @click="handleClose" class="absolute top-0 right-1 p-2">
                 X
                 <Icon name="close" />
             </button>
-            <label for="passwordInput">Please Enter the Password</label>
-            <span>
-                <input id="passwordInput" type="text" v-model="enteredPassword" placeholder="Enter password" />
+            <p class="font-plantagenet-cherokee mt-4 mb-2">Please enter the password to see details</p>
+            <span class="flex flex-row justify-center items-center gap-4">
+                <input id="passwordInput" type="text" v-model="enteredPassword" placeholder="password" />
                 <button @click="submitPassword">Enter</button>
             </span>
-            <p v-if="setError">{{ errorMessage }}</p>
+            <p v-if="setError" class="font-plantagenet-cherokee mt-4">{{ errorMessage }}</p>
         </div>
     </div>
 </template>
@@ -54,15 +54,30 @@ const handleClose = () => {
     top: 0;
 }
 
+input {
+    width: 100%;
+    padding: 7px;
+    border: 2px solid #7d917e;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #F6F0E7;
+    color: #333;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input::placeholder {
+    color: #768777 !important;
+}
+
 .modal {
     position: fixed;
     display: flex;
     flex-direction: column;
     padding: 2rem;
     --tw-text-opacity: 1;
-    color: rgba(255, 255, 255, var(--tw-text-opacity));
-    background: linear-gradient(180deg, #171d25, #042838);
-    border: 1px solid teal;
+    color: #E2DED7;
+    background: #768777;
+    border: 1px solid #768777;
     box-shadow: 0 23px 63px rgba(0, 0, 0, 0.6);
     border-radius: 6px;
     max-width: 615px;
@@ -75,18 +90,10 @@ const handleClose = () => {
 
 button {
     cursor: pointer;
-    font-family: "Jacques Francois", serif;
+    font-family: "plantagenet-cherokee", serif;
 }
 
 .rsvp {
     list-style-type: none;
-}
-
-.active {
-    background-color: green;
-}
-
-.disabled {
-    background-color: red;
 }
 </style>

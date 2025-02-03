@@ -3,12 +3,12 @@
         <div class="flex justify-between items-center p-4 max-w-[1200px] mx-auto border-b border-[#E2DED7]">
             <NuxtLink to="/" class="flex font-plantagenet-cherokee text-[28px]">J&D</NuxtLink>
             <span class="flex flex-row justify-center items-center space-x-8">
-                <NuxtLink class="font-dm-sans sides-4 page text-[16px]" to="/"
-                    :class="{ 'active-page': route.path === '/' }">
+                <NuxtLink class="font-dm-sans sides-4 page text-[16px]" to="#when-and-where"
+                    :class="{ 'active-page': route.hash === '#when-and-where' }">
                     When and Where
                 </NuxtLink>
-                <NuxtLink class="font-dm-sans text-accent sides-4 page" to="/faq"
-                    :class="{ 'active-page': route.path === '/faq' }">
+                <NuxtLink class="font-dm-sans text-accent sides-4 page" to="#details"
+                    :class="{ 'active-page': route.hash === '#detail' }">
                     Details
                 </NuxtLink>
                 <NuxtLink class="nav-rsvp-button" to="/rsvp">RSVP</NuxtLink>
