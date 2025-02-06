@@ -34,7 +34,7 @@ const timeUnits = [
 ];
 
 const updateCountdown = () => {
-    const weddingDate = new Date(Date.UTC(2025, 1, 3, 20, 59));
+    const weddingDate = new Date(Date.UTC(2025, 8, 20, 20, 0));
     const now = new Date();
     const nowUTC = new Date(Date.UTC(
         now.getUTCFullYear(),

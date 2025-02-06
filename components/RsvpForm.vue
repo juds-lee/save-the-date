@@ -1,24 +1,25 @@
 <template>
-    <div class="container flex justify-center items-center gap-4">
+    <div class="container flex justify-center items-center">
         <div class="text-accent card" id="card" :class="[
-            { rotate: userHasSubmitted.value },
+            { rotate: userHasSubmitted },
             getDimensions
         ]">
             <div class="front flex flex-col px-5 py-4 rounded-lg shadow-lg">
                 <div class="mb-5">
-                    <p class="font-greatvibes text-[40px] text-main max-w-[700px]">Dear {{ guestInfo.hasPlusOne ?
-                        `${guestInfo.name} and
+                    <p class="rsvp-title">Dear {{
+                        guestInfo.hasPlusOne ?
+                            `${guestInfo.name} and
                         ${guestInfo.secondaryGuest.secondaryName}` :
-                        guestInfo.name
-                        }},
+                            guestInfo.name
+                    }},
                     </p>
                     <p> we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
                 </div>
                 <form @submit.prevent="submitGuestInfo">
-                    <p class="font-greatvibes text-[30px]" v-if="guestInfo.hasPlusOne">{{ guestInfo.name }}</p>
-                    <div class="flex flex-col items-start space-y-2">
-                        <div v-for="(option, index) in rsvpOptions" :key="index"
-                            class="flex justify-between w-full items-center">
+                    <p class="rsvp-name" v-if="guestInfo.hasPlusOne">{{ guestInfo.name }}
+                    </p>
+                    <div class="flex flex-col items-start">
+                        <div v-for="(option, index) in rsvpOptions" :key="index" class="rsvp-response">
                             <label :for="'rsvp' + index" class="custom-label">{{ option.label }}</label>
                             <div class="relative">
                                 <input type="radio" :id="'rsvp' + index" :name="'mainRsvp'" :value="option.value"
@@ -33,15 +34,15 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="custom-label styled-input">
+                        <div class="custom-label styled-input  text-[15px] sm:text-[17px]">
                             Dietary Restrictions:
                             <input type="text" id="allergies" v-model="guestInfo.allergies" />
                         </div>
                     </div>
                     <div v-if="guestInfo.hasPlusOne" class="mt-10">
-                        <p class="font-greatvibes text-[30px]"> {{ guestInfo.secondaryGuest.secondaryName }}</p>
-                        <div v-for="(option, index) in rsvpOptions" :key="'secondary' + index"
-                            class="flex justify-between w-full items-center">
+                        <p class="rsvp-name"> {{ guestInfo.secondaryGuest.secondaryName }}
+                        </p>
+                        <div v-for="(option, index) in rsvpOptions" :key="'secondary' + index" class="rsvp-response">
                             <label :for="'secondaryRsvp' + index" class="custom-label">{{ option.label }}</label>
                             <div class="relative">
                                 <input type="radio" :id="'secondaryRsvp' + index" :name="'secondaryRsvp'"
@@ -58,20 +59,20 @@
                             </div>
                         </div>
 
-                        <div class="custom-label styled-input">
+                        <div class="custom-label styled-input text-[15px] sm:text-[17px]">
                             Dietary Restrictions:
                             <input type="text" id="allergies" v-model="guestInfo.secondaryGuest.secondaryAllergies" />
                         </div>
                     </div>
-                    <button class="mt-10 font-greatvibes text-[30px]" type="submit">Submit</button>
+                    <button class="rsvp-submit" type="submit">Submit</button>
                     <div v-if="rsvpError" class="text-accent">Please let us know if you can make the event</div>
                 </form>
             </div>
-            <div
-                class="back font-greatvibes text-[30px] w-[500px] text-center items-center justify-center rounded-lg shadow-lg">
-                Your response
+            <div class="back" :class="getDimensions">
+                <!-- Your response
                 has been
-                noted. <br /> Thank you.
+                noted. <br /> Thank you. -->
+                <!-- <img src="../assets/svg/flower-1.svg" alt="heart" /> -->
             </div>
 
         </div>
@@ -105,43 +106,52 @@ const submitGuestInfo = async () => {
         console.error(error);
     }
 }
+const { width: windowWidth } = useWindowSize();
+
 const getDimensions = computed(() => {
     if (!props.guestInfo.hasPlusOne) {
-        return 'w-[400px] h-[400px] rsvp-sm:w-[500px] mb-[20px]'
+        return 'w-[500px] h-[400px] rsvp-lg:w-[500px]';
     }
-    return {
-        'w-[550px] h-[740px]': props.guestInfo.hasPlusOne,
+    if (props.guestInfo.hasPlusOne && windowWidth.value < 1300) {
+        return 'w-[450px] h-[620px]';
     }
+    return 'w-[550px] h-[640px]';
 })
 onMounted(() => {
     checkUserSubmission()
-    console.log("userHasSubmitted", userHasSubmitted.value)
 })
 </script>
 <style scoped>
 .card {
     position: relative;
-    transition: all 1s linear;
     transform-style: preserve-3d;
+    transition: transform 1s linear;
 }
 
 .front,
 .back {
     height: 100%;
+    width: 100%;
     display: flex;
     position: absolute;
-}
-
-.front {
     background: #F6F0E7;
-    z-index: 2;
-    backface-visibility: hidden;
+
 }
 
 .back {
+    @apply text-[20px] font-plantagenet-cherokee text-center items-center justify-center rounded-lg shadow-lg;
     background: #F6F0E7;
     z-index: 1;
     transform: rotateY(180deg);
+
+    @media screen and (min-width: 1300px) {
+        font-size: 40px;
+    }
+}
+
+.front {
+    z-index: 2;
+    backface-visibility: hidden;
 }
 
 .rotate {
@@ -149,8 +159,53 @@ onMounted(() => {
 }
 
 .container {
-    perspective: 1000px;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 1150px) {
+        perspective: 1000px;
+        min-height: 100vh;
+        margin-bottom: 0;
+    }
 }
+
+.rsvp-response {
+    @apply flex justify-between w-full items-center;
+    font-size: 15px;
+
+    @media screen and (min-width: 400px) {
+        font-size: 17px;
+    }
+
+}
+
+.rsvp-title {
+    @apply font-plantagenet-cherokee text-[25px] text-main max-w-[700px];
+
+    @media screen and (min-width: 400px) {
+        font-size: 30px;
+    }
+
+    @media screen and (min-width: 1300px) {
+        font-size: 40px;
+    }
+}
+
+.rsvp-name {
+    @apply font-plantagenet-cherokee text-[20px];
+
+    @media screen and (min-width: 1300px) {
+        font-size: 30px;
+    }
+}
+
+.rsvp-submit {
+    @apply mt-5 font-plantagenet-cherokee text-[20px];
+
+    @media screen and (min-width: 400px) {
+        font-size: 25px;
+    }
+}
+
 
 label {
     margin-bottom: 0.5rem;
@@ -247,7 +302,6 @@ label {
     stroke-dashoffset: 115;
     animation: offset 0.7s ease-in-out forwards;
 }
-
 
 .cross-line-one {
     stroke-dasharray: 110;
