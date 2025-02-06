@@ -8,7 +8,7 @@
                     When and Where
                 </NuxtLink>
                 <NuxtLink class="font-dm-sans text-accent sides-4 page" to="#details"
-                    :class="{ 'active-page': route.hash === '#detail' }">
+                    :class="{ 'active-page': route.hash === '#details' }">
                     Details
                 </NuxtLink>
                 <NuxtLink class="nav-rsvp-button" to="/rsvp">RSVP</NuxtLink>

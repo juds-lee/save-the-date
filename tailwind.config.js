@@ -11,11 +11,12 @@ module.exports = {
   theme: {
     extend: {},
      screens: {
-      'sm': '450px',
+      'sm': '400px',
       'rsvp-sm': '675px',
       'md': '700px',
+      'rsvp-lg': '1050px',
       'lg': '1024px',
-      'xl': '1200px',
+      'xl': '1300px',
     },
      colors: {
       'rsvp-cream':"#F6F0E7",

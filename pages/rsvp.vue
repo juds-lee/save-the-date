@@ -1,16 +1,18 @@
 <template>
-    <!-- <div class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto pb-10 bg-bg flex items-center justify-center min-h-screen mt-[93px]"
-        v-show="guestCanAccess && name">
+    <div class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto bg-bg flex items-center justify-center min-h-screen "
+        v-if="name">
         <div class="form-container">
-            <div v-if="userHasSubmitted">
+            <!-- <div v-if="userHasSubmitted">
                 <p class="font-greatvibes text-main">Your response has been submitted.</p>
-            </div>
-            <RsvpForm v-else :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
+            </div> -->
+            <RsvpForm :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
             <div class="hero-image shadow-lg" />
         </div>
-    </div> -->
-    <!-- <div v-show="!(guestCanAccess && name)">
-        <h1 class="max-w-[700px] mx-auto mt-[3px] font-semibold">Please RSVP by clicking the link in your email
+    </div>
+    <!-- <div v-else class="px-10 mx-auto pb-10 bg-bg flex items-center justify-center">
+        <h1 class="max-w-[700px] mx-auto mt-4 font-semibold font-plantagenet-cherokee">Please RSVP by clicking the
+            link in your
+            email
             invitation</h1>
     </div> -->
 </template>
@@ -45,6 +47,7 @@ const isNowSubmitted = ref(false);
 const handleSubmissionTransition = () => {
     isNowSubmitted.value = true
 }
+
 const { name, uuid } = storeToRefs(useUserStore());
 const credsCookie = useCookie('creds')
 credsCookie.value = uuid.value;
@@ -58,13 +61,15 @@ onMounted(() => {
 .form-container {
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
-    margin-bottom: 24px;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
+    padding: 40px 0;
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1150px) {
         flex-direction: row;
+        padding: 0;
+
     }
 }
 
@@ -75,19 +80,21 @@ onMounted(() => {
     background-repeat: no-repeat;
     width: 100%;
     height: 500px;
-    /* margin-top: 20px; */
+    max-width: 500px;
 
-    @media screen and (min-width: 415px) {
-        height: 400px;
-    }
 
-    @media screen and (min-width: 700px) {
+    /* @media screen and (min-width: 415px) {
+        height: 500px;
+        max-width: 550px;
+    } */
+    /* @media screen and (min-width: 1300px) {
+        height: 500px;
+        max-width: 500px;
+    } */
+
+    @media screen and (min-width: 1300px) {
         height: 700px;
-    }
-
-    @media screen and (min-width: 1200px) {
-        /* width: 500px; */
-        height: 700px;
+        max-width: 700px;
     }
 
 }
