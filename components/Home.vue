@@ -18,6 +18,20 @@
                     class="hero-right-image" />
                 <img src="../assets/svg/save-the-date.svg" class="save-the-date-label" />
             </div>
+            <div class="flex justify-center gap-2">
+                <NuxtImg
+                    src="https://res.cloudinary.com/djatkco6m/image/upload/c_crop,w_4093,h_5894,x_0,y_244/v1738010139/IMG_8478_zfvh65.jpg"
+                    class="hero-main-image-med" />
+                <div class="flex flex-col gap-2 relative">
+                    <NuxtImg
+                        src="https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
+                        class="hero-left-image-med" />
+
+                    <NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727983013/DSC04426_2_io6dfc.jpg"
+                        class="hero-right-image-med" />
+                    <img src="../assets/svg/save-the-date.svg" class="save-the-date-label-med" />
+                </div>
+            </div>
         </div>
 
         <ScheduleInfo id="when-and-where" />
@@ -71,33 +85,105 @@ definePageMeta({
 }
 
 .hero-main-image {
-    width: 100%;
-    margin: auto;
-    max-width: 450px;
+    display: none;
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1250px) {
+        display: block;
+        max-width: 450px;
+        width: 100%;
+        margin: auto;
         max-width: 450px;
     }
 }
 
 .hero-left-image {
-    width: 310px;
-    position: absolute;
-    left: 85px;
-    bottom: -30px;
+    display: none;
+
+    @media screen and (min-width: 1250px) {
+        display: block;
+        width: 310px;
+        position: absolute;
+        left: 85px;
+        bottom: -30px;
+    }
+
+
 }
 
 .hero-right-image {
-    width: 405px;
-    position: absolute;
-    right: -10px;
-    top: 100px
+    display: none;
+
+    @media screen and (min-width: 1250px) {
+        display: block;
+        width: 405px;
+        position: absolute;
+        right: -10px;
+        top: 100px
+    }
 }
 
 .save-the-date-label {
-    position: absolute;
-    right: 260px;
-    top: 10px;
+    display: none;
 
+    @media screen and (min-width: 1250px) {
+        display: block;
+        position: absolute;
+        right: 260px;
+        top: 10px;
+    }
+
+}
+
+.hero-main-image-med {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    height: 621px;
+
+    @media screen and (min-width: 1250px) {
+        display: none;
+    }
+}
+
+.hero-left-image-med {
+    display: none;
+
+    @media screen and (min-width: 850px) {
+        display: block;
+        width: 310px;
+        height: 410px;
+        margin: 20px auto;
+        position: relative;
+        left: 0;
+        bottom: 20px;
+    }
+
+    @media screen and (min-width: 1250px) {
+        display: none;
+    }
+}
+
+.hero-right-image-med {
+    display: none;
+
+    @media screen and (min-width: 850px) {
+        display: block;
+        width: 342px;
+        height: 191px;
+        position: relative;
+        right: 0;
+        bottom: 30px;
+    }
+
+    @media screen and (min-width: 1250px) {
+        display: none;
+    }
+}
+
+.save-the-date-label-med {
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: -10px;
 }
 </style>
