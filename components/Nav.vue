@@ -28,7 +28,7 @@
         <transition enter-active-class="transition-all duration-700 ease-in-out" enter-from-class="max-h-0 opacity-0"
             enter-to-class="max-h-[300px] opacity-100" leave-active-class="transition-all duration-700 ease-in-out"
             leave-from-class="max-h-[300px] opacity-100" leave-to-class="max-h-0 opacity-0">
-            <div v-if="isOpen" class="md:hidden border-t border-[#E2DED7] overflow-hidden">
+            <div v-show="isOpen" class="md:hidden border-t border-[#E2DED7] overflow-hidden">
                 <div class="flex flex-col items-center py-4 space-y-4">
                     <NuxtLink class="font-dm-sans sides-4 page text-[16px]"
                         :to="({ path: '/', hash: '#when-and-where' })"
