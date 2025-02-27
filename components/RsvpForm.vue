@@ -71,7 +71,8 @@
                 Your response
                 has been
                 noted. <br /> Thank you.
-                <img src="../assets/svg/flower-1.svg" alt="heart" class="absolute -z-20" />
+                <img src="../assets/svg/flower-1.svg" alt="heart" class="absolute -z-20"
+                    :class="guestInfo.hasPlusOne ? 'h-auto' : 'h-[450px]'" />
             </div>
 
         </div>
@@ -118,16 +119,19 @@ const firstNameOnly = computed(() => {
     return primaryFirstName;
 });
 const getDimensions = computed(() => {
-    // if (!props.guestInfo.hasPlusOne) {
-    //     return 'w-[500px] h-[400px] rsvp-lg:w-[500px]';
-    // }
-    if (props.guestInfo.hasPlusOne && windowWidth.value < 1300) {
-        return 'w-[450px] h-[560px]';
+    if (props.guestInfo.hasPlusOne && windowWidth.value >= 1300) {
+        return 'w-[600px] h-[600px]';
     }
-    // if (props.guestInfo.hasPlusOne && windowWidth.value < 1300) {
+    else if (props.guestInfo.hasPlusOne && windowWidth.value <= 1299) {
+        return 'w-[500px] h-[580px]';
+    }
+    // if (props.guestInfo.hasPlusOne && windowWidth.value > 1300) {
     //     return 'w-[450px] h-[560px]';
     // }
-    return 'w-[550px] h-[580px]';
+    else if (!props.guestInfo.hasPlusOne && windowWidth.value > 1300) {
+        return 'w-[550px] h-[380px]';
+    }
+    return 'w-[500px] h-[380px]';
 })
 onMounted(() => {
 
