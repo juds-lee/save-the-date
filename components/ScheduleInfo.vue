@@ -1,24 +1,27 @@
 <template>
-    <div class="bg-rsvp-green py-[160px]">
+    <div class="bg-rsvp-green py-[110px] md:py-[160px]">
         <div class="max-w-[792px] mx-auto px-10">
-            <p class="font-plantagenet-cherokee text-rsvp-cream text-center text-[58px]">Our Wedding Day</p>
-            <div class="flex flex-row text-rsvp-cream justify-center items-center mt-[56px] pb-[68px]">
+            <p class="font-plantagenet-cherokee text-rsvp-cream text-center text-[50px] md:text-[58px]">Our Wedding Day
+            </p>
+            <div
+                class="flex flex-col md:flex-row text-rsvp-cream justify-center items-center mt-[56px] pb-[40px] md:pb-[68px]">
                 <div class="text-center gap-4 w-[384px]">
-                    <p class="uppercase text-[20px]">When</p>
-                    <p class="text-[32px] font-plantagenet-cherokee">September 20, 2025</p>
+                    <p class="uppercase text-[16px] md:text-[20px]">When</p>
+                    <p class="text-[24px] md:text-[32px] font-plantagenet-cherokee">September 20, 2025</p>
                 </div>
-                <div class="vertical-line" />
+                <div class="vertical-line hidden md:block" />
+                <div class="horizontal-line-mobile  md:hidden" />
                 <div class="w-[384px] text-center gap-4">
-                    <p class="uppercase text-[20px] ">Where</p>
+                    <p class="uppercase text-[16px] md:text-[20px]">Where</p>
                     <a href="https://maps.app.goo.gl/HZjthrFKdfAryhi79" target="_blank" rel="noopener noreferrer"
-                        class="text-[32px] font-plantagenet-cherokee link">Toronto Golf Club</a>
+                        class="text-[24px] md:text-[32px]  font-plantagenet-cherokee link">Toronto Golf Club</a>
                 </div>
             </div>
             <div v-for="(item, index) in eventItem" :key="index"
-                class="flex flex-col text-rsvp-cream font-plantagenet-cherokee text-[32px]">
+                class="flex flex-col text-rsvp-cream font-plantagenet-cherokee text-[20px] md:text-[32px]">
                 <div class="flex flex-row justify-between w-full py-[48px]">
                     <p>{{ item.time }}</p>
-                    <p>{{ item.title }}</p>
+                    <p class="max-w-[150px] rsvp-sm:max-w-full">{{ item.title }}</p>
                 </div>
                 <div class="w-full h-[1px] text-[#768777] horizontal-line" />
             </div>
@@ -54,6 +57,13 @@ const eventItem = ref([
     width: 2px;
     height: 100px;
     background-color: #97A898;
+}
+
+.horizontal-line-mobile {
+    width: 100px;
+    height: 2px;
+    background-color: #97A898;
+    margin: 20px auto;
 }
 
 .horizontal-line {
