@@ -12,8 +12,8 @@ module.exports = {
     extend: {},
      screens: {
       'sm': '400px',
-      'rsvp-sm': '675px',
-      'md': '700px',
+      'rsvp-sm': '500px',
+      'md': '750px',
       'rsvp-lg': '1050px',
       'lg': '1024px',
       'xl': '1300px',
