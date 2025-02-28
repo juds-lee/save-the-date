@@ -3,10 +3,10 @@
         <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
             @close="closeModal" />
         <div class=" mx-auto px-10 mt-10 max-w-[1500px] mb-[160px]">
-            <p class="font-plantagenet-cherokee text-[#717171] text-center text-[24px]">September 20, 2025 • The Toronto
+            <p class="subtitle">September 20, 2025 • The Toronto
                 Golf Club
             </p>
-            <p class="font-plantagenet-cherokee text-main text-[100px] text-center">Judy & Duncan</p>
+            <p class="title">Judy & Duncan</p>
             <div class="relative">
                 <NuxtImg
                     src="https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
@@ -22,9 +22,9 @@
                 <NuxtImg
                     src="https://res.cloudinary.com/djatkco6m/image/upload/c_crop,w_4093,h_5894,x_0,y_244/v1738010139/IMG_8478_zfvh65.jpg"
                     class="hero-main-image-med" />
-                <div class="flex flex-col gap-2 relative">
-                    <NuxtImg
-                        src="https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
+                <div class="flex flex-col relative h-full justify-between gap-2">
+                    <NuxtImg src="
+                    https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
                         class="hero-left-image-med" />
 
                     <NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727983013/DSC04426_2_io6dfc.jpg"
@@ -36,7 +36,7 @@
 
         <ScheduleInfo id="when-and-where" />
         <Details id="details" />
-        <Countdown />
+        <!-- <Countdown /> -->
     </div>
 </template>
 <script setup>
@@ -79,6 +79,30 @@ definePageMeta({
 
 </script>
 <style lang="postcss">
+.title {
+    @apply font-plantagenet-cherokee text-main text-[40px] text-center;
+
+    @media screen and (min-width: 400px) {
+        font-size: 48px;
+    }
+
+    @media screen and (min-width: 500px) {
+        font-size: 60px;
+    }
+
+    @media screen and (min-width: 800px) {
+        font-size: 100px;
+    }
+}
+
+.subtitle {
+    @apply font-plantagenet-cherokee text-[#717171] text-center text-[19px];
+
+    @media screen and (min-width: 550px) {
+        font-size: 24px;
+    }
+}
+
 .no-scroll {
     overflow: hidden;
     height: 100vh;
@@ -138,7 +162,7 @@ definePageMeta({
     display: block;
     width: 100%;
     max-width: 450px;
-    height: 621px;
+    height: auto;
 
     @media screen and (min-width: 1250px) {
         display: none;
@@ -151,11 +175,10 @@ definePageMeta({
     @media screen and (min-width: 850px) {
         display: block;
         width: 310px;
-        height: 410px;
-        margin: 20px auto;
+        height: auto;
+        margin: 0;
         position: relative;
         left: 0;
-        bottom: 20px;
     }
 
     @media screen and (min-width: 1250px) {
@@ -169,10 +192,10 @@ definePageMeta({
     @media screen and (min-width: 850px) {
         display: block;
         width: 342px;
-        height: 191px;
+        height: auto;
         position: relative;
         right: 0;
-        bottom: 30px;
+        margin: 0;
     }
 
     @media screen and (min-width: 1250px) {
