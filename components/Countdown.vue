@@ -1,25 +1,30 @@
 <template>
+    <div class="w-full max-w-[800px] mx-auto px-10 mb-10">
+        <div class="horizontal-line w-full h-[1px]" />
+    </div>
     <div
-        class="max-w-[800px] mx-auto pb-[100px] pt-10 border-t border-[#E2DED7] flex flex-row justify-between items-center">
+        class="max-w-[800px] mx-auto w-full pb-[60px] md:pb-[100px] flex flex-col md:flex-row justify-between items-center px-10">
         <div>
-            <p class="font-plantagenet-cherokee text-left mb-8 text-[32px]">Let the Countdown begin</p>
-            <div class="flex flex-row gap-4">
+            <p class="font-plantagenet-cherokee text-center md:text-left mb-4 text-[30px]">Let the countdown begin!</p>
+            <div class="flex flex-row gap-4 justify-center">
                 <div v-for="(time, index) in timeUnits" :key="index" class="flex flex-col items-center">
                     <div class="flex flex-row gap-2">
-                        <p class="text-[68px] font-plantagenet-cherokee">
+                        <p class="text-[37px] sm:text-[48px] rsvp-sm:text-[68px] font-plantagenet-cherokee">
                             {{ time.amount.value.toString().length === 1 ? `0${time.amount.value}` : time.amount.value
                             }}
                         </p>
-                        <p v-if="index !== timeUnits.length - 1" class="text-[68px] font-plantagenet-cherokee">:</p>
+                        <p v-if="index !== timeUnits.length - 1"
+                            class="text-[37px]  sm:text-[48px] rsvp-sm:text-[68px] font-plantagenet-cherokee">:</p>
                     </div>
                     <p class="text-center text-[20px]">{{ time.label }}</p>
                 </div>
             </div>
         </div>
-        <button class="main-rsvp-button flex flex-row items-center justify-center gap-1">RSVP
+        <NuxtLink class="main-rsvp-button flex flex-row items-center justify-center gap-1 mt-10 md:mt-0" to="/rsvp">RSVP
             <img src="../assets/svg/arrow-outward.svg" alt="">
-        </button>
+        </NuxtLink>
     </div>
+
 </template>
 <script lang="ts" setup>
 const days = ref(0);
@@ -56,6 +61,11 @@ const updateCountdown = () => {
     seconds.value = Math.floor((timeDifference % (1000 * 60)) / 1000);
 }
 const countdownInterval = setInterval(updateCountdown, 1000);
-updateCountdown(); 
+updateCountdown();
+
 </script>
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+.horizontal-line {
+    background-color: #E2DED7;
+}
+</style>

@@ -35,7 +35,6 @@ const submitPassword = () => {
 };
 const emit = defineEmits(['close']);
 const handleClose = () => {
-    console.log('close')
     emit('close')
 }
 </script>

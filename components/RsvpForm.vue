@@ -8,7 +8,7 @@
                 <div class="mb-6 mt-2">
                     <p class="rsvp-title">Dear {{
                         firstNameOnly
-                        }},
+                    }},
                     </p>
                     <p> we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
                 </div>

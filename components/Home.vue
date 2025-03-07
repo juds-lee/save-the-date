@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ 'no-scroll': modalOverlay }" class="">
+    <div :class="{ 'no-scroll': modalOverlay }" class="hide slide-up">
         <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
             @close="closeModal" />
         <div class=" mx-auto px-10 mt-10 max-w-[1500px] mb-[160px]">
@@ -36,7 +36,7 @@
 
         <ScheduleInfo id="when-and-where" />
         <Details id="details" />
-        <!-- <Countdown /> -->
+        <Countdown />
     </div>
 </template>
 <script setup>
@@ -56,7 +56,6 @@ const handlePageScroll = () => {
 
 const closeModal = () => {
     modalOverlay.value = false;
-    console.log("Modal closed:", modalOverlay.value);
 };
 
 watch(guestCanAccess, (value) => {
@@ -67,6 +66,9 @@ watch(guestCanAccess, (value) => {
 
 onMounted(() => {
     window.addEventListener('scroll', handlePageScroll);
+    window.onload = () => {
+        document.getElementById("myDiv").classList.add("slide-up");
+    };
 });
 onUnmounted(() => {
     window.removeEventListener('scroll', handlePageScroll);
