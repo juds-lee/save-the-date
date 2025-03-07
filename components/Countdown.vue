@@ -1,8 +1,10 @@
 <template>
-    <div
-        class="max-w-[800px] mx-auto pb-[100px] pt-10 border-t border-[#E2DED7] flex flex-row justify-between items-center">
+    <div class="w-full max-w-[800px] mx-auto px-10 mb-10">
+        <div class="horizontal-line w-full h-[1px]" />
+    </div>
+    <div class="max-w-[800px] mx-auto w-full pb-[100px] flex flex-col md:flex-row justify-between items-center px-10">
         <div>
-            <p class="font-plantagenet-cherokee text-left mb-8 text-[32px]">Let the Countdown begin</p>
+            <p class="font-plantagenet-cherokee text-center md:text-left mb-4 text-[32px]">Let the Countdown begin</p>
             <div class="flex flex-row gap-4">
                 <div v-for="(time, index) in timeUnits" :key="index" class="flex flex-col items-center">
                     <div class="flex flex-row gap-2">
@@ -16,10 +18,11 @@
                 </div>
             </div>
         </div>
-        <button class="main-rsvp-button flex flex-row items-center justify-center gap-1">RSVP
+        <button class="main-rsvp-button flex flex-row items-center justify-center gap-1 mt-10 md:mt-0">RSVP
             <img src="../assets/svg/arrow-outward.svg" alt="">
         </button>
     </div>
+
 </template>
 <script lang="ts" setup>
 const days = ref(0);
@@ -58,4 +61,8 @@ const updateCountdown = () => {
 const countdownInterval = setInterval(updateCountdown, 1000);
 updateCountdown(); 
 </script>
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+.horizontal-line {
+    background-color: #E2DED7;
+}
+</style>

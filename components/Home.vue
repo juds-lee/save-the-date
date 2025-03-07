@@ -36,7 +36,7 @@
 
         <ScheduleInfo id="when-and-where" />
         <Details id="details" />
-        <!-- <Countdown /> -->
+        <Countdown />
     </div>
 </template>
 <script setup>
