@@ -7,8 +7,16 @@
 div {
     margin-bottom: 0;
 }
-h1,
-h2,
-h3 {
-	color: #D69B43 !important;
+
+p {
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+p {
+    transform: translateY(0);
+    opacity: 1;
+    transition-timing-function: ease;
+    transition-duration: 0.8s;
+    transition-delay: 0.5s;
 }

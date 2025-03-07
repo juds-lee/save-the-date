@@ -8,13 +8,13 @@
             </p>
             <div
                 class="flex flex-col md:flex-row text-rsvp-cream justify-center items-center mt-[56px] pb-[40px] md:pb-[68px]">
-                <div class="text-center gap-4 w-[384px]">
+                <div class="text-center gap-4 md:w-[384px]">
                     <p class="uppercase text-[16px] md:text-[20px]">When</p>
                     <p class="text-[24px] md:text-[32px] font-plantagenet-cherokee">September 20, 2025</p>
                 </div>
                 <div class="vertical-line hidden md:block" />
                 <div class="horizontal-line-mobile  md:hidden" />
-                <div class="w-[384px] text-center gap-4">
+                <div class="md:w-[384px] text-center gap-4">
                     <p class="uppercase text-[16px] md:text-[20px]">Where</p>
                     <a href="https://maps.app.goo.gl/HZjthrFKdfAryhi79" target="_blank" rel="noopener noreferrer"
                         class="text-[24px] md:text-[32px]  font-plantagenet-cherokee link">Toronto Golf Club</a>
