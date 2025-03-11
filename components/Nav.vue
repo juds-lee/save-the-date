@@ -13,11 +13,11 @@
             <!-- Desktop Menu -->
             <span class="hidden md:flex flex-row justify-center items-center space-x-8">
                 <NuxtLink class="font-dm-sans sides-4 page text-[16px]" :to="({ path: '/', hash: '#when-and-where' })"
-                    :class="{ 'active-page': route.hash === '#when-and-where' }">
+                    :class="{ 'active-page': activeSection === 'when-and-where' }">
                     When and Where
                 </NuxtLink>
                 <NuxtLink class="font-dm-sans text-accent sides-4 page" :to="({ path: '/', hash: '#details' })"
-                    :class="{ 'active-page': route.hash === '#details' }">
+                    :class="{ 'active-page': activeSection === 'details' }">
                     Details
                 </NuxtLink>
                 <NuxtLink class="nav-rsvp-button" to="/rsvp">RSVP</NuxtLink>
@@ -51,6 +51,10 @@
 <script setup lang="ts">
 const route = useRoute()
 const isOpen = ref(false)
+const { activeSection } = useSectionTracking()
+watch(() => activeSection.value, () => {
+    console.log(activeSection.value)
+})
 </script>
 
 <style lang="css" scoped>

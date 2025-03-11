@@ -2,7 +2,7 @@
     <div class="bg-rsvp-green py-[110px] md:py-[150px]">
         <div class="max-w-[792px] mx-auto px-10">
             <p
-                class="font-plantagenet-cherokee text-rsvp-cream text-center text-[35px] rsvp-sm:text-[50px] md:text-[58px]">
+                class="font-plantagenet-cherokee text-rsvp-cream text-center text-[35px] rsvp-sm:text-[50px] md:text-[60px]">
                 Our
                 Wedding Day
             </p>
