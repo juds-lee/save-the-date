@@ -8,7 +8,7 @@
                 <div class="mb-6 mt-2">
                     <p class="rsvp-title">Dear {{
                         firstNameOnly
-                    }},
+                        }},
                     </p>
                     <p> we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
                 </div>
@@ -92,12 +92,12 @@ const { updateGuestRsvp, checkUserSubmission, userHasSubmitted } = useFirebase()
 const rsvpError = ref(false);
 const submitGuestInfo = async () => {
     try {
-        // if (!props.guestInfo.rsvpOption) {
-        //     console.log("rsvp error", rsvpError)
-        //     rsvpError.value = true;
-        //     return;
-        // }
-        // await updateGuestRsvp(props.guestInfo);
+        if (!props.guestInfo.rsvpOption) {
+            console.log("rsvp error", rsvpError)
+            rsvpError.value = true;
+            return;
+        }
+        await updateGuestRsvp(props.guestInfo);
         setTimeout(() => {
             document.getElementById("card")?.classList.add("rotate");
         }, 500);
@@ -302,7 +302,7 @@ label {
 .styled-input input {
     border: none;
     border-bottom: 2px solid #E2DED7;
-    background: transparent;
+    background: #F6F0E7;
     outline: none;
     width: auto;
     font-size: inherit;
@@ -316,7 +316,7 @@ label {
 }
 
 .styled-input input::placeholder {
-    color: transparent;
+    color: #F6F0E7;
 }
 
 .styled-input input:focus+span {

@@ -3,33 +3,33 @@
         <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
             @close="closeModal" />
         <div class=" mx-auto px-10 mt-10 max-w-[1500px] mb-[160px]">
-            <p class="subtitle">September 20, 2025 • The Toronto
+            <p class="subtitle fade-up-element">September 20, 2025 • The Toronto
                 Golf Club
             </p>
-            <p class="title">Judy & Duncan</p>
+            <p class="title fade-up-element">Judy & Duncan</p>
             <div class="relative">
                 <NuxtImg
                     src="https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
-                    class="hero-left-image" />
+                    class="hero-left-image fade-up-element" />
                 <NuxtImg
                     src="https://res.cloudinary.com/djatkco6m/image/upload/c_crop,w_4093,h_5894,x_0,y_244/v1738010139/IMG_8478_zfvh65.jpg"
-                    class="hero-main-image" />
+                    class="hero-main-image fade-up-element" />
                 <NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727983013/DSC04426_2_io6dfc.jpg"
-                    class="hero-right-image" />
-                <img src="../assets/svg/save-the-date.svg" class="save-the-date-label" />
+                    class="hero-right-image fade-up-element" />
+                <img src="../assets/svg/save-the-date.svg" class="save-the-date-label fade-up-element" />
             </div>
             <div class="flex justify-center gap-2">
                 <NuxtImg
                     src="https://res.cloudinary.com/djatkco6m/image/upload/c_crop,w_4093,h_5894,x_0,y_244/v1738010139/IMG_8478_zfvh65.jpg"
-                    class="hero-main-image-med" />
+                    class="hero-main-image-med fade-up-element" />
                 <div class="flex flex-col relative h-full justify-between gap-2">
                     <NuxtImg src="
                     https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
-                        class="hero-left-image-med" />
+                        class="hero-left-image-med fade-up-element" />
 
                     <NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727983013/DSC04426_2_io6dfc.jpg"
-                        class="hero-right-image-med" />
-                    <img src="../assets/svg/save-the-date.svg" class="save-the-date-label-med" />
+                        class="hero-right-image-med fade-up-element" />
+                    <img src="../assets/svg/save-the-date.svg" class="save-the-date-label-med fade-up-element   " />
                 </div>
             </div>
         </div>
@@ -40,11 +40,8 @@
     </div>
 </template>
 <script setup>
-
-const { guestCanAccess } = useVerificationCheck();
-const scroll = ref(false);
-const modalOverlay = ref(false);
-
+const { initFadeUpAnimation } = useFadeUpAnimation();
+let observer;
 const handlePageScroll = () => {
     if (window.scrollY > 6) {
         scroll.value = true;
@@ -54,10 +51,13 @@ const handlePageScroll = () => {
     }
 };
 
+const scroll = ref(false);
+const modalOverlay = ref(false);
 const closeModal = () => {
     modalOverlay.value = false;
 };
 
+const { guestCanAccess } = useVerificationCheck();
 watch(guestCanAccess, (value) => {
     if (value) {
         modalOverlay.value = false;
@@ -69,9 +69,13 @@ onMounted(() => {
     window.onload = () => {
         document.getElementById("myDiv").classList.add("slide-up");
     };
+    observer = initFadeUpAnimation();
+
 });
 onUnmounted(() => {
-    window.removeEventListener('scroll', handlePageScroll);
+    window.removeEventListener('scroll', handlePageScroll); if (observer) {
+        observer.disconnect();
+    }
 });
 
 const { name } = storeToRefs(useUserStore());
