@@ -76,7 +76,7 @@ const eventItem = ref([
 
 .horizontal-line-mobile {
     width: 100px;
-    height: 2px;
+    height: 1px;
     background-color: #97A898;
     margin: 20px auto;
 }

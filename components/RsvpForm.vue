@@ -8,9 +8,9 @@
                 <div class="mb-6 mt-2">
                     <p class="rsvp-title">Dear {{
                         firstNameOnly
-                    }},
+                        }},
                     </p>
-                    <p> we would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
+                    <p> We would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
                 </div>
                 <form @submit.prevent="submitGuestInfo" class="h-full flex flex-col justify-between">
                     <div class="max-h-[150px]">
@@ -97,7 +97,7 @@ const submitGuestInfo = async () => {
             rsvpError.value = true;
             return;
         }
-        await updateGuestRsvp(props.guestInfo);
+        // await updateGuestRsvp(props.guestInfo);
         setTimeout(() => {
             document.getElementById("card")?.classList.add("rotate");
         }, 500);
@@ -134,7 +134,6 @@ const getDimensions = computed(() => {
     return 'w-[500px] h-[380px]';
 })
 onMounted(() => {
-
     checkUserSubmission()
 })
 </script>
