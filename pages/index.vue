@@ -8,7 +8,6 @@ definePageMeta({
 	],
 	layout: 'default'
 });
-const { guestCanAccess } = useVerificationCheck();
 </script>
 <style>
 body {
