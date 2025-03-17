@@ -2,27 +2,23 @@
     <div class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto bg-bg flex items-center justify-center min-h-screen "
         v-if="name">
         <div class="form-container">
-            <!-- <div v-if="userHasSubmitted">
-                <p class="font-greatvibes text-main">Your response has been submitted.</p>
-            </div> -->
             <RsvpForm :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
             <div class="hero-image shadow-lg" />
         </div>
     </div>
-    <!-- <div v-else class="px-10 mx-auto pb-10 bg-bg flex items-center justify-center">
+    <div v-else-if="!name || !uuid" class="px-10 mx-auto pb-10 bg-bg flex items-center justify-center">
         <h1 class="max-w-[700px] mx-auto mt-4 font-semibold font-plantagenet-cherokee">Please RSVP by clicking the
             link in your
             email
             invitation</h1>
-    </div> -->
+    </div>
 </template>
 <script setup lang="ts">
 import { db } from "../services/firebaseclient";
 import { getDocs, collection, query, where, } from "firebase/firestore";
 const isLoading = ref(false);
 let searchUuid = "";
-let guestName = ref("")
-let guestInfo = ref<GuestInfo>({});
+let guestInfo = ref<GuestInfo>();
 const searchGuestWithName = async () => {
     searchUuid = uuid.value;
     try {
@@ -42,7 +38,6 @@ const searchGuestWithName = async () => {
         isLoading.value = false;
     }
 }
-const userHasSubmitted = useState(() => false);
 const isNowSubmitted = ref(false);
 const handleSubmissionTransition = () => {
     isNowSubmitted.value = true
@@ -54,7 +49,6 @@ credsCookie.value = uuid.value;
 const { guestCanAccess } = useVerificationCheck();
 onMounted(() => {
     searchGuestWithName();
-    console.log(userHasSubmitted.value)
 })
 </script>
 <style lang="postcss" scoped>
