@@ -154,6 +154,7 @@ definePageMeta({
 
 .save-the-date-label {
     display: none;
+    animation: spin 90s linear infinite;
 
     @media screen and (min-width: 1250px) {
         display: block;
@@ -214,5 +215,16 @@ definePageMeta({
     position: absolute;
     right: -20px;
     top: -10px;
+    animation: spin 70s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 </style>
