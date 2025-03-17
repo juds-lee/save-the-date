@@ -67,7 +67,7 @@ watch(guestCanAccess, (value) => {
 onMounted(() => {
     window.addEventListener('scroll', handlePageScroll);
     window.onload = () => {
-        document.getElementById("myDiv").classList.add("slide-up");
+        // document.getElementById("myDiv").classList.add("slide-up");
     };
     observer = initFadeUpAnimation();
 
