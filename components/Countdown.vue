@@ -6,7 +6,7 @@
         class="max-w-[800px] mx-auto w-full pb-[60px] md:pb-[100px] flex flex-col md:flex-row justify-between items-center px-10">
         <div>
             <p class="font-plantagenet-cherokee text-center md:text-left mb-4 text-[30px]">Let the countdown begin!</p>
-            <div class="flex flex-row gap-4 justify-center">
+            <div class="flex flex-row gap-4 justify-center fade-up-element">
                 <div v-for="(time, index) in timeUnits" :key="index" class="flex flex-col items-center">
                     <div class="flex flex-row gap-2">
                         <p class="text-[37px] sm:text-[48px] rsvp-sm:text-[68px] font-plantagenet-cherokee">
@@ -20,7 +20,8 @@
                 </div>
             </div>
         </div>
-        <NuxtLink class="main-rsvp-button flex flex-row items-center justify-center gap-1 mt-10 md:mt-0" to="/rsvp">RSVP
+        <NuxtLink class="main-rsvp-button flex flex-row items-center justify-center gap-1 mt-10 md:mt-0"
+            to="/rsvp fade-up-element">RSVP
             <img src="../assets/svg/arrow-outward.svg" alt="">
         </NuxtLink>
     </div>
