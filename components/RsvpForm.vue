@@ -92,11 +92,11 @@ const { updateGuestRsvp, checkUserSubmission, userHasSubmitted } = useFirebase()
 const rsvpError = ref(false);
 const submitGuestInfo = async () => {
     try {
-        if (!props.guestInfo.rsvpOption) {
-            console.log("rsvp error", rsvpError)
-            rsvpError.value = true;
-            return;
-        }
+        // if (!props.guestInfo.rsvpOption) {
+        //     console.log("rsvp error", rsvpError)
+        //     rsvpError.value = true;
+        //     return;
+        // }
         // await updateGuestRsvp(props.guestInfo);
         setTimeout(() => {
             document.getElementById("card")?.classList.add("rotate");
