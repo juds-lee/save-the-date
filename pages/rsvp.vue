@@ -1,6 +1,6 @@
 <template>
-    <div class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto bg-bg flex items-center justify-center min-h-screen "
-        v-if="name">
+    <div v-if="name"
+        class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto bg-bg flex items-center justify-center min-h-screen">
         <div class="form-container">
             <RsvpForm :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
             <div class="hero-image shadow-lg" />
@@ -18,7 +18,7 @@ import { db } from "../services/firebaseclient";
 import { getDocs, collection, query, where, } from "firebase/firestore";
 const isLoading = ref(false);
 let searchUuid = "";
-let guestInfo = ref<GuestInfo>();
+let guestInfo = ref<GuestInfo>({});
 const searchGuestWithName = async () => {
     searchUuid = uuid.value;
     try {
