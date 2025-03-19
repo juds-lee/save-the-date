@@ -8,9 +8,11 @@
                 <div class="mb-6 mt-2">
                     <p class="rsvp-title">Dear {{
                         firstNameOnly
-                        }},
+                    }},
                     </p>
-                    <p> We would love for you to join us in our celebrations. Please rsvp no later than May 20 2025.</p>
+                    <p> We would love for you to join us in our celebrations. Please RSVP no later than May 20 2025.
+                        <br /> Will you be able to join us?
+                    </p>
                 </div>
                 <form @submit.prevent="submitGuestInfo" class="h-full flex flex-col justify-between">
                     <div class="max-h-[150px]">
@@ -52,7 +54,7 @@
                                     viewBox="0 0 32.02 40.6">
                                     <g>
                                         <path class="nought-line"
-                                            d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
+                                            d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.∫37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
                                     </g>
                                 </svg>
                             </div>
@@ -82,8 +84,8 @@
 
 <script setup lang="ts">
 const rsvpOptions = [
-    { label: 'Accept', value: true },
-    { label: 'Regretfully Decline', value: false }
+    { label: 'Yes', value: true },
+    { label: 'Regretfully, No', value: false }
 ];
 const props = defineProps<{
     guestInfo: GuestInfo;
@@ -97,7 +99,7 @@ const submitGuestInfo = async () => {
         //     rsvpError.value = true;
         //     return;
         // }
-        // await updateGuestRsvp(props.guestInfo);
+        await updateGuestRsvp(props.guestInfo);
         setTimeout(() => {
             document.getElementById("card")?.classList.add("rotate");
         }, 500);

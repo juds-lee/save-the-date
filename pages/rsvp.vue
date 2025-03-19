@@ -6,7 +6,8 @@
             <div class="hero-image shadow-lg" />
         </div>
     </div>
-    <div v-else-if="!name || !uuid" class="px-10 mx-auto pb-10 bg-bg flex items-center justify-center">
+    <div v-else-if="!name || !uuid"
+        class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto bg-bg flex items-center justify-center">
         <h1 class="max-w-[700px] mx-auto mt-4 font-semibold font-plantagenet-cherokee">Please RSVP by clicking the
             link in your
             email
