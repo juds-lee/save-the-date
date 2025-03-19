@@ -33,7 +33,6 @@
                 </div>
             </div>
         </div>
-
         <ScheduleInfo id="when-and-where" />
         <Details id="details" />
         <Countdown />

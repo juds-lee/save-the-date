@@ -20,8 +20,8 @@
                 </div>
             </div>
         </div>
-        <NuxtLink class="main-rsvp-button flex flex-row items-center justify-center gap-1 mt-10 md:mt-0"
-            to="/rsvp fade-up-element">RSVP
+        <NuxtLink class="main-rsvp-button flex flex-row items-center justify-center gap-1 mt-10 md:mt-0 fade-up-element"
+            to="/rsvp">RSVP
             <img src="../assets/svg/arrow-outward.svg" alt="">
         </NuxtLink>
     </div>
