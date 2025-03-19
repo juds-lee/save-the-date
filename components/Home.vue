@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ 'no-scroll': modalOverlay }" class="hide slide-up">
+    <div :class="{ 'no-scroll': modalOverlay }">
         <HomepageAuth class="flex justify-center items-center fixed w-full h-full z-50" v-if="modalOverlay"
             @close="closeModal" />
         <div class=" mx-auto px-10 mt-10 max-w-[1500px] mb-[160px]">
