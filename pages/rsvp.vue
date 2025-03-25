@@ -74,7 +74,7 @@ onMounted(() => {
     background-position: top;
     background-repeat: no-repeat;
     width: 100%;
-    height: 500px;
+    height: 580px;
     max-width: 500px;
 
 
