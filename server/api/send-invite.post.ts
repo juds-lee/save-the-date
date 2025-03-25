@@ -43,6 +43,7 @@ export default defineEventHandler(async (event) => {
         guestEmail: guest.email,
         token: token,
       };
+      console.log("data: ", data.guestName);
       const mjmlWithDynamicNames = template(data);
       const emailHtmlOutput = mjml2html(mjmlWithDynamicNames).html;
       const emailData = {

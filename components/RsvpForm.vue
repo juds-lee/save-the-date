@@ -8,7 +8,7 @@
                 <div class="mb-6 mt-2">
                     <p class="rsvp-title">Dear {{
                         firstNameOnly
-                    }},
+                        }},
                     </p>
                     <p> We would love for you to join us in our celebrations. Please RSVP no later than May 20 2025.
                         <br /> Will you be able to join us?
@@ -127,9 +127,6 @@ const getDimensions = computed(() => {
     else if (props.guestInfo.hasPlusOne && windowWidth.value <= 1299) {
         return 'w-[500px] h-[580px]';
     }
-    // if (props.guestInfo.hasPlusOne && windowWidth.value > 1300) {
-    //     return 'w-[450px] h-[560px]';
-    // }
     else if (!props.guestInfo.hasPlusOne && windowWidth.value > 1300) {
         return 'w-[550px] h-[380px]';
     }
