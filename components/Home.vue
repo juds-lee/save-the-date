@@ -10,12 +10,12 @@
             <div class="relative">
                 <NuxtImg
                     src="https://res.cloudinary.com/djatkco6m/image/upload/v1738010448/DSC04460_2_fqkuyj_9b750c.jpg"
-                    class="hero-left-image fade-up-element" />
+                    class="hero-left-image fade-up-element-slow" />
                 <NuxtImg
                     src="https://res.cloudinary.com/djatkco6m/image/upload/c_crop,w_4093,h_5894,x_0,y_244/v1738010139/IMG_8478_zfvh65.jpg"
                     class="hero-main-image fade-up-element" />
                 <NuxtImg src="https://res.cloudinary.com/djatkco6m/image/upload/v1727983013/DSC04426_2_io6dfc.jpg"
-                    class="hero-right-image fade-up-element" />
+                    class="hero-right-image fade-up-element-slow" />
                 <img src="../assets/svg/save-the-date.svg" class="save-the-date-label fade-up-element" />
             </div>
             <div class="flex justify-center gap-2">

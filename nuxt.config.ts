@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      title: "Welcome to Judy and Duncan's Wedding",
       link: [
         {
           rel: "stylesheet",
@@ -19,7 +20,6 @@ export default defineNuxtConfig({
   },
   nitro: { preset: "firebase", firebase: { nodeVersion: "18", gen: 2 } },
   modules: [
-    "@formkit/nuxt",
     "@nuxtjs/cloudinary",
     "@vueuse/nuxt",
     "@nuxtjs/tailwindcss",
@@ -45,10 +45,7 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ["./stores/**", "./custom-folder/stores/**"],
   },
-  formkit: {
-    // Experimental support for auto loading (see note):
-    autoImport: true,
-  },
+
   css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {

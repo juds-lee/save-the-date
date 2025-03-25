@@ -14,7 +14,7 @@
                         <br /> Will you be able to join us?
                     </p>
                 </div>
-                <form @submit.prevent="submitGuestInfo" class="h-full flex flex-col justify-between">
+                <form @submit.prevent="submitGuestInfo" class="h-full flex flex-col justify-around">
                     <div class="max-h-[150px]">
                         <p class=" rsvp-name" v-if="guestInfo.hasPlusOne">{{ guestInfo.name }}
                         </p>
@@ -54,7 +54,7 @@
                                     viewBox="0 0 32.02 40.6">
                                     <g>
                                         <path class="nought-line"
-                                            d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.∫37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
+                                            d="M14.74,6.51a5.17,5.17,0,0,0-2.2-.08c-2,.37-3.21,2-4.88,4.27a36.24,36.24,0,0,0-3.43,6.06,21.94,21.94,0,0,0-1.66,4,28.12,28.12,0,0,0-.75,4.65,33.3,33.3,0,0,0-.32,4.1,11.87,11.87,0,0,0,.4,4.23,7.78,7.78,0,0,0,2.22,3.41A8.2,8.2,0,0,0,8.73,39a12.54,12.54,0,0,0,7.15-1.42A19.35,19.35,0,0,0,19.82,35a28,28,0,0,0,5.37-5.1A25,25,0,0,0,29,23a24.91,24.91,0,0,0,1.25-12.42c-.37-2.18-1-6.1-3.91-8a7,7,0,0,0-3.07-1.06,5.85,5.85,0,0,0-3,.48A6.76,6.76,0,0,0,18,3.84a17,17,0,0,0-1.43,2c-.29.44-.49.76-.85,1.35C15,8.45,14.57,9.07,14.34,9.5a12,12,0,0,0-1.07,3.09" />
                                     </g>
                                 </svg>
                             </div>
@@ -70,9 +70,17 @@
                 </form>
             </div>
             <div class="back" :class="getDimensions">
-                Your response
-                has been
-                noted. <br /> Thank you.
+                <div class="flex flex-col items-center justify-center text-[#333]">
+                    Your response
+                    has been
+                    noted. <br /> Thank you.
+                    <br>
+                    <NuxtLink to="/" class="flex font-plantagenet-cherokee text-[18px] mt-5 text-[#333] underline">View
+                        Wedding
+                        Details
+                        <!-- <img src="../assets/svg/arrow.png" class="w-4 h-4" /> -->
+                    </NuxtLink>
+                </div>
                 <img src="../assets/svg/flower-1.svg" alt="heart" class="absolute -z-20"
                     :class="guestInfo.hasPlusOne ? 'h-auto' : 'h-[450px]'" />
             </div>
@@ -121,8 +129,11 @@ const firstNameOnly = computed(() => {
     return primaryFirstName;
 });
 const getDimensions = computed(() => {
-    if (props.guestInfo.hasPlusOne && windowWidth.value >= 1300) {
-        return 'w-[600px] h-[600px]';
+    if (props.guestInfo.hasPlusOne && windowWidth.value <= 550) {
+        return 'w-[500px] h-[680px]';
+    }
+    else if (props.guestInfo.hasPlusOne && windowWidth.value >= 1300) {
+        return 'w-[600px] h-[700px]';
     }
     else if (props.guestInfo.hasPlusOne && windowWidth.value <= 1299) {
         return 'w-[500px] h-[580px]';
@@ -130,6 +141,7 @@ const getDimensions = computed(() => {
     else if (!props.guestInfo.hasPlusOne && windowWidth.value > 1300) {
         return 'w-[550px] h-[380px]';
     }
+
     return 'w-[500px] h-[380px]';
 })
 onMounted(() => {
@@ -206,7 +218,7 @@ onMounted(() => {
 }
 
 .rsvp-name {
-    @apply font-plantagenet-cherokee text-[20px];
+    @apply font-plantagenet-cherokee text-[23px];
 
     @media screen and (min-width: 1300px) {
         font-size: 30px;
@@ -214,22 +226,17 @@ onMounted(() => {
 }
 
 .rsvp-submit {
-    @apply font-plantagenet-cherokee text-[15px];
+    @apply font-plantagenet-cherokee;
     color: #F6F0E7;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2px 7px;
     border-radius: 10px;
     background: #6B876D;
     transition: background-color 0.3s, color 0.3s, transform 0.2s;
     cursor: pointer;
-
-    @media screen and (min-width: 400px) {
-        font-size: 25px;
-        padding: 5px 10px;
-
-    }
+    font-size: 25px;
+    padding: 5px 10px;
 }
 
 .rsvp-submit:hover {
@@ -304,9 +311,17 @@ label {
     outline: none;
     width: auto;
     font-size: inherit;
-    color: #333;
+    color: #000;
     z-index: 2;
     position: relative;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px inset !important;
+        -webkit-text-fill-color: #000 !important;
+    }
 
     @media screen and (min-width: 1300px) {
         width: 300px;

@@ -2,8 +2,8 @@
     <div v-if="name"
         class="px-10 rsvp-sm:px-20 lg:max-w-[1500px] mx-auto bg-bg flex items-center justify-center min-h-screen">
         <div class="form-container">
-            <RsvpForm :guestInfo="guestInfo" @submitted="handleSubmissionTransition" />
-            <div class="hero-image shadow-lg" />
+            <RsvpForm :guestInfo="guestInfo" @submitted="handleSubmissionTransition" class="fade-up-element" />
+            <div class="hero-image shadow-lg fade-up-element" />
         </div>
     </div>
     <div v-else-if="!name || !uuid"
@@ -17,6 +17,7 @@
 <script setup lang="ts">
 import { db } from "../services/firebaseclient";
 import { getDocs, collection, query, where, } from "firebase/firestore";
+
 const isLoading = ref(false);
 let searchUuid = "";
 let guestInfo = ref<GuestInfo>({});
@@ -47,10 +48,17 @@ const handleSubmissionTransition = () => {
 const { name, uuid } = storeToRefs(useUserStore());
 const credsCookie = useCookie('creds')
 credsCookie.value = uuid.value;
-const { guestCanAccess } = useVerificationCheck();
+
+let observer;
+const { initFadeUpAnimation } = useFadeUpAnimation();
 onMounted(() => {
     searchGuestWithName();
-})
+    observer = initFadeUpAnimation();
+});
+onUnmounted(() => {
+    observer.disconnect();
+
+});
 </script>
 <style lang="postcss" scoped>
 .form-container {
@@ -74,18 +82,8 @@ onMounted(() => {
     background-position: top;
     background-repeat: no-repeat;
     width: 100%;
-    height: 500px;
+    height: 580px;
     max-width: 500px;
-
-
-    /* @media screen and (min-width: 415px) {
-        height: 500px;
-        max-width: 550px;
-    } */
-    /* @media screen and (min-width: 1300px) {
-        height: 500px;
-        max-width: 500px;
-    } */
 
     @media screen and (min-width: 1300px) {
         height: 700px;
