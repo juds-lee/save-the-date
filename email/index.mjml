@@ -44,33 +44,27 @@
           <mj-text color="#637381" font-size="16px">
             We are excited to invite you to join us on our special day. Please visit our website for more information and kindly RSVP by July 20, 2025. Your presence would mean the world to us!
           </mj-text>
-          <mj-text>
-            <a href="https://www.judyandduncan.com/?p=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSnVkeSBMZWUiLCJ1dWlkIjoibno1VlV1OE5CUkFYT1NKYWRabnUiLCJpYXQiOjE3NDIzMzQ4NTB9.q-pxyOjq15UNTQs2HflOO_ou3o_rxnWErN67NAOCq9g" target="_blank" style="text-decoration: underline; color: #637381">
-              RSVP here</a>
-          </mj-text>
-          <mj-text color="#637381" font-size="16px">
+          <mj-button href="https://www.judyandduncan.com/?p=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSnVkeSBMZWUiLCJ1dWlkIjoibno1VlV1OE5CUkFYT1NKYWRabnUiLCJpYXQiOjE3NDIzMzQ4NTB9.q-pxyOjq15UNTQs2HflOO_ou3o_rxnWErN67NAOCq9g" background-color="#637381" color="#ffffff" border-radius="4px" padding="16px 24px" font-size="16px" align="center">
+            RSVP Here
+          </mj-button>
+          <mj-text color="#637381" font-size="16px" padding-top="0" padding-bottom="0">
             Sincerely, <br /> Judy Lee & Duncan Heeney
           </mj-text>
-
-          <mj-text align="right" font-size="11px" padding-bottom="0px" padding-top="0">
-            <div style="display: flex; flex-direction: row; justify-content: space-between;">
-              <span style="color: #637381" font-size="12px">
-                Website Password: judunky2025
-              </span>
-              <div>
-                <span style="color: #637381">Add to your</span>
-                <span style="color: #637381;">
-                  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Judy+and+Duncan+are+getting+married!&dates=20250920T090000/20250920T100000" style="text-decoration: underline; color: #637381">
-                    Google</a>
-                </span>
-                <span style="color: #637381"> or </span>
-                <span style="color: #637381;">
-                  <a href="https://www.judyandduncan.com/JudyandDuncan.ics" style="text-decoration: underline; color: #637381">
-                    Apple</a>
-                </span>
-                <span style="color: #637381"> calendar</span>
-              </div>
-            </div>
+          <mj-text align="right" color="#637381" font-size="12px" padding-top="0" padding-bottom="0">
+            Website Password: judunky2025
+          </mj-text>
+          <mj-text align="right" color="#637381" font-size="12px" padding-top="0" padding-bottom="0">
+            <span style="color: #637381">Add to your</span>
+            <span style="font-size: 12px color: #637381;">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Judy+and+Duncan+are+getting+married!&dates=20250920T090000/20250920T100000" style="text-decoration: underline; color: #637381">
+                Google</a>
+            </span>
+            <span> or </span>
+            <span style="font-size: 12px color: #637381;">
+              <a href="https://www.judyandduncan.com/JudyandDuncan.ics" style="text-decoration: underline; color: #637381">
+                Apple</a>
+            </span>
+            <span style="color: #637381"> calendar</span>
           </mj-text>
         </mj-column>
       </mj-section>

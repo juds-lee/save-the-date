@@ -60,8 +60,8 @@
                 <div>
                   <p>RSVP OPTION: {{ guest.rsvpOption }}</p>
                   <p>Allergies: {{ guest.allergies }}</p>
-                  <p>Email: {{ guest.email }}</p>
-                  <p>UUID: {{ guest.guestUuid }}</p>
+                  <p>Email: {{ guest.email.substring(0, 0) + '********' }}</p>
+                  <p>UUID: {{ guest.guestUuid.substring(0, 0) + '********' }}</p>
                   <p>Plus One: {{ guest.hasPlusOne }}</p>
                   <p v-if="guest.hasPlusOne">Partner Name: {{ guest.secondaryGuest.secondaryName }}</p>
                   <p v-if="guest.hasPlusOne">Partner Allergies: {{ guest.secondaryGuest.secondaryAllergies }}</p>
