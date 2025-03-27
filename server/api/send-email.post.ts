@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
         token: token,
         guestName: guest.hasPlusOne ? `${guest.name} and ${guest.secondaryGuest.secondaryName}` : guest.name,
       };
-      console.log("guest name(s): ", data.guestName);
+      console.log("data", data);
       const mjmlWithDynamicNames = template(data);
       const emailHtmlOutput = mjml2html(mjmlWithDynamicNames).html;
       const emailData = {

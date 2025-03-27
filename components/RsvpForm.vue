@@ -8,7 +8,7 @@
                 <div class="mb-6 mt-2">
                     <p class="rsvp-title">Dear {{
                         firstNameOnly
-                    }},
+                        }},
                     </p>
                     <p> We would love for you to join us in our celebrations. Please RSVP no later than May 20 2025.
                         <br /> Will you be able to join us?
@@ -78,7 +78,7 @@
                     <NuxtLink to="/" class="flex font-plantagenet-cherokee text-[18px] mt-5 text-[#333] underline">View
                         Wedding
                         Details
-                        <img src="../assets/svg/arrow.png" class="w-4 h-4" />
+                        <!-- <img src="../assets/svg/arrow.png" class="w-4 h-4" /> -->
                     </NuxtLink>
                 </div>
                 <img src="../assets/svg/flower-1.svg" alt="heart" class="absolute -z-20"

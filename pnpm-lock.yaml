@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@formkit/nuxt':
-        specifier: ^1.3.2
-        version: 1.3.2(esbuild@0.19.8)(rollup@4.6.1)(tailwindcss@3.3.5)(vite@4.5.0(@types/node@20.10.2)(terser@5.24.0))(webpack@5.89.0(esbuild@0.19.8))
       '@nuxt/http':
         specifier: ^0.6.4
         version: 0.6.4(encoding@0.1.13)
@@ -56,7 +53,7 @@ importers:
         version: 1.8.0(rollup@4.6.1)
       '@nuxtjs/tailwindcss':
         specifier: ^6.9.4
-        version: 6.9.4(rollup@4.6.1)(webpack@5.89.0(esbuild@0.19.8))
+        version: 6.9.4(rollup@4.6.1)(webpack@5.89.0)
       '@pinia/nuxt':
         specifier: ^0.5.4
         version: 0.5.4(rollup@4.6.1)(vue@3.3.8)
@@ -882,50 +879,6 @@ packages:
 
   '@firebase/webchannel-wrapper@0.10.3':
     resolution: {integrity: sha512-+ZplYUN3HOpgCfgInqgdDAbkGGVzES1cs32JJpeqoh87SkRobGXElJx+1GZSaDqzFL+bYiX18qEcBK76mYs8uA==}
-
-  '@formkit/core@1.3.2':
-    resolution: {integrity: sha512-sqspEsp4CnS9cx+HWWZhN91dYyQB2Mgrhtp5tVPHPiNDpS7Wvl1L9xI/6iUc3rXxH0YhHQ8ptyLIQKO2vNpfGg==}
-
-  '@formkit/dev@1.3.2':
-    resolution: {integrity: sha512-uv0mbRpOSEQ5cIvtLng5z6IaDcQo3jW6+H6XPzR+qi11qbGQfl3JOOeLRg1caBVxc2VlUEf1ik2pFfgALb48HQ==}
-
-  '@formkit/i18n@1.3.2':
-    resolution: {integrity: sha512-fUp8DXTMcuQh0tR09Lmg1lAgXpVaocahGfYDOGgc5luUAy2MYKi7HXsvAoz3JP7wybwLs31W1LA+bLR26HIAjw==}
-
-  '@formkit/inputs@1.3.2':
-    resolution: {integrity: sha512-Z8f3S5j/r7+RS4zexon1mMJbSmqchYtFxAJ7ROJTkA0CA9gA7hwlPAQHmA/+2Tc1PWIexGJEBCqI5IL8gCGCBA==}
-
-  '@formkit/nuxt@1.3.2':
-    resolution: {integrity: sha512-VxzOn/gg7ee+JA6MBcPUg8+Vq6+qikIy3dnRdjdQ0UpQKPb15UagKr1c5YT1XzPeauTIsfhvfrR82X8ZZkoeXA==}
-
-  '@formkit/observer@1.3.2':
-    resolution: {integrity: sha512-vyBVUUA5JBXfh/3WHKr04z51IYt0FU3ZucR3Us/P0Vr1eFXTnaRaiBTGiBwD39xdi5iBWvSEfpvM8lpwHjh/OA==}
-
-  '@formkit/rules@1.3.2':
-    resolution: {integrity: sha512-7sD/S9Rdn6z8RRplKI/Q42duV5085HRRAc15rQwvuxzL9oBhUnu2MXHJWyp+pxBJnuoAqFO0TssSHTVMWIydWA==}
-
-  '@formkit/themes@1.3.2':
-    resolution: {integrity: sha512-rKa/pL0x6WUyWDox7PfvWvQgJQu3AsuQ30lyd1u848Wmq3LX61IeMx/mg1kYdG2ZOu6V4K07vAVBbDRpPd/UGQ==}
-    peerDependencies:
-      tailwindcss: ^3.2.0
-      unocss: ^0.31.0
-      windicss: ^3.0.0
-    peerDependenciesMeta:
-      tailwindcss:
-        optional: true
-      unocss:
-        optional: true
-      windicss:
-        optional: true
-
-  '@formkit/utils@1.3.2':
-    resolution: {integrity: sha512-L7ltaR5vV5NK6H4NKYx8xZ85l60TutgvQHv95B7ncj9pDNUUqKK9H56zkYFXPpCQhtKU/UbK19NNOuKI0OVfkw==}
-
-  '@formkit/validation@1.3.2':
-    resolution: {integrity: sha512-j1lcLHtxV4B2O23ot+S/y5tmL8eqjTYkRMVuTsI9qzQ8xdLcAJSu+KCdO+qL1c2czQ4W1R6e9vhhw0WKk+C3ug==}
-
-  '@formkit/vue@1.3.2':
-    resolution: {integrity: sha512-6QZD90xx7u1zjrWkplsnYTA0McYlWU8VNu0A6hiPZZF6F+xDUSL/en+V14RgIz6NIrdycUI44taRwmI27/8cjQ==}
 
   '@google-cloud/firestore@6.8.0':
     resolution: {integrity: sha512-JRpk06SmZXLGz0pNx1x7yU3YhkUXheKgH5hbDZ4kMsdhtfV5qPLJLRI4wv69K0cZorIk+zTMOwptue7hizo0eA==}
@@ -5501,23 +5454,6 @@ packages:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
 
-  unplugin-formkit@0.2.7:
-    resolution: {integrity: sha512-2Ea5CyEZ2rwjSpx6maweyzFUsV1M/6CiACXHkz4Jv2G32SI4jq58stU7ADWSqrIKgjJE0bllyUx25lpj6ry9gA==}
-    peerDependencies:
-      esbuild: '*'
-      rollup: ^3
-      vite: '>=3'
-      webpack: ^4 || ^5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-
   unplugin-vue-router@0.7.0:
     resolution: {integrity: sha512-ddRreGq0t5vlSB7OMy4e4cfU1w2AwBQCwmvW3oP/0IHQiokzbx4hd3TpwBu3eIAFVuhX2cwNQwp1U32UybTVCw==}
     peerDependencies:
@@ -6851,90 +6787,6 @@ snapshots:
 
   '@firebase/webchannel-wrapper@0.10.3': {}
 
-  '@formkit/core@1.3.2':
-    dependencies:
-      '@formkit/utils': 1.3.2
-
-  '@formkit/dev@1.3.2':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/utils': 1.3.2
-
-  '@formkit/i18n@1.3.2':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/utils': 1.3.2
-      '@formkit/validation': 1.3.2
-
-  '@formkit/inputs@1.3.2':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/utils': 1.3.2
-
-  '@formkit/nuxt@1.3.2(esbuild@0.19.8)(rollup@4.6.1)(tailwindcss@3.3.5)(vite@4.5.0(@types/node@20.10.2)(terser@5.24.0))(webpack@5.89.0(esbuild@0.19.8))':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/i18n': 1.3.2
-      '@formkit/vue': 1.3.2(tailwindcss@3.3.5)
-      '@nuxt/kit': 3.8.2(rollup@4.6.1)
-      chokidar: 3.5.3
-      nuxi: 3.10.0
-      pathe: 1.1.1
-      unplugin-formkit: 0.2.7(esbuild@0.19.8)(rollup@4.6.1)(vite@4.5.0(@types/node@20.10.2)(terser@5.24.0))(webpack@5.89.0(esbuild@0.19.8))
-    transitivePeerDependencies:
-      - esbuild
-      - rollup
-      - supports-color
-      - tailwindcss
-      - typescript
-      - unocss
-      - vite
-      - webpack
-      - windicss
-
-  '@formkit/observer@1.3.2':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/utils': 1.3.2
-
-  '@formkit/rules@1.3.2':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/utils': 1.3.2
-      '@formkit/validation': 1.3.2
-
-  '@formkit/themes@1.3.2(tailwindcss@3.3.5)':
-    dependencies:
-      '@formkit/core': 1.3.2
-    optionalDependencies:
-      tailwindcss: 3.3.5
-
-  '@formkit/utils@1.3.2': {}
-
-  '@formkit/validation@1.3.2':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/observer': 1.3.2
-      '@formkit/utils': 1.3.2
-
-  '@formkit/vue@1.3.2(tailwindcss@3.3.5)':
-    dependencies:
-      '@formkit/core': 1.3.2
-      '@formkit/dev': 1.3.2
-      '@formkit/i18n': 1.3.2
-      '@formkit/inputs': 1.3.2
-      '@formkit/observer': 1.3.2
-      '@formkit/rules': 1.3.2
-      '@formkit/themes': 1.3.2(tailwindcss@3.3.5)
-      '@formkit/utils': 1.3.2
-      '@formkit/validation': 1.3.2
-      vue: 3.3.8
-    transitivePeerDependencies:
-      - tailwindcss
-      - typescript
-      - unocss
-      - windicss
-
   '@google-cloud/firestore@6.8.0(encoding@0.1.13)':
     dependencies:
       fast-deep-equal: 3.1.3
@@ -7397,14 +7249,14 @@ snapshots:
       - rollup
       - supports-color
 
-  '@nuxt/postcss8@1.1.3(webpack@5.89.0(esbuild@0.19.8))':
+  '@nuxt/postcss8@1.1.3(webpack@5.89.0)':
     dependencies:
       autoprefixer: 10.4.16(postcss@8.4.32)
-      css-loader: 5.2.7(webpack@5.89.0(esbuild@0.19.8))
+      css-loader: 5.2.7(webpack@5.89.0)
       defu: 3.2.2
       postcss: 8.4.32
       postcss-import: 13.0.0(postcss@8.4.32)
-      postcss-loader: 4.3.0(postcss@8.4.32)(webpack@5.89.0(esbuild@0.19.8))
+      postcss-loader: 4.3.0(postcss@8.4.32)(webpack@5.89.0)
       postcss-url: 10.1.3(postcss@8.4.32)
       semver: 7.6.3
     transitivePeerDependencies:
@@ -7589,10 +7441,10 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@nuxtjs/tailwindcss@6.9.4(rollup@4.6.1)(webpack@5.89.0(esbuild@0.19.8))':
+  '@nuxtjs/tailwindcss@6.9.4(rollup@4.6.1)(webpack@5.89.0)':
     dependencies:
       '@nuxt/kit': 3.8.2(rollup@4.6.1)
-      '@nuxt/postcss8': 1.1.3(webpack@5.89.0(esbuild@0.19.8))
+      '@nuxt/postcss8': 1.1.3(webpack@5.89.0)
       autoprefixer: 10.4.16(postcss@8.4.32)
       chokidar: 3.5.3
       clear-module: 4.1.2
@@ -9115,7 +8967,7 @@ snapshots:
     dependencies:
       postcss: 8.4.32
 
-  css-loader@5.2.7(webpack@5.89.0(esbuild@0.19.8)):
+  css-loader@5.2.7(webpack@5.89.0):
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.32)
       loader-utils: 2.0.4
@@ -9127,7 +8979,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.6.3
-      webpack: 5.89.0(esbuild@0.19.8)
+      webpack: 5.89.0
 
   css-select@5.1.0:
     dependencies:
@@ -11931,7 +11783,7 @@ snapshots:
     optionalDependencies:
       postcss: 8.4.32
 
-  postcss-loader@4.3.0(postcss@8.4.32)(webpack@5.89.0(esbuild@0.19.8)):
+  postcss-loader@4.3.0(postcss@8.4.32)(webpack@5.89.0):
     dependencies:
       cosmiconfig: 7.1.0
       klona: 2.0.6
@@ -11939,7 +11791,7 @@ snapshots:
       postcss: 8.4.32
       schema-utils: 3.3.0
       semver: 7.6.3
-      webpack: 5.89.0(esbuild@0.19.8)
+      webpack: 5.89.0
 
   postcss-merge-longhand@6.0.0(postcss@8.4.32):
     dependencies:
@@ -12833,16 +12685,14 @@ snapshots:
       - supports-color
     optional: true
 
-  terser-webpack-plugin@5.3.9(esbuild@0.19.8)(webpack@5.89.0(esbuild@0.19.8)):
+  terser-webpack-plugin@5.3.9(webpack@5.89.0):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
       terser: 5.24.0
-      webpack: 5.89.0(esbuild@0.19.8)
-    optionalDependencies:
-      esbuild: 0.19.8
+      webpack: 5.89.0
 
   terser@5.24.0:
     dependencies:
@@ -13042,16 +12892,6 @@ snapshots:
   unpic@3.18.0: {}
 
   unpipe@1.0.0: {}
-
-  unplugin-formkit@0.2.7(esbuild@0.19.8)(rollup@4.6.1)(vite@4.5.0(@types/node@20.10.2)(terser@5.24.0))(webpack@5.89.0(esbuild@0.19.8)):
-    dependencies:
-      pathe: 1.1.1
-      unplugin: 1.5.1
-    optionalDependencies:
-      esbuild: 0.19.8
-      rollup: 4.6.1
-      vite: 4.5.0(@types/node@20.10.2)(terser@5.24.0)
-      webpack: 5.89.0(esbuild@0.19.8)
 
   unplugin-vue-router@0.7.0(rollup@4.6.1)(vue-router@4.2.5(vue@3.3.8))(vue@3.3.8):
     dependencies:
@@ -13361,7 +13201,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.89.0(esbuild@0.19.8):
+  webpack@5.89.0:
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.5
@@ -13384,7 +13224,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.9(esbuild@0.19.8)(webpack@5.89.0(esbuild@0.19.8))
+      terser-webpack-plugin: 5.3.9(webpack@5.89.0)
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:
