@@ -10,7 +10,7 @@ export const useFadeUpAnimation = () => {
       },
       { threshold: 0.1 }
     );
-    document.querySelectorAll(".fade-up-element").forEach((element) => {
+    document.querySelectorAll(".fade-up-element, .fade-up-element-slow").forEach((element) => {
       observer.observe(element);
     });
 

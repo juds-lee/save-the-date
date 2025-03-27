@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      title: "Welcome to Judy and Duncan's Wedding",
       link: [
         {
           rel: "stylesheet",

@@ -77,16 +77,6 @@ onMounted(() => {
     height: 580px;
     max-width: 500px;
 
-
-    /* @media screen and (min-width: 415px) {
-        height: 500px;
-        max-width: 550px;
-    } */
-    /* @media screen and (min-width: 1300px) {
-        height: 500px;
-        max-width: 500px;
-    } */
-
     @media screen and (min-width: 1300px) {
         height: 700px;
         max-width: 700px;
