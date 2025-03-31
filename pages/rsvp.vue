@@ -69,10 +69,9 @@ onUnmounted(() => {
     width: 100%;
     padding: 40px 0;
 
-    @media screen and (min-width: 1150px) {
+    @media screen and (min-width: 1145px) {
         flex-direction: row;
         padding: 0;
-
     }
 }
 
@@ -82,7 +81,7 @@ onUnmounted(() => {
     background-position: top;
     background-repeat: no-repeat;
     width: 100%;
-    height: 580px;
+    height: 600px;
     max-width: 500px;
 
     @media screen and (min-width: 1300px) {

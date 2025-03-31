@@ -37,8 +37,8 @@ const details = [
         description: "Your presence is the best gift we could ask for. If you would like to give a gift, we would graciously accept a contribution towards our honeymoon fund. We will accept cash contributions or email transfers at <i>duncanheeney@gmail.com</i>"
     },
     {
-        title: "No children",
-        description: "We kindly ask that our wedding remain an adults-only event. We appreciate your understanding!"
+        title: "Invite Only",
+        description: "We kindly ask that our wedding remain an adults-only event and that guests attend without any additional guests not included on their invitation."
     },
     {
         title: "Food Options",

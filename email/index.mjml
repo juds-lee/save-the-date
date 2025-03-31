@@ -47,11 +47,14 @@
             <br />
             Your presence would mean the world to us!
           </mj-text>
-          <mj-button href="https://www.judyandduncan.com/?p=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSnVkeSBMZWUiLCJ1dWlkIjoibno1VlV1OE5CUkFYT1NKYWRabnUiLCJpYXQiOjE3NDIzMzQ4NTB9.q-pxyOjq15UNTQs2HflOO_ou3o_rxnWErN67NAOCq9g" background-color="#637381" color="#fff" border-radius="4px" padding="16px 24px" font-size="16px" align="center">
+          <mj-button href="https://www.judyandduncan.com/?p={{token}}" background-color="#637381" color="#fff" border-radius="4px" padding="16px 24px" font-size="16px" align="center">
             RSVP now
           </mj-button>
           <mj-text color="#637381" font-size="16px" padding-top="0" padding-bottom="0">
             Sincerely, <br /> Judy Lee & Duncan Heeney
+          </mj-text>
+          <mj-text color="#637381" font-size="14px">
+            **There will unfortunately be no additional guest permitted outside of those directly invited.
           </mj-text>
           <mj-text align="right" color="#637381" font-size="12px" padding-top="0" padding-bottom="0">
             Website Password: judunky2025
