@@ -8,10 +8,10 @@
                 <div class="mb-6 mt-2">
                     <p class="rsvp-title">Dear {{
                         firstNameOnly
-                    }},
+                        }},
                     </p>
                     <p class="text-[18px]"> We would love for you to join us in our celebrations. Please RSVP no later
-                        than May 20 2025.
+                        than July 20 2025.
                         <br />
                         <br /> Will you be able to join us?
                     </p>
@@ -82,7 +82,6 @@
                     <NuxtLink to="/" class="flex font-plantagenet-cherokee text-[18px] mt-5 text-[#333] underline">View
                         Wedding
                         Details
-                        <!-- <img src="../assets/svg/arrow.png" class="w-4 h-4" /> -->
                     </NuxtLink>
                 </div>
                 <img src="../assets/svg/flower-1.svg" alt="heart" class="absolute -z-20"
@@ -107,11 +106,10 @@ const rsvpError = ref(false);
 const submitGuestInfo = async () => {
     try {
         // if (!props.guestInfo.rsvpOption) {
-        //     console.log("rsvp error", rsvpError)
         //     rsvpError.value = true;
         //     return;
         // }
-        // await updateGuestRsvp(props.guestInfo);
+        await updateGuestRsvp(props.guestInfo);
         setTimeout(() => {
             document.getElementById("card")?.classList.add("rotate");
         }, 500);
@@ -154,10 +152,6 @@ const getDimensions = computed(() => {
     else if (!props.guestInfo.hasPlusOne && windowWidth.value > 550) {
         return 'w-[500px] h-[450px]';
     }
-    else if (!props.guestInfo.hasPlusOne && windowWidth.value >= 1150) {
-        return 'w-[500px] h-[450px]';
-    }
-    return 'w-[500px] h-[380px]';
 })
 onMounted(() => {
     checkUserSubmission()

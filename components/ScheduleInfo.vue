@@ -47,7 +47,7 @@ onUnmounted(() => {
 const eventItem = ref([
     {
         title: "Doors Open & Welcome Drinks",
-        time: "3:15 PM",
+        time: "3:00 PM",
     },
     {
         title: "Ceremony",

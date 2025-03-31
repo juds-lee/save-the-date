@@ -65,13 +65,16 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     padding: 40px 0;
+    min-height: 100vh;
 
-    @media screen and (min-width: 1145px) {
+    @media screen and (min-width: 1130px) {
         flex-direction: row;
         padding: 0;
+        justify-content: center;
+        gap: 10px;
     }
 }
 

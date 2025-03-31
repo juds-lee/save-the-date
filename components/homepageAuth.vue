@@ -20,7 +20,7 @@ const { setAuth } = useVerificationCheck();
 const enteredPassword = ref('');
 const setError = ref(false);
 const errorMessage = ref('');
-const correctPassword = 'hello';
+const correctPassword = 'judunky2025';
 const submitPassword = () => {
     if (enteredPassword.value === "") {
         setError.value = true;
