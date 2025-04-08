@@ -35,14 +35,13 @@ export default defineEventHandler(async (event) => {
     const guestInfoCollectionRef = collection(db, "guestInfoTesting");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
     const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as GuestInfo) }));
-
-    const guest = guestList.find((guest) => guest.name === "Jungmin Lee");
+    const guest = guestList.find((guest) => guest.name === "Sophia Tran");
+    // for (const guest of guestList.slice(90, 93)) {
     const payload = {
       name: guest?.name,
       uuid: guest?.id,
     };
-    console.log("payload", payload);
-
+    console.log(guest);
     const config = useRuntimeConfig();
     const secretKey = config.jwtSecretKey;
     const token = jwt.sign(payload, secretKey);
@@ -62,8 +61,9 @@ export default defineEventHandler(async (event) => {
       subject: "Welcome to Judy & Duncan's Wedding!",
       html: emailHtmlOutput,
     };
-    await sgMail.send(emailData);
-    console.log(emailData.to, data.token);
+    // await sgMail.send(emailData);
+    console.log(data.guestName, emailData.to, data.token);
+    // }
     return {
       statusCode: 200,
       body: "Email sent successfully!",
@@ -76,29 +76,3 @@ export default defineEventHandler(async (event) => {
     };
   }
 });
-
-// export default defineEventHandler(async (event) => {
-//   try {
-//     sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
-//     const msg = {
-//       to: "judyjungmin.lee@gmail.com",
-//       from: "Judy and Duncan <judy@judyandduncan.com>",
-//       subject: "Welcome to Judy and Duncan's Wedding!",
-//       text: "We can't wait to see you at our wedding!",
-//       html: "Dear Judy, <br> We can't wait to see you at our wedding! <br> Sincerely, <br> Judy and Duncan",
-//     };
-
-//     await sgMail.send(msg);
-//     console.log("Email sent successfully!");
-//     return {
-//       statusCode: 200,
-//       body: "Email sent successfully!",
-//     };
-//   } catch (error) {
-//     console.error(error);
-//     return {
-//       statusCode: 500,
-//       body: "Error sending email",
-//     };
-//   }
-// });

@@ -17,7 +17,6 @@
 <script setup lang="ts">
 import { db } from "../services/firebaseclient";
 import { getDocs, collection, query, where, } from "firebase/firestore";
-
 const isLoading = ref(false);
 let searchUuid = "";
 let guestInfo = ref<GuestInfo>({});
@@ -48,7 +47,6 @@ const handleSubmissionTransition = () => {
 const { name, uuid } = storeToRefs(useUserStore());
 const credsCookie = useCookie('creds')
 credsCookie.value = uuid.value;
-
 let observer;
 const { initFadeUpAnimation } = useFadeUpAnimation();
 onMounted(() => {
