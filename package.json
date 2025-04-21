@@ -28,6 +28,7 @@
     "@nuxt/http": "^0.6.4",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/cloudinary": "^3.1.0",
+    "@sendgrid/mail": "^8.1.4",
     "axios": "^1.6.2",
     "dotenv": "^16.4.5",
     "firebase": "^10.6.0",

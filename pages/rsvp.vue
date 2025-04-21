@@ -17,7 +17,6 @@
 <script setup lang="ts">
 import { db } from "../services/firebaseclient";
 import { getDocs, collection, query, where, } from "firebase/firestore";
-
 const isLoading = ref(false);
 let searchUuid = "";
 let guestInfo = ref<GuestInfo>({});
@@ -48,7 +47,6 @@ const handleSubmissionTransition = () => {
 const { name, uuid } = storeToRefs(useUserStore());
 const credsCookie = useCookie('creds')
 credsCookie.value = uuid.value;
-
 let observer;
 const { initFadeUpAnimation } = useFadeUpAnimation();
 onMounted(() => {
@@ -65,14 +63,16 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     padding: 40px 0;
+    min-height: 100vh;
 
-    @media screen and (min-width: 1150px) {
+    @media screen and (min-width: 1130px) {
         flex-direction: row;
         padding: 0;
-
+        justify-content: center;
+        gap: 10px;
     }
 }
 
@@ -82,7 +82,7 @@ onUnmounted(() => {
     background-position: top;
     background-repeat: no-repeat;
     width: 100%;
-    height: 580px;
+    height: 600px;
     max-width: 500px;
 
     @media screen and (min-width: 1300px) {

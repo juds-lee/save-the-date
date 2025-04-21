@@ -29,21 +29,25 @@ onUnmounted(() => {
 });
 const details = [
     {
-        title: "Black Tie Optional",
-        description: "Guests are encouraged to wear suits, dresses, elegant cocktail attire, or other formal evening wear. We ask that you refrain from wearing white, cream, beige, or similar shades."
-    },
-    {
-        title: "Gifts",
-        description: "Your presence is the best gift we could ask for. If you would like to give a gift, we would graciously accept a contribution towards our honeymoon fund. We will accept cash contributions or email transfers at <i>duncanheeney@gmail.com</i>"
-    },
-    {
-        title: "No children",
-        description: "We kindly ask that our wedding remain an adults-only event. We appreciate your understanding!"
+        title: "Invite Only",
+        description: "We kindly request that our wedding be an adults-only celebration and that guests attend only with those listed on their invitation."
     },
     {
         title: "Food Options",
         description: "If you have any dietary restrictions or allergies, please let us know in your RSVP so we can accommodate your needs."
-    }
+    },
+    {
+        title: "Parking",
+        description: "There will be limited parking available at the golf club. We suggest arriving by a rideshare service or taxi to get to the venue."
+    },
+    {
+        title: "Gifts",
+        description: "Your presence is the greatest gift we could ask for! However, if you wish to give a gift, we would be grateful for a contribution to our honeymoon fund. Cash gifts are appreciated, or you can send an e-transfer to <i>duncanheeney@gmail.com</i>"
+    },
+    {
+        title: "Black Tie Optional",
+        description: "Guests are encouraged to wear suits, tuxedos, dresses, elegant cocktail attire, or other formal evening wear. We ask that you refrain from wearing white, cream, beige, or other similar shades."
+    },
 ]
 </script>
 <style lang="postcss" scoped>

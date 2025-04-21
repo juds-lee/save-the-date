@@ -10,7 +10,9 @@
                         firstNameOnly
                         }},
                     </p>
-                    <p> We would love for you to join us in our celebrations. Please RSVP no later than May 20 2025.
+                    <p class="text-[18px]"> We would love for you to join us in our celebrations. Please RSVP no later
+                        than July 20 2025.
+                        <br />
                         <br /> Will you be able to join us?
                     </p>
                 </div>
@@ -34,7 +36,7 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div class="custom-label styled-input  text-[15px] sm:text-[17px]">
+                            <div class="custom-label styled-input  text-[20px] sm:text-[17px]">
                                 Dietary Restrictions:
                                 <input type="text" id="allergies" v-model="guestInfo.allergies" />
                             </div>
@@ -66,7 +68,9 @@
                         </div>
                     </div>
                     <button class="rsvp-submit" type="submit">Submit</button>
-                    <div v-if="rsvpError" class="text-accent">Please let us know if you can make the event</div>
+                    <div v-if="rsvpError" class="text-[#6B876D] text-[13px]">Please let us know if you can make the
+                        event
+                    </div>
                 </form>
             </div>
             <div class="back" :class="getDimensions">
@@ -78,7 +82,6 @@
                     <NuxtLink to="/" class="flex font-plantagenet-cherokee text-[18px] mt-5 text-[#333] underline">View
                         Wedding
                         Details
-                        <!-- <img src="../assets/svg/arrow.png" class="w-4 h-4" /> -->
                     </NuxtLink>
                 </div>
                 <img src="../assets/svg/flower-1.svg" alt="heart" class="absolute -z-20"
@@ -103,7 +106,6 @@ const rsvpError = ref(false);
 const submitGuestInfo = async () => {
     try {
         // if (!props.guestInfo.rsvpOption) {
-        //     console.log("rsvp error", rsvpError)
         //     rsvpError.value = true;
         //     return;
         // }
@@ -129,20 +131,27 @@ const firstNameOnly = computed(() => {
     return primaryFirstName;
 });
 const getDimensions = computed(() => {
+    if (props.guestInfo.hasPlusOne && windowWidth.value <= 378) {
+        return 'w-[500px] h-[760px]';
+    }
     if (props.guestInfo.hasPlusOne && windowWidth.value <= 550) {
-        return 'w-[500px] h-[680px]';
+        return 'w-[500px] h-[740px]';
+    }
+    if (props.guestInfo.hasPlusOne && windowWidth.value <= 600) {
+        return 'w-[500px] h-[750px]';
+    }
+    else if (props.guestInfo.hasPlusOne && windowWidth.value <= 1299) {
+        return 'w-[500px] h-[610px]';
     }
     else if (props.guestInfo.hasPlusOne && windowWidth.value >= 1300) {
         return 'w-[600px] h-[700px]';
     }
-    else if (props.guestInfo.hasPlusOne && windowWidth.value <= 1299) {
-        return 'w-[500px] h-[580px]';
+    else if (!props.guestInfo.hasPlusOne && windowWidth.value <= 550) {
+        return 'w-[500px] h-[460px]';
     }
-    else if (!props.guestInfo.hasPlusOne && windowWidth.value > 1300) {
-        return 'w-[550px] h-[380px]';
+    else if (!props.guestInfo.hasPlusOne && windowWidth.value > 550) {
+        return 'w-[500px] h-[450px]';
     }
-
-    return 'w-[500px] h-[380px]';
 })
 onMounted(() => {
     checkUserSubmission()
@@ -153,6 +162,9 @@ onMounted(() => {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1s linear;
+    perspective: 1000px;
+    -moz-transform-style: preserve-3d;
+    transform: rotateY(0deg);
 }
 
 .front,
@@ -162,7 +174,16 @@ onMounted(() => {
     display: flex;
     position: absolute;
     background: #F6F0E7;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
 
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
 }
 
 .back {
@@ -170,19 +191,16 @@ onMounted(() => {
     background: #F6F0E7;
     z-index: 1;
     transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
 
     @media screen and (min-width: 1300px) {
         font-size: 30px;
     }
 }
 
-.front {
-    z-index: 2;
-    backface-visibility: hidden;
-}
-
 .rotate {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) !important;
+    -moz-transform: rotateY(180deg) !important;
 }
 
 .container {
@@ -190,6 +208,7 @@ onMounted(() => {
 
     @media screen and (min-width: 1150px) {
         perspective: 1000px;
+        -moz-perspective: 1000px;
         min-height: 100vh;
         margin-bottom: 0;
     }
@@ -202,11 +221,10 @@ onMounted(() => {
     @media screen and (min-width: 400px) {
         font-size: 17px;
     }
-
 }
 
 .rsvp-title {
-    @apply font-plantagenet-cherokee text-[25px] text-main max-w-[700px];
+    @apply font-plantagenet-cherokee text-[28px] text-main max-w-[700px];
 
     @media screen and (min-width: 400px) {
         font-size: 30px;
@@ -255,6 +273,7 @@ label {
 
 .custom-label {
     cursor: pointer;
+    font-size: 18px;
 }
 
 .custom-radio {
@@ -287,7 +306,6 @@ label {
 .custom-radio:hover {
     transform: scale(1.1);
 }
-
 
 .styled-input input:focus+span {
     background-color: transparent;

@@ -29,7 +29,7 @@
   <mj-body background-color="#ede8d0" width="600px">
     <mj-section full-width="full-width" background-color="#ede8d0" padding-bottom="0" padding-top="0">
       <mj-column width="100%">
-        <mj-image src="https://res.cloudinary.com/djatkco6m/image/upload/v1729279729/save-the-date_u7moqb.png" width="600px" alt="" padding="0" />
+        <mj-image src="https://res.cloudinary.com/djatkco6m/image/upload/v1743432272/invite_egplqk.png" width="600px" alt="" padding="0" />
       </mj-column>
     </mj-section>
     <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
@@ -47,11 +47,14 @@
             <br />
             Your presence would mean the world to us!
           </mj-text>
-          <mj-button href="https://www.judyandduncan.com/?p=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSnVkeSBMZWUiLCJ1dWlkIjoibno1VlV1OE5CUkFYT1NKYWRabnUiLCJpYXQiOjE3NDIzMzQ4NTB9.q-pxyOjq15UNTQs2HflOO_ou3o_rxnWErN67NAOCq9g" background-color="#637381" color="#fff" border-radius="4px" padding="16px 24px" font-size="16px" align="center">
-            RSVP now
+          <mj-button href="https://www.judyandduncan.com/?p={{token}}" background-color="#637381" color="#fff" border-radius="4px" padding="16px 24px" font-size="16px" align="center">
+            RSVP Now
           </mj-button>
           <mj-text color="#637381" font-size="16px" padding-top="0" padding-bottom="0">
             Sincerely, <br /> Judy Lee & Duncan Heeney
+          </mj-text>
+          <mj-text color="#637381" font-size="14px">
+            **There will unfortunately be no additional guests permitted outside of those directly invited.
           </mj-text>
           <mj-text align="right" color="#637381" font-size="12px" padding-top="0" padding-bottom="0">
             Website Password: judunky2025
