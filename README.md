@@ -13,7 +13,7 @@ Unique guest rsvp page
 Emai
 Real-time updates via Firestore  
 Fully responsive and mobile-friendly  
-RSVP pages secured with guests' JWT
+RSVP pages secured with guests' JWT  
 Streamlined email invitations
 
 ### Demo
