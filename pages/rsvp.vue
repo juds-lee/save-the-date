@@ -24,7 +24,7 @@ const searchGuestWithName = async () => {
     searchUuid = uuid.value;
     try {
         isLoading.value = true;
-        const guestRsvpRef = collection(db, "guestInfoSaveTheDateing");
+        const guestRsvpRef = collection(db, "guestInfoSaveTheDate");
         const q = query(guestRsvpRef, where("guestUuid", "==", searchUuid));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {

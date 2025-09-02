@@ -105,7 +105,7 @@ const fbGuestInfo = ref([]);
 
 const submitGuest = async () => {
   try {
-    const docRef = doc(collection(db, "guestInfoSaveTheDateing"));
+    const docRef = doc(collection(db, "guestInfoSaveTheDate"));
     guest.value.guestUuid = docRef.id;
     await setDoc(docRef, guest.value);
     readGuestInfo();
@@ -129,7 +129,7 @@ const submitGuest = async () => {
 
 const readGuestInfo = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, "guestInfoSaveTheDateing"));
+    const querySnapshot = await getDocs(collection(db, "guestInfoSaveTheDate"));
     const data = querySnapshot.docs.map(doc => doc.data());
     data.sort((a, b) => a.name.localeCompare(b.name));
     fbGuestInfo.value = data;
@@ -140,11 +140,11 @@ const readGuestInfo = async () => {
 
 const removeGuest = async (guest) => {
   try {
-    const guestRef = query(collection(db, "guestInfoSaveTheDateing"), where("guestUuid", "==", guest.guestUuid));
+    const guestRef = query(collection(db, "guestInfoSaveTheDate"), where("guestUuid", "==", guest.guestUuid));
     const querySnapshot = await getDocs(guestRef);
     if (!querySnapshot.empty) {
       const docId = querySnapshot.docs[0].id;
-      await deleteDoc(doc(db, "guestInfoSaveTheDateing", docId));
+      await deleteDoc(doc(db, "guestInfoSaveTheDate", docId));
       readGuestInfo();
     }
   } catch (error) {
