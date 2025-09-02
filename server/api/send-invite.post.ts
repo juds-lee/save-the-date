@@ -27,7 +27,7 @@ type guestData = {
 
 export default defineEventHandler(async (event) => {
   try {
-    const guestInfoCollectionRef = collection(db, "guestInfoTesting");
+    const guestInfoCollectionRef = collection(db, "guestInfoSaveTheDateing");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
     const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     for (const guest of guestList) {

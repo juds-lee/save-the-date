@@ -32,10 +32,10 @@ export default defineEventHandler(async (event) => {
   try {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
-    const guestInfoCollectionRef = collection(db, "guestInfoTesting");
+    const guestInfoCollectionRef = collection(db, "guestInfoSaveTheDate");
     const querySnapshot = await getDocs(guestInfoCollectionRef);
     const guestList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as GuestInfo) }));
-    const guest = guestList.find((guest) => guest.name === "Sophia Tran");
+    const guest = guestList.find((guest) => guest.name === "Chaewan Park");
     // for (const guest of guestList.slice(90, 93)) {
     const payload = {
       name: guest?.name,
